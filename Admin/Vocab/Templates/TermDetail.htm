@@ -1,0 +1,185 @@
+﻿<!-- Modal -->
+<div class="modal termDetail" tabindex="-1" role="dialog" style="position: fixed;" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+
+
+                <div class='text-right'>
+                    <a href="#" class="btn btn-default btn-sm editTerm">Edit this Term</a>
+                    &nbsp; 
+                        <a href="#" class="btn btn-default btn-sm createRelationship">Create Term Relationship</a>
+                    &nbsp; 
+                        <a href="#" class="btn  btn-warning btn-sm deactivate" style="color: white;">Deactivate</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        <a class="close">×</a>
+                </div>
+                <p class='valueSetName'>Value Set: </p>
+
+
+                <h4 class='pull-left' style="clear: both;">
+                    <span class='termName'></span>
+                </h4>
+
+                <div class="col-xs-6" style="padding-left: 0px; margin-bottom: 10px;">
+                    <input type='text' value="" class='termName form-control input-md' placeholder='Term Name' />
+                </div>
+                <div class="col-xs-1" style="padding-left: 0px;">
+                    <span class='required'></span>
+                </div>
+
+
+                <p class='termDefinition'>
+                    <span class='termDefinition'></span>
+                    <textarea rows='2' class='termDefinition form-control input-md' placeholder='Term Description'></textarea>
+                </p>
+                <div class='text-right termEditOptions'>
+                    <a href="#" class="btn btn-sm  btn-primary saveTermEdit" style="color: white;">Save</a>&nbsp; 
+                        <a href="#" class="btn btn-sm btn-default cancelTermEdit">Cancel</a>
+                </div>
+
+
+
+
+            </div>
+            <div class="modal-body relationshipBuilder">
+
+                <div class="form-horizontal relationshipBuilderRow" style="padding-left:15px;">
+
+                    <div class="form-group">
+                        <div class="pull-left">This term</div>
+                        <div class="select relationshipType btn-group" data-resize="auto">
+
+                            <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#" code='BT'>is broader than<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li><a tabindex="-1" href="#" code='BT'>is broader than</a></li>
+                                <li><a tabindex="-1" href="#" code='NT'>is narrower than</a></li>
+                                <li><a tabindex="-1" href="#" code='UF'>is the preferred term for</a></li>
+                                <li><a tabindex="-1" href="#" code='USE'>should use</a></li>
+                                <li><a tabindex="-1" href="#" code='RT'>is related to</a></li>                                
+                            </ul>
+                        </div>
+                        <div class="col-xs-5">
+                            <input type="text" class="form-control valueSearch input-sm" data-provide="typeahead" data-items="4" placeholder="Search for a value" style="margin-top:-5px;" />
+                        </div>
+                        <div class="col-xs-2 relationshipDelete">
+                            <i class='glyphicon glyphicon-trash' title='Delete this Relationship'></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='pull-right relationshipActions'>
+                    <a href='#' class='btn btn-sm btn-default addRelationshipRow'>Add Additional Relationship</a>
+                    <a href='#' class='btn btn-sm btn-primary saveRelationships' style="color: white;">Save Relationships</a>
+                    <a href='#' class='btn btn-sm btn-default cancelRelationships'>Cancel</a>
+                </div>
+
+            </div>
+            <div class="alert alert-error" style="display:none;"></div>
+            <div class="alert alert-warning"  style="display:none;"></div>
+            <div class="modal-body currentRelationships">
+                <p class="parents">
+                </p>
+                <p class="children">
+                </p>
+                <p class="preferred">
+                </p>
+                <p class="useFor">
+                </p>
+                <p class="relatedTo">
+                </p>
+                <p class="translatesTo">
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default btn-sm" data-dismiss="modal">Done</a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!--
+<small>
+            <div id="termDetail" class="modal hide" style="display: none; height:535px; overflow:hidden;">                
+                <div class="modal-header">
+                    <div class='text-right'>
+                        <a href="#" class="btn  editTerm">Edit this Term</a>
+                        &nbsp; 
+                        <a href="#" class="btn  createRelationship">Create Term Relationship</a>
+                        &nbsp; 
+                        <a href="#" class="btn  btn-warning deactivate">Deactivate</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        <a class="close" data-dismiss="modal">×</a>
+                    </div>
+                    <p class='valueSetName'>Value Set: </p>
+                    <h4 class='pull-left'>
+                        <span class='termName'></span>
+                        <input type='text' value="" class='termName' placeholder='Term Name'/>                        
+                    </h4>
+                    <span class='required' style='line-height:47px; padding-left:20px;'> required</span>
+
+                    <p class='termDefinition'>
+                        <span class='termDefinition'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Praesent a erat in ipsum sodales congue. In libero nulla, varius sit amet aliquet
+                            nec, consequat in neque. </span>
+                        <textarea rows='2' class='termDefinition' placeholder='Term Description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a erat in ipsum sodales congue. In libero nulla, varius sit amet aliquet nec, consequat in neque.</textarea>
+                    </p>
+                    <div class='text-right termEditOptions'>
+                        <a href="#" class="btn  btn-primary saveTermEdit">Save</a>&nbsp; <a href="#"
+                            class="btn  cancelTermEdit">Cancel</a>
+                    </div>
+                </div>
+                <div class="modal-body relationshipBuilder">
+                    <div class='relationshipBuilderRow'>
+
+                        <div class="builderLabel">This term</div>
+                    
+                        <div class="select relationshipType btn-group" data-resize="auto">
+                            <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#" code='BT'>is broader than
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li><a tabindex="-1" href="#" code='BT'>is broader than</a></li>
+                                <li><a tabindex="-1" href="#" code='NT'>is narrower than</a></li>
+                                <li><a tabindex="-1" href="#" code='UF'>is the preferred term for</a></li>
+                                <li><a tabindex="-1" href="#" code='USE'>should use</a></li>
+                                <li><a tabindex="-1" href="#" code='RT'>is related to</a></li>
+                            </ul>
+                        </div>
+                    
+                        <input type="text" class="span3 valueSearch" data-provide="typeahead" data-items="4" />
+                    
+                        <div class='pull-right relationshipDelete'>
+                            <i class='icon-trash' title='Delete this Relationship'></i>
+                        </div>
+                    </div>
+
+                    <div class='pull-right relationshipActions'>                        
+                        <a href='#' class='btn  addRelationshipRow'>Add Additional Relationship</a>
+                        <a href='#' class='btn  btn-primary saveRelationships'>Save Relationships</a>
+                        <a href='#' class='btn  cancelRelationships'>Cancel</a>
+                    </div>
+
+                </div>
+                <div class="alert alert-error hide"></div>
+                <div class="alert alert-warning hide"></div>
+                <div class="modal-body currentRelationships">
+                    <p class="parents">
+                    </p>
+                    <p class="children">
+                    </p>
+                    <p class="preferred">
+                    </p>
+                    <p class="useFor">
+                    </p>
+                    <p class="relatedTo">
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn " data-dismiss="modal">Done</a>
+                </div>
+            </div>
+</small>                
+-->

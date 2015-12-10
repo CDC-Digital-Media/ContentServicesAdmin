@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Proxy Cache App Key List</title>
+    <meta charset="utf-8">
+
+    <script src="../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../bootstrap/js/bootstrap3.min.js" type="text/javascript"></script>
+    <script src="../bootstrap/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <link href="../bootstrap/css/bootstrap3.min.css" rel="stylesheet" type="text/css" />        
+    <link href="../bootstrap/css/datepicker.css" rel="stylesheet" type="text/css" />
+    
+    <script src="../Scripts/jquery.cookie.js" type="text/javascript"></script>
+    
+    <link href="../Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" />
+    
+    <link href="../dataTables/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="../dataTables/jquery.dataTables.min.js" type="text/javascript"></script>
+
+    <script src="../scripts/__common.js" type="text/javascript"></script>
+    <script src="Scripts/_proxyCacheAppKey.js" type="text/javascript"></script>    
+    <script src="../Scripts/Admin.Header_0.1.js" type="text/javascript"></script>
+    <script src="../Scripts/Admin.Pager_0.1.js" type="text/javascript"></script>
+    <script src="Scripts/proxyCacheAppKeyGrid.js" type="text/javascript"></script>    
+
+</head>
+<body>
+    <div class="head"></div>
+
+    <span class="typeHeader" style="margin: 10px 0 30px 10px; display:inline-block;">Current Proxy Cache Application Key List</span>
+    <button class="btn btn-small btn-primary" id="newProxyCacheAppKey"  style="margin: -10px 0 0 50px;">Add New Proxy Cache Application Key</button>
+
+    <div class="alert alert-danger" id="badSave" style="margin-top: 10px; display: none;"></div>
+    <div class="alert alert-success" id="goodSave" style="margin-top: 10px; display: none;">Save Successful</div>
+
+    <div id="proxyCacheAppKeyList" style="margin: 10px;"></div>
+
+</body>
+</html>

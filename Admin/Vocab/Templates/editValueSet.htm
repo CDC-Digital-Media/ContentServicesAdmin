@@ -1,0 +1,72 @@
+﻿<div class="col-md-5 container detail">
+    <div class="alert alert-danger" id="badSave" style="margin-top: 10px;"></div>
+    <div class="alert alert-success" id="goodSave" style="margin-top: 10px;">Saved successfully</div>
+
+    <h4 class="subHeader" id="valueSetHeader">Value Set Definition</h4>
+
+    <form role="form">
+        <div class="form-group">
+            <label label-default="label-default" class="required" for="valueSetName">Name</label>
+            <div class="control-group">
+                <input type="text" id="valueSetName" class="form-control" placeholder='Name' />
+                <div id="Div1" class="help-inline">This value must be unique</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label label-default="label-default" class="required" for="valueSetDesc">Description</label>
+            <div class="control-group">
+                <input type="text" id="valueSetDesc" class="form-control" placeholder='Description' />
+                <div id="Div2" class="help-inline">What will this set be used for?</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label label-default="label-default" class="required" for="language">Language</label>
+            <div class="control-group">
+                <select id="language" class="form-control"></select>                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="active">
+                    Is this value set active?	   
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="orderable">
+                    Add options for ordering this value set ordinally?	   
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="defaultable">
+                    Should this set specify a default value?   
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="relatable">
+                    Allow creation of parent/child relationships?	   
+                </label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <button id="btnSave" class="btn btn-primary">Save</button>
+                <button id="btnCancel" class="btn btn-default btnCancel" name="btnCancel">Cancel</button>
+            </div>
+            <p></p>
+        </div>
+    </form>
+</div>

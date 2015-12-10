@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F257A9E3-58FC-427B-B3D2-262C10DE1864}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Admin</RootNamespace>
+    <AssemblyName>Admin</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <JSLintSkip>\bootstrap\js\bootstrap-datepicker.js|\bootstrap\js\bootstrap-typeahead.js|\bootstrap\js\bootstrap-modal.js|\bootstrap\js\bootstrap.js|\bootstrap\js\bootstrap.min.js|\bootstrap-timepicker-gh-pages\assets\prettify\prettify.js|\bootstrap-timepicker-gh-pages\js\bootstrap-timepicker.min.js|\bootstrap-timepicker-gh-pages\Gruntfile.js|\bootstrap-timepicker-gh-pages\js\bootstrap-timepicker.js|\bootstrap-timepicker-gh-pages\spec\js\helpers\SpecHelper.js|\bootstrap-timepicker-gh-pages\spec\js\helpers\jasmine-jquery.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\google-code-prettify\prettify.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-transition.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-tooltip.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-tab.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-scrollspy.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-popover.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-modal.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-dropdown.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-collapse.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-carousel.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-button.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-alert.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-affix.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-typeahead.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\holder\holder.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\html5shiv.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap.min.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-typeahead.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-transition.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-tooltip.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-tab.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-scrollspy.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-popover.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-modal.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-dropdown.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-collapse.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-carousel.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-button.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-alert.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-affix.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\jquery.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-alert.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-button.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-carousel.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-collapse.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-dropdown.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-modal.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-phantom.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-popover.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-scrollspy.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-tab.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-tooltip.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-transition.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-typeahead.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-affix.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\application.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\vendor\jquery.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\server.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\phantom.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\vendor\qunit.js|\bootstrap-timepicker-gh-pages\spec\js\libs\jquery\jquery.js|\bootstrap-timepicker-gh-pages\spec\js\libs\jquery\jquery-migrate.min.js|\bootstrap-timepicker-gh-pages\spec\js\libs\jquery\jquery.min.js|\bootstrap-timepicker-gh-pages\spec\js\libs\jquery\jquery-migrate.js|\bootstrap-timepicker-gh-pages\spec\js\MouseEventsSpec.js|\bootstrap-timepicker-gh-pages\spec\js\TimepickerSpec.js|\bootstrap-timepicker-gh-pages\spec\js\KeyboardEventsSpec.js|\fuel\all.min.js|\bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\build\index.js|\bootstrap-timepicker-gh-pages\spec\js\libs\autotype\index.js|\Scripts\jquery-1.9.1.js|\Scripts\jquery-1.9.1.min.js|\Scripts\jquery-ui-1.10.3.custom.js|\Scripts\jquery-ui-1.10.3.custom.min.js|\Scripts\jquery.unique-element-id.js|\Scripts\jquery.ui.core.min.js|\Scripts\jquery.treeview.js|\Scripts\jquery.scrollTo.js|\Scripts\jquery.highlight.js|\Scripts\jquery.watermark.min.js|\Scripts\jquery.cookie.js|\Scripts\MagicSuggest\magicsuggest-1.3.0.js|\Scripts\MagicSuggest\magicsuggest-1.3.0-min.js|\fuel\require.js|\fuel\pillbox.js|\fuel\underscore-min.js|\fuel\loader.min.js|\Scripts\test_topicList.js|\Scripts\LargeSetGenerator.js|\dataTables\jquery.dataTables.min.js|\bootstrap\js\bootstrap3.min.js</JSLintSkip>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.7.4114.6375, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>_binRef\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Gov.Hhs.Cdc.Commons.Api.Key.Utils">
+      <HintPath>_binRef\Gov.Hhs.Cdc.Commons.Api.Key.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Authorization\auth.htm" />
+    <Content Include="Authorization\Scripts\Admin.RolesByUser.js" />
+    <Content Include="Authorization\Scripts\UsersByRole.js" />
+    <Content Include="Authorization\Scripts\Admin.Mediasets.js" />
+    <Content Include="Authorization\Scripts\AdminUserService.js" />
+    <Content Include="Authorization\Scripts\_auth.js" />
+    <Content Include="Authorization\Templates\authmain.htm" />
+    <Content Include="Authorization\Templates\mediaSets.htm" />
+    <Content Include="Authorization\Templates\newMediaSet.htm" />
+    <Content Include="Authorization\Templates\newUser.htm" />
+    <Content Include="Authorization\Templates\roles.htm" />
+    <Content Include="Authorization\Templates\users.htm" />
+    <Content Include="bootstrap-timepicker-gh-pages\assets\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\assets\ico\favicon.ico" />
+    <Content Include="bootstrap-timepicker-gh-pages\assets\images\bg.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\assets\images\grid-18px-masked.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\assets\images\happy_programmer.JPG" />
+    <Content Include="bootstrap-timepicker-gh-pages\assets\images\MH900383636.JPG" />
+    <Content Include="bootstrap-timepicker-gh-pages\assets\prettify\prettify.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\assets\prettify\prettify.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\assets\pygments.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\css\bootstrap-responsive.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\css\bootstrap-timepicker.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\css\bootstrap-timepicker.min.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\Gruntfile.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\index.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\js\bootstrap-timepicker.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\js\bootstrap-timepicker.min.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\fixtures\timepicker.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\helpers\jasmine-jquery.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\helpers\SpecHelper.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\KeyboardEventsSpec.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\autotype\index.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\css\bootstrap-responsive.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\css\bootstrap.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\css\docs.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\ico\favicon.ico" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\ico\favicon.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\bootstrap-docs-readme.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\bootstrap-mdo-sfmoma-01.jpg" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\bootstrap-mdo-sfmoma-02.jpg" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\bootstrap-mdo-sfmoma-03.jpg" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\bs-docs-bootstrap-features.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\bs-docs-masthead-pattern.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\bs-docs-responsive-illustrations.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\bs-docs-twitter-github.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\example-sites\8020select.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\example-sites\adoptahydrant.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\example-sites\breakingnews.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\example-sites\fleetio.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\example-sites\gathercontent.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\example-sites\jshint.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\example-sites\kippt.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\example-sites\soundready.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\bootstrap-example-carousel.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\bootstrap-example-fluid.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\bootstrap-example-justified-nav.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\bootstrap-example-marketing-narrow.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\bootstrap-example-marketing.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\bootstrap-example-signin.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\bootstrap-example-starter.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\bootstrap-example-sticky-footer.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\browser-icon-chrome.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\browser-icon-firefox.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\browser-icon-safari.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\slide-01.jpg" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\slide-02.jpg" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\examples\slide-03.jpg" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\glyphicons-halflings-white.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\glyphicons-halflings.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\grid-baseline-20px.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\less-logo-large.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\img\responsive-illustrations.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\application.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-affix.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-alert.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-button.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-carousel.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-collapse.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-dropdown.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-modal.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-popover.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-scrollspy.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-tab.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-tooltip.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-transition.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap-typeahead.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\bootstrap.min.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\google-code-prettify\prettify.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\google-code-prettify\prettify.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\holder\holder.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\html5shiv.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\jquery.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\base-css.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\build\index.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\components.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\customize.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\examples\carousel.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\examples\fluid.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\examples\hero.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\examples\justified-nav.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\examples\marketing-narrow.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\examples\signin.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\examples\starter-template.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\examples\sticky-footer-navbar.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\examples\sticky-footer.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\extend.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\getting-started.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\index.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\javascript.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\scaffolding.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-affix.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-alert.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-button.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-carousel.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-collapse.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-dropdown.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-modal.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-popover.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-scrollspy.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-tab.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-tooltip.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-transition.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\bootstrap-typeahead.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\index.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\phantom.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\server.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-affix.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-alert.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-button.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-carousel.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-collapse.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-dropdown.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-modal.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-phantom.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-popover.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-scrollspy.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-tab.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-tooltip.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-transition.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\unit\bootstrap-typeahead.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\vendor\jquery.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\vendor\qunit.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\tests\vendor\qunit.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\tests\buttons.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\tests\css-tests.css" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\tests\css-tests.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\tests\forms-responsive.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\tests\forms.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\tests\navbar-fixed-top.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\tests\navbar-static-top.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\tests\navbar.html" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\jquery-migrate.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\jquery-migrate.min.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\jquery.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\jquery.min.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\MouseEventsSpec.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\spec\js\TimepickerSpec.js" />
+    <Content Include="bootstrap-timepicker-gh-pages\_layouts\default.html" />
+    <Content Include="bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="bootstrap\css\bootstrap.css" />
+    <Content Include="bootstrap\css\bootstrap.min.css" />
+    <Content Include="bootstrap\css\bootstrap3.min.css" />
+    <Content Include="bootstrap\css\datepicker.css" />
+    <Content Include="bootstrap\css\font-awesome.min.css" />
+    <Content Include="bootstrap\fonts\fontawesome-webfont.svg" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="bootstrap\js\bootstrap-datepicker.js" />
+    <Content Include="bootstrap\js\bootstrap-typeahead.js" />
+    <Content Include="bootstrap\js\bootstrap-modal.js" />
+    <Content Include="bootstrap\js\bootstrap.js" />
+    <Content Include="bootstrap\js\bootstrap.min.js" />
+    <Content Include="bootstrap\js\bootstrap3.min.js" />
+    <Content Include="Campaign\campaign.htm" />
+    <Content Include="Campaign\Scripts\_campaign.js" />
+    <Content Include="Campaign\Templates\AddCampaign.htm" />
+    <Content Include="Capture\Capture.htm" />
+    <Content Include="Capture\Scripts\Admin.ExportFormatPicker.js" />
+    <Content Include="Capture\Scripts\Admin.TopicPicker.js" />
+    <Content Include="Capture\Scripts\AltImageBlock.js" />
+    <Content Include="Capture\Scripts\Capture.Microsite.js" />
+    <Content Include="Capture\Scripts\CategoryBlock.js" />
+    <Content Include="Capture\Scripts\Capture.Ecard.js" />
+    <Content Include="Capture\Scripts\Capture.Collection.js" />
+    <Content Include="Capture\Scripts\Capture.StaticImage.js" />
+    <Content Include="Capture\Scripts\AltImageBlock.js" />
+    <Content Include="Capture\Scripts\Capture.Pdf.js" />
+    <Content Include="Capture\Scripts\Capture.Feed.js" />
+    <Content Include="Capture\Scripts\Admin.ValuePicker.js" />
+    <Content Include="Capture\Scripts\Capture.Widget.js" />
+    <Content Include="Capture\Scripts\WidgetResources.js" />
+    <Content Include="Capture\Scripts\FeedItem.js" />
+    <Content Include="Capture\Scripts\FeedItemGrid.js" />
+    <Content Include="Capture\Scripts\FeedAttributeBlock.js" />
+    <Content Include="Capture\Scripts\PdfResources.js" />
+    <Content Include="Capture\Scripts\ExtAttributeBlock.js" />
+    <Content Include="Capture\Scripts\LocationBlock.js" />
+    <Content Include="Capture\Scripts\StaticImageResources.js" />
+    <Content Include="Capture\Scripts\eCardMobileBlock.js" />
+    <Content Include="Capture\Scripts\eCardResources.js" />
+    <Content Include="Capture\Scripts\GeneralBlock.js" />
+    <Content Include="Capture\Scripts\HTMLResources.js" />
+    <Content Include="Capture\Scripts\Admin.AttributeTreePicker.js" />
+    <Content Include="Capture\Scripts\Admin.SourcePicker.js" />
+    <Content Include="Capture\Scripts\Admin.LanguagePicker.js" />
+    <Content Include="Capture\Scripts\Admin.OrgPicker.js" />
+    <Content Include="Capture\Scripts\Admin.ValidateUrl.js" />
+    <Content Include="Capture\Scripts\Capture.Video.js" />
+    <Content Include="Capture\Scripts\ChildItemGrid.js" />
+    <Content Include="Capture\Scripts\Capture.Html.js" />
+    <Content Include="Capture\Scripts\SouceBlock.js" />
+    <Content Include="Capture\Scripts\TitleBlock.js" />
+    <Content Include="Capture\Scripts\videoResources.js" />
+    <Content Include="Capture\Scripts\_capture.js" />
+    <Content Include="Capture\Templates\AddBadgeContent.htm" />
+    <Content Include="Capture\Templates\AddButtonContent.htm" />
+    <Content Include="Capture\Templates\AddEcardContent.htm" />
+    <Content Include="Capture\Templates\AddInfographicContent.htm" />
+    <Content Include="Capture\Templates\AddVideoContent.htm" />
+    <Content Include="Capture\Templates\AddImageContent.htm" />
+    <Content Include="Capture\Templates\AddCollectionContent.htm" />
+    <Content Include="Capture\Templates\AltImageBlock.htm" />
+    <Content Include="Capture\Templates\ChildItemGrid.htm" />
+    <Content Include="Capture\Templates\AddHtmlContent.htm" />
+    <Content Include="Capture\Templates\CategoryBlock.htm" />
+    <Content Include="Capture\Templates\BadgeResources.htm" />
+    <Content Include="Capture\Templates\ButtonResources.htm" />
+    <Content Include="Capture\Templates\AddStaticImageContent.htm" />
+    <Content Include="Capture\Templates\AltImageBlock.htm" />
+    <Content Include="Capture\Templates\AddPdfContent.htm" />
+    <Content Include="Capture\Templates\AddFeedContent.htm" />
+    <Content Include="Capture\Templates\AddWidgetContent.htm" />
+    <Content Include="Capture\Templates\WidgetResources.htm" />
+    <Content Include="Capture\Templates\FeedItem.htm" />
+    <Content Include="Capture\Templates\FeedItemGrid.htm" />
+    <Content Include="Capture\Templates\FeedAttributeBlock.htm" />
+    <Content Include="Capture\Templates\PdfResources.htm" />
+    <Content Include="Capture\Templates\ExtAttributeBlock.htm" />
+    <Content Include="Capture\Templates\LocationBlock.htm" />
+    <Content Include="Capture\Templates\StaticImageResources.htm" />
+    <Content Include="Capture\Templates\InfographicResources.htm" />
+    <Content Include="Capture\Templates\eCardMobileBlock.htm" />
+    <Content Include="Capture\Templates\eCardResources.htm" />
+    <Content Include="Capture\Templates\GeneralBlock.htm" />
+    <Content Include="Capture\Templates\HTMLResources.htm" />
+    <Content Include="Capture\Templates\modalTreePicker.htm" />
+    <Content Include="Capture\Templates\SourceBlock.htm" />
+    <Content Include="Capture\Templates\Treeview.htm" />
+    <Content Include="Capture\Templates\videoResources.htm" />
+    <Content Include="Collections\Collections.htm" />
+    <Content Include="Collections\Scripts\collectionGrid.js" />
+    <Content Include="Collections\Scripts\_collections.js" />
+    <Content Include="Collections\Templates\collectionGrid.htm" />
+    <Content Include="Images\excelIcon.png" />
+    <Content Include="Podcasts\podcasts.css" />
+    <Content Include="Podcasts\Podcasts.htm" />
+    <Content Include="Podcasts\jsonPreview.htm" />
+    <Content Include="Podcasts\Scripts\enclosureModal.js" />
+    <Content Include="Podcasts\Scripts\seriesDetail.js" />
+    <Content Include="Podcasts\Scripts\seriesGrid.js" />
+    <Content Include="Podcasts\Scripts\podcastModal.js" />
+    <Content Include="Podcasts\Scripts\seriesModal.js" />
+    <Content Include="Podcasts\Scripts\_podcasts.js" />
+    <Content Include="Podcasts\Templates\enclosureModal.htm" />
+    <Content Include="Podcasts\Templates\seriesDetail.htm" />
+    <Content Include="Podcasts\Templates\seriesGrid.htm" />
+    <Content Include="Podcasts\Templates\podcastModal.htm" />
+    <Content Include="Podcasts\Templates\seriesModal.htm" />
+    <Content Include="dataTables\images\back_disabled.png" />
+    <Content Include="dataTables\images\back_enabled.png" />
+    <Content Include="dataTables\images\back_enabled_hover.png" />
+    <Content Include="dataTables\images\favicon.ico" />
+    <Content Include="dataTables\images\forward_disabled.png" />
+    <Content Include="dataTables\images\forward_enabled.png" />
+    <Content Include="dataTables\images\forward_enabled_hover.png" />
+    <Content Include="dataTables\images\sort_asc.png" />
+    <Content Include="dataTables\images\sort_asc_disabled.png" />
+    <Content Include="dataTables\images\sort_both.png" />
+    <Content Include="dataTables\images\sort_desc.png" />
+    <Content Include="dataTables\images\sort_desc_disabled.png" />
+    <Content Include="dataTables\jquery.dataTables.css" />
+    <Content Include="dataTables\jquery.dataTables.min.js" />
+    <Content Include="Data\EditProxyCacheAppKey.htm" />
+    <Content Include="Data\ProxyCacheAppKey.htm" />
+    <Content Include="Data\EditProxyCache.htm" />
+    <Content Include="Data\ProxyCache.htm" />
+    <Content Include="Data\Scripts\ProxyCacheAppKeyForm.js" />
+    <Content Include="Data\Scripts\_proxyCacheAppKeyForm.js" />
+    <Content Include="Data\Scripts\proxyCacheAppKeyGrid.js" />
+    <Content Include="Data\Scripts\_proxyCacheAppKey.js" />
+    <Content Include="Data\Scripts\ProxyCacheForm.js" />
+    <Content Include="Data\Scripts\_proxyCacheForm.js" />
+    <Content Include="Data\Scripts\proxyCacheGrid.js" />
+    <Content Include="Data\Scripts\_proxyCache.js" />
+    <Content Include="Data\Templates\proxyCacheAppKeyGrid.htm" />
+    <Content Include="Data\Templates\proxyCacheGrid.htm" />
+    <Content Include="Feeds\ContentGroups.htm" />
+    <Content Include="Feeds\ContentGroupPreview.htm" />
+    <Content Include="Feeds\feed.css" />
+    <Content Include="Feeds\Feeds.htm" />
+    <Content Include="Feeds\jsonPreview.htm" />
+    <Content Include="Feeds\Scripts\exportModal.js" />
+    <Content Include="Feeds\Scripts\_contentGroups.js" />
+    <Content Include="Feeds\Scripts\enclosureModal.js" />
+    <Content Include="Feeds\Scripts\feedItemModal.js" />
+    <Content Include="Feeds\Scripts\feedDetail.js" />
+    <Content Include="Feeds\Scripts\feedModal.js" />
+    <Content Include="Feeds\Scripts\feedGrid.js" />
+    <Content Include="Feeds\Scripts\_feeds.js" />
+    <Content Include="Feeds\Templates\enclosureModal.htm" />
+    <Content Include="Feeds\Templates\exportModal.htm" />
+    <Content Include="Feeds\Templates\feedItemModal.htm" />
+    <Content Include="Feeds\Templates\feedDetail.htm" />
+    <Content Include="Feeds\Templates\feedModal.htm" />
+    <Content Include="Feeds\Templates\feedGrid.htm" />
+    <Content Include="Images\logo_bug%402x.png" />
+    <Content Include="Images\logo_bug.png" />
+    <Content Include="Preview.htm" />
+    <Content Include="Scripts\jCrop\css\Jcrop.gif" />
+    <Content Include="Scripts\jCrop\css\jquery.Jcrop.css" />
+    <Content Include="Scripts\jCrop\css\jquery.Jcrop.min.css" />
+    <Content Include="Scripts\jCrop\js\jquery.color.js" />
+    <Content Include="Scripts\jCrop\js\jquery.Jcrop.js" />
+    <Content Include="Scripts\jCrop\js\jquery.Jcrop.min.js" />
+    <Content Include="Scripts\jCrop\js\jquery.min.js" />
+    <Content Include="Scripts\jCrop\MIT-LICENSE.txt" />
+    <Content Include="Scripts\json-viewer\jquery.json-viewer.css" />
+    <Content Include="Scripts\json-viewer\jquery.json-viewer.js" />
+    <Content Include="Scripts\MagicSuggest\magicsuggest-min.css" />
+    <Content Include="Scripts\MagicSuggest\magicsuggest-min.js" />
+    <Content Include="Scripts\MagicSuggest\magicsuggest.css" />
+    <Content Include="Scripts\MagicSuggest\magicsuggest.js" />
+    <Content Include="Scripts\_preview.js" />
+    <Content Include="Search\FilterMedia.htm" />
+    <Content Include="Images\ajax-loader.gif" />
+    <Content Include="Images\gray_line3.png" />
+    <Content Include="Images\home-icon.png" />
+    <Content Include="Images\nav_caret.png" />
+    <Content Include="Images\TreeView\ajax-loader.gif" />
+    <Content Include="Images\TreeView\file.gif" />
+    <Content Include="Images\TreeView\folder-closed.gif" />
+    <Content Include="Images\TreeView\folder.gif" />
+    <Content Include="Images\TreeView\minus.gif" />
+    <Content Include="Images\TreeView\plus.gif" />
+    <Content Include="Images\TreeView\treeview-black-line.gif" />
+    <Content Include="Images\TreeView\treeview-black.gif" />
+    <Content Include="Images\TreeView\treeview-default-line.gif" />
+    <Content Include="Images\TreeView\treeview-default.gif" />
+    <Content Include="Images\TreeView\treeview-famfamfam-line.gif" />
+    <Content Include="Images\TreeView\treeview-famfamfam.gif" />
+    <Content Include="Images\TreeView\treeview-gray-line.gif" />
+    <Content Include="Images\TreeView\treeview-gray.gif" />
+    <Content Include="Images\TreeView\treeview-red-line.gif" />
+    <Content Include="Images\TreeView\treeview-red.gif" />
+    <Content Include="Index.htm" />
+    <Content Include="Search\Scripts\mediaFilterGrid.js" />
+    <Content Include="Scripts\mediaFilterOptions.js" />
+    <Content Include="Search\Templates\mediaFilterGrid.htm" />
+    <Content Include="Scripts\Admin.Pager_0.1.js" />
+    <Content Include="PersistentURL\PersistentURL.htm" />
+    <Content Include="PersistentURL\Scripts\_persistentURL.js" />
+    <Content Include="Scripts\Admin.Header_0.1.js" />
+    <Content Include="Scripts\admin.thumbnailgenerator.js" />
+    <Content Include="Scripts\htmlEncode.js" />
+    <Content Include="Scripts\Admin.MediaTypePicker.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-ui-1.11.1.custom.min.js" />
+    <Content Include="Search\Scripts\_filterMedia.js" />
+    <Content Include="Scripts\_index.js" />
+    <Content Include="Scripts\LargeSetGenerator.js" />
+    <Content Include="Scripts\jquery.treeview.js" />
+    <Content Include="Scripts\MagicSuggest\magicsuggest-1.3.0-min.css" />
+    <Content Include="Scripts\MagicSuggest\magicsuggest-1.3.0-min.js" />
+    <Content Include="Scripts\MagicSuggest\magicsuggest-1.3.0.css" />
+    <Content Include="Scripts\MagicSuggest\magicsuggest-1.3.0.js" />
+    <Content Include="Scripts\_default.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.ui.core.min.js" />
+    <Content Include="Scripts\jquery.unique-element-id.js" />
+    <Content Include="Scripts\jquery.watermark.min.js" />
+    <Content Include="Scripts\__common.js" />
+    <Content Include="Secure.aspx" />
+    <Content Include="Styles\fonts\sourcesans.css" />
+    <Content Include="Styles\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Styles\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="Styles\jquery.treeview.css" />
+    <Content Include="Styles\reset.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Templates\FilterCriteria.htm" />
+    <Content Include="Templates\Header.htm" />
+    <Content Include="Templates\ThumbnailGenerator.htm" />
+    <Content Include="Utilities\Scripts\thumbnailUtil.js" />
+    <Content Include="Utilities\Scripts\_Utilities.js" />
+    <Content Include="Utilities\Templates\thumbnailUtil.htm" />
+    <Content Include="Utilities\Utilities.htm" />
+    <Content Include="Scripts\jquery.highlight.js" />
+    <Content Include="Scripts\jquery.scrollTo.js" />
+    <Content Include="Vocab\Scripts\editValueSet.js" />
+    <Content Include="Vocab\Scripts\termDetail.js" />
+    <Content Include="Vocab\Scripts\valueSetDetail.js" />
+    <Content Include="Vocab\Scripts\valueSetsGrid.js" />
+    <Content Include="Vocab\Scripts\valuesGrid.js" />
+    <Content Include="Vocab\Scripts\valueTreeView.js" />
+    <Content Include="Vocab\Scripts\_vocab.js" />
+    <Content Include="Vocab\Templates\CookieCrumb.htm" />
+    <Content Include="Vocab\Templates\editValueSet.htm" />
+    <Content Include="Vocab\Templates\TermDetail.htm" />
+    <Content Include="Vocab\Templates\TreeView.htm" />
+    <Content Include="Vocab\Templates\valueSetsGrid.htm" />
+    <Content Include="Vocab\Templates\valuesGrid.htm" />
+    <Content Include="Vocab\Vocab.htm" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Capture\Templates\videoResources.htm.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Capture\Templates\videoResources.htm.designer.cs">
+      <DependentUpon>videoResources.htm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capture\Upload.ashx.cs">
+      <DependentUpon>Upload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Feeds\FileTest.ashx.cs">
+      <DependentUpon>FileTest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Secure.aspx.cs">
+      <DependentUpon>Secure.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AssemblyVersionInfo.cs">
+      <Link>AssemblyVersionInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="PersistentURL\Templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bootstrap-timepicker-gh-pages\.bowerrc" />
+    <None Include="bootstrap-timepicker-gh-pages\.gitignore" />
+    <None Include="bootstrap-timepicker-gh-pages\.travis.yml" />
+    <None Include="bootstrap-timepicker-gh-pages\bower.json" />
+    <None Include="bootstrap-timepicker-gh-pages\composer.json" />
+    <None Include="bootstrap-timepicker-gh-pages\less\timepicker.less" />
+    <None Include="bootstrap-timepicker-gh-pages\LICENSE" />
+    <None Include="bootstrap-timepicker-gh-pages\package.json" />
+    <None Include="bootstrap-timepicker-gh-pages\README.md" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\autotype\.bower.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\.bower.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\.gitignore" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\.travis.yml" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\bower.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\CHANGELOG.md" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\composer.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\CONTRIBUTING.md" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\assets\js\README.md" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\build\package.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\templates\layout.mustache" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\templates\pages\base-css.mustache" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\templates\pages\components.mustache" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\templates\pages\customize.mustache" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\templates\pages\extend.mustache" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\templates\pages\getting-started.mustache" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\templates\pages\index.mustache" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\templates\pages\javascript.mustache" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\docs\templates\pages\scaffolding.mustache" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\js\.jshintrc" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\accordion.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\alerts.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\bootstrap.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\breadcrumbs.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\button-groups.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\buttons.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\carousel.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\close.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\code.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\component-animations.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\dropdowns.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\forms.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\grid.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\hero-unit.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\labels-badges.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\layouts.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\media.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\mixins.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\modals.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\navbar.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\navs.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\pager.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\pagination.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\popovers.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\progress-bars.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\reset.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\responsive-1200px-min.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\responsive-767px-max.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\responsive-768px-979px.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\responsive-navbar.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\responsive-utilities.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\responsive.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\scaffolding.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\sprites.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\tables.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\thumbnails.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\tooltip.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\type.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\utilities.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\variables.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\less\wells.less" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\LICENSE" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\Makefile" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\package.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\bootstrap\README.md" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\.bower.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\.gitignore" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\bower.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\component.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\composer.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\jquery.min.map" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\package.json" />
+    <None Include="bootstrap-timepicker-gh-pages\spec\js\libs\jquery\README.md" />
+    <None Include="bootstrap-timepicker-gh-pages\_config.yml" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Capture\Upload.ashx" />
+    <Content Include="bootstrap\fonts\fontawesome-webfont.eot" />
+    <Content Include="bootstrap\fonts\fontawesome-webfont.ttf" />
+    <Content Include="bootstrap\fonts\fontawesome-webfont.woff" />
+    <Content Include="bootstrap\fonts\fontawesome-webfont.woff2" />
+    <Content Include="bootstrap\fonts\FontAwesome.otf" />
+    <Content Include="Feeds\FileTest.ashx" />
+    <None Include="dataTables\images\Sorting icons.psd" />
+    <None Include="Properties\PublishProfiles\Dev.pubxml" />
+    <Content Include="Scripts\jCrop\README.md" />
+    <Content Include="Styles\fonts\SourceSansPro-Black.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-BlackItalic.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-Bold.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-BoldItalic.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-ExtraLight.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-ExtraLightItalic.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-Italic.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-Light.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-LightItalic.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-Regular.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-Semibold.ttf" />
+    <Content Include="Styles\fonts\SourceSansPro-SemiboldItalic.ttf" />
+    <Content Include="Scripts\MagicSuggest\bower.json" />
+    <Content Include="Scripts\MagicSuggest\composer.json" />
+    <Content Include="Scripts\MagicSuggest\magicsuggest.jquery.json" />
+    <Content Include="Scripts\MagicSuggest\README.md" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Prod|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61018</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44301/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <!--
+     VERSION NUMBER STAMPER
+  -->
+  <!-- The major, minor, build and revision parts defined -->
+  <PropertyGroup Condition="'$(BUILD_NUMBER)' == ''">
+    <major>0</major>
+    <minor>0</minor>
+    <build>0</build>
+    <revision>0</revision>
+    <commit>?</commit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(BUILD_NUMBER)' != ''">
+    <major>3</major>
+    <minor>0</minor>
+    <revision>18</revision>
+    <build>$(BUILD_NUMBER)</build>
+    <commit>$(BUILD_NUMBER)</commit>
+  </PropertyGroup>
+  <!-- Import the msbuildtasks -->
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" Condition="Exists('$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets')" />
+  <!--
+       Execute the BeforeBuild step, creating the AssemblyVersionInfo.cs file containing the version numbers.
+       Both version and file version
+  -->
+  <Target Name="BeforeBuild" Condition="Exists('$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets')">
+    <Message Text="Version: $(major).$(minor).$(revision).$(build)" />
+    <Attrib Files="$(MSBuildProjectDirectory)\AssemblyVersionInfo.cs" Normal="true" />
+    <AssemblyInfo CodeLanguage="CS" OutputFile="$(MSBuildProjectDirectory)\AssemblyVersionInfo.cs" AssemblyVersion="$(major).$(minor).$(revision).$(build)" AssemblyFileVersion="$(major).$(minor).$(revision).$(build)" AssemblyInformationalVersion="$(major).$(minor).$(revision) ($(build))" />
+  </Target>
+</Project>

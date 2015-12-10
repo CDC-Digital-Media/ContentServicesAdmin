@@ -1,0 +1,8 @@
+C:\Code\3.0.18_Sanitization\Admin\Admin\bin\bootstrap\fonts\glyphicons-halflings-regular.woff
+C:\Code\3.0.18_Sanitization\Admin\Admin\bin\Admin.dll
+C:\Code\3.0.18_Sanitization\Admin\Admin\bin\Admin.pdb
+C:\Code\3.0.18_Sanitization\Admin\Admin\bin\BouncyCastle.Crypto.dll
+C:\Code\3.0.18_Sanitization\Admin\Admin\bin\Gov.Hhs.Cdc.Commons.Api.Key.Utils.dll
+C:\Code\3.0.18_Sanitization\Admin\Admin\obj\Debug\Admin.csprojResolveAssemblyReference.cache
+C:\Code\3.0.18_Sanitization\Admin\Admin\obj\Debug\Admin.dll
+C:\Code\3.0.18_Sanitization\Admin\Admin\obj\Debug\Admin.pdb

@@ -1,0 +1,37 @@
+﻿<!-- validation -->
+
+<div id="validate">
+
+    <div class="form-group">
+        <label label-default="label-default" for="sourceUrl" class="required"><span class="mediaTypeName"/> Embed Code</label>
+		<div class="control-group">
+
+            <textarea id="embedCode" class="form-control" rows="10"></textarea>
+            <div id="embedCodeLabel" class="help-inline hide"></div>
+        </div>
+    </div>
+
+    <input class="btn btn-default" id="previewEmbedCode" style="margin-bottom: 10px;" type="button" value="Preview Embed Code"/>
+    
+    <input class="btn" id="resetResources" style="margin-bottom: 10px; display: none;" type="button" value="Reset Form"/>
+
+
+    <div class="alert alert-danger hide" id="validationError">
+    </div>
+    <div class="alert alert-success hide">
+        <div style="margin: 10px 0px 5px 0px;">
+            <input type="button" class="btn btn-success" value="Continue" id="continueButton" />
+            <input type="button" class="btn btn-default" value="Not now" id="cancelButton" />
+        </div>
+    </div>
+
+	<ul class="nav nav-tabs hide">
+		<li class="active"><a href="#" id="previewTab">Preview</a> </li>
+	</ul>
+	<div class="preview">
+	</div>
+
+
+</div>
+<!-- end validation -->
+

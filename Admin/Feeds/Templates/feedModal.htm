@@ -1,0 +1,411 @@
+﻿<div tabindex="-1" class="modal in" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: block;">
+    <div class="modal-dialog" style="width: 1000px;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add Feed</h4>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="sr-only">0% Complete</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" style="min-height: 480px;">
+
+                <form class="form-horizontal">
+
+                    <div class="page_0" style="display: block;">
+                                
+                        <h4 class="subHeader catHeader" id="modalHeader"></h4>
+                        <div class='form-group  isProxy'>
+                            <label for='proxyUrl' class='control-label col-xs-2 required'>Proxy Source</label>
+                            <div class='col-xs-10'>
+                                <input type='text' class='form-control' id='proxyUrl' maxlength='1000'>
+                                <div id="proxyUrlLabel" class="help-inline validationMsg">This field is required.</div>
+                            </div>
+                        </div>
+                        
+                        <div class='form-group  isImport'>
+                            <label for='importUrl' class='control-label col-xs-2 required'>Import Source</label>
+                            <div class='col-xs-10'>
+                                <input type='text' class='form-control' id='importUrl' maxlength='1000'>
+                                <div id="importUrlLabel" class="help-inline validationMsg">This field is required.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group isProxy isImport isManaged">
+                            <label label-default="label-default" class="control-label col-xs-2" for="contentGroup">Content Group</label>
+                            <div class='col-xs-6'>
+                                <select id="contentGroup" class="form-control"></select>
+                                <div id="contentGrouplabel" class="help-inline validationMsg"></div>
+                                <table class="table selectedContentGroups">
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="form-group isAggregate">
+                            <div class='col-xs-12'>
+                                <p>
+                                    Feed aggregate sources can currently accept Content Group, Topic ID(s), and max count of records returned.
+                                    The following patterns are accepted:
+                                    <ul>
+                                        <li>contentGroup=Facebook&max=10</li>
+                                        <li>contentGroup=Disease of the Week&max=10</li>
+                                        <li>topicids=25526&contentgroup=Newsroom&max=10</li>
+                                        <li>topicids=25526,25563&contentgroup=Newsroom&max=10</li>
+                                        <li>topicids=25526&max=10</li>
+                                    </ul>
+
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="form-group aggSourceRow isAggregate">
+                            <label label-default="label-default" class="control-label col-xs-2" for="aggSource">Source URL</label>
+                            <div class='col-xs-8'>
+                                <input type='text' class='form-control col-xs-6' id='aggSource' placeholder='contentgroup=&max='>                                
+                                <div id="aggSourceLabel" class="help-inline validationMsg">At least one Aggregate Source is required.</div>                                
+                            </div>
+                            <div class='col-xs-1 aggSourceDelete'>
+                                <a href="#" class="pull-left" title="Remove this Source"><span class="glyphicon glyphicon-remove"></span></a>
+                            </div>
+                        </div>
+
+                        <div class="form-group aggSourceBtnRow isAggregate">
+                            <div class='col-xs-10'>
+                                <div class="pull-right" style="padding-top:5px;">
+                                    <button type="button" class="btn btn-default" id="addAggSource">Add Additional Source</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="page_1" style="display: none;">
+
+                        <h4 class="subHeader" id="H2">General Information</h4>
+                        <div class='form-group'>
+                            <label for='title' class='control-label col-xs-2 required'>Title</label>
+                            <div class='col-xs-10'>
+                                <input type='text' class='form-control' id='title'>
+                                <div id="titleLabel" class="help-inline validationMsg">This field is required.</div>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='description' class='control-label col-xs-2 required'>Description</label>
+                            <div class='col-xs-10'>
+                                <textarea rows="3" id="description" class="form-control"></textarea>
+                                <div id="descriptionLabel" class="help-inline validationMsg">This field is required.</div>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='targetUrl' class='control-label col-xs-2 required'>More Info URL</label><div class='col-xs-10'>
+                                <input type='text' class='form-control' id='targetUrl' placeholder='http://'>
+                                <div id="targetUrlLabel" class="help-inline validationMsg">This field is required.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label label-default="label-default" class="control-label col-xs-2 required" for="language">Language</label>
+                            <div class='col-xs-5'>
+                                <select id="language" class="form-control"></select>
+                                <span id="languageLabel" class="help-inline hide"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label label-default="label-default" class="control-label col-xs-2 required" for="mediaStatus">Media Status</label>
+                            <div class="control-group col-md-3">
+
+                                <div id="Div1" class="help-inline hide"></div>
+
+                                <div class="radio">
+                                    <label label-default="label-default">
+                                        <input type="radio" name="mediaStatus" id="Radio1" value="Published" />Published</label>
+                                </div>
+
+                                <div class="radio">
+                                    <label label-default="label-default">
+                                        <input type="radio" name="mediaStatus" id="Radio2" value="Staged" />Staged</label>
+                                </div>
+
+                                <div class="radio">
+                                    <label label-default="label-default">
+                                        <input type="radio" name="mediaStatus" id="Radio3" value="Archived" />Archived</label>
+                                </div>
+
+                                <div class="radio">
+                                    <label label-default="label-default">
+                                        <input type="radio" name="mediaStatus" id="Radio4" value="Hidden" />Hidden</label>
+                                </div>
+
+                                <div id="statusLabel" class="help-inline validationMsg">Status is required.</div>
+                            </div>
+
+                            <div id="publishDateTime" style="display: none;" class="col-md-6">
+
+                                <div class="form-group" class="col-md-7">
+
+                                    <label label-default="label-default" for="publishDate" class="required col-xs-4 control-label">Publish Date</label>
+
+                                    <div class="col-md-4">
+                                        <div class="input-group date" data-date-format="mm/dd/yyyy">
+                                            <input type="text" class="input-sm form-control" id="publishDate" />
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                        <div class="help-inline validationMsg" id="publishDateLabel">stuff</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group" class="col-md-7">
+
+                                    <label label-default="label-default" for="timepicker1" class="required col-xs-4 control-label">Publish Time</label>
+
+                                    <div class="col-md-4">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input id="timepicker1" type="text" class="input-sm form-control" />
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                        </div>
+                                        <div class="help-inline validationMsg" id="timePicker1Label">stuff</div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="page_2" style="display: none;">
+
+                        <h4 class="subHeader" id="H3">Source</h4>
+
+                        <div class='form-group'>
+                            <label for='copyright' class='control-label col-xs-3'>Copyright</label><div class='col-xs-8'>
+                                <input type='text' class='form-control' id='copyright' maxlength="255" placeholder='Copyright'>
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='author' class='control-label col-xs-3'>Author</label><div class='col-xs-8'>
+                                <input type='text' class='form-control' id='author' maxlength="100" placeholder='Author'>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='editorialManager' class='control-label col-xs-3'>Editorial Manager</label><div class='col-xs-8'>
+                                <input type='text' class='form-control' id='editorialManager' maxlength="100" placeholder='Editorial Manager'>
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='webMasterEmail' class='control-label col-xs-3'>Web Master Email</label><div class='col-xs-8'>
+                                <input type='email' class='form-control' id='webMasterEmail' maxlength="100" placeholder='Web Master Email'>
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label label-default="label-default" for="source" class="control-label col-xs-3">Source</label>
+                            <div class="col-md-8">
+                                <select id="source" class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label label-default="label-default" for="owningOrg" class="control-label col-xs-3">Owning Organization</label>
+                            <div class="col-md-8">
+                                <select id="owningOrg" class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label label-default="label-default" for="maintainingOrg" class="control-label col-xs-3">Maintaining Organization</label>
+                            <div class="col-md-8">
+                                <select id="maintainingOrg" class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label label-default="label-default" for="omniture" class="control-label col-xs-3 required">Omniture Channel</label>
+                            <div class="col-md-8">
+                                <input type='text' class='form-control' id='omniture' placeholder='Omniture Channel'>
+                                <div class="help-inline validationMsg">This field is required.</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="page_3" style="display: none;">
+
+                        <h4 class="subHeader" id="H4">Topics</h4>
+
+                        <div class='modalSelectedValues'>
+                            <span style="font-style: italic; display: none;">No topics have been selected for this feed.</span>
+                            <ul></ul>
+                            <div class="help-inline validationMsg"></div>
+                        </div>
+
+                        <div class='categoryBlock'>
+                            <div class="treeViewContainer"></div>
+                        </div>
+                    </div>
+
+                    <div class="page_4" style="display: none;">
+
+                        <h4 class="subHeader" id="H6">Feed Thumbnail</h4>
+
+                        <div class="form-group">
+                            <label label-default="label-default" class="col-md-5 thumbLabel">File Path</label>
+                            <label label-default="label-default" class="col-md-1">&nbsp;</label>
+                            <label label-default="label-default" class="col-md-1 thumbLabel">W</label>
+                            <label label-default="label-default" class="col-md-1 thumbLabel">H</label>
+                            <label label-default="label-default" class="col-md-4 thumbLabel">Title</label>
+                        </div>
+
+                        <div class="form-group imgRow">
+                            <div class="col-md-5" style="padding-right: 0px;">
+                                <input name="textinput" placeholder="Use the Browse button to choose an image." class="txtFilePath form-control input-sm" tabindex="-1" readonly="true" type="text">
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                            <div class="col-md-1" style="padding-left: 5px;">
+                                <span class="btn-file btn btn-default btn-sm">Browse<input type="file" class='filePicker input-sm'></span>
+                            </div>
+                            <div class="col-md-1" style="padding-right: 5px;">
+                                <input name="textinput" placeholder="" class="txtWidth form-control input input-sm" maxlength="4" readonly="true" type="text" value="0">
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                            <div class="col-md-1" style="padding-right: 5px;">
+                                <input name="textinput" placeholder="" class="txtHeight form-control input input-sm" maxlength="4" readonly="true" type="text" value="0">
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="textinput" placeholder="" class="txtTitle form-control input input-sm" readonly="true" type="text">
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                Thumbnail must be be less that .5 MB. JPG and PNG formats only.<br />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12" style="">
+                                <div class="feedItemThumbContainer">
+                                    <img id="feedItmThumbImg" src="" class="feedItemThumb"/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="page_5 feedImageForm" style="display: none;">
+
+                        <h4 class="subHeader" id="H1">Feed Image</h4>
+
+                        <div class='form-group'>
+                            <label for='cbxCopyThumb' class='control-label col-xs-2'>&nbsp</label>
+                            <div class='col-xs-1'>
+                                <input type='checkbox' id='cbxCopyThumb' checked>
+                            </div>
+                            <div class='col-xs-9'>
+                                Populate title, description and link from feed data. Populate image fields using thumbnail data.<br />
+                                Data may not be visible until after save is completed.
+                            </div>
+                        </div>
+
+                        <div class='form-group'>
+                            <label for='imgTitle' class='control-label col-xs-2'>Title</label>
+                            <div class='col-xs-10'>
+                                <input type='text' class='form-control' id='imgTitle' maxlength="200">
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='imgDescription' class='control-label col-xs-2'>Description</label><div class='col-xs-10'>
+                                <textarea rows="3" id="imgDescription" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='imgSrc' class='control-label col-xs-2'>Source URL</label>
+                            <div class='col-xs-10'>
+                                <input type='text' class='form-control' id='imgSrc' placeholder='http://'>
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="control-group">
+                                <label label-default="label-default" for="width" class="control-label col-xs-2">Width</label>
+                                <div class='col-xs-2'>
+                                    <input type="text" id="width" class="form-control" maxlength="4" value="" readonly="" />
+                                    <div class="help-inline validationMsg" style="white-space: nowrap;"></div>
+                                </div>
+                                <label label-default="label-default" for="height" class="control-label col-xs-2">Height</label>
+                                <div class='col-xs-2'>
+                                    <input type="text" id="height" class="form-control" maxlength="4" value="" readonly="" />
+                                </div>
+                                <div class='col-xs-4'>
+                                    <button class="btn btn-sm" id="btnActualSize">Actual Size</button>
+                                    <button class="btn btn-sm" id="btnDefaultSize">Recommended Size</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='form-group'>
+                            <label for='imgLink' class='control-label col-xs-2'>Link</label><div class='col-xs-10'>
+                                <input type='text' class='form-control' id='imgLink' placeholder='http://'>
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="page_6" style="display: none;">
+                        <h4 class="subHeader" id="H7">Creating a new Feed</h4>
+
+                        <p>
+                            You can create
+                            <ul>
+                                <li>A managed feed which will be curated by an administrative user within this application.</li>
+                                <li>A proxy feed that will simply pass along the content from another feed source.</li>
+                                <li>An import feed that will create a local copy of an existing feed.</li>
+                            </ul>
+                        </p>
+                        <p>&nbsp;</p>
+                        <div class="row text-center">
+                            <a class="btn btn-primary btn-md col-md-3 col-md-offset-1" id="createAggregate">Create Aggregate Feed</a>
+                            <a class="btn btn-primary btn-md col-md-3 col-md-offset-1" id="createManaged">Create Managed Feed</a>
+                            <a class="btn btn-primary btn-md col-md-2 col-md-offset-1" id="createImport">Create Import Feed</a>
+                        </div>
+
+                    </div>
+
+                    <p></p>
+
+                </form>
+
+            </div>
+            <!--modal-body-->
+
+            <div class="modal-footer">
+                <div class="pull-left">
+                    <a class="btn btn-default" id="prev">Previous</a>
+                    <a class="btn btn-primary" id="next">Next</a>
+                </div>
+                <button type="button" class="btn btn-default" id="clear" data-dismiss="modal">Clear</button>
+                <button type="button" class="btn btn-default" id="cancel" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveFeed">Save changes</button>
+            </div>
+
+        </div>
+        <!--modal-content-->
+    </div>
+    <!--modal-dialog-->
+</div>

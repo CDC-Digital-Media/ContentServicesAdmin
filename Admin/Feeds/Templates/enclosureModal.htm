@@ -1,0 +1,77 @@
+﻿<div tabindex="-1" class="modal in" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: block;">
+    <div class="modal-dialog" style="width: 1000px;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Attach a Resource File</h4>
+
+            </div>
+            <div class="modal-body" style="min-height: 300px;">
+
+                <form class="form-horizontal">
+
+
+                    <div>
+
+                        <div class='form-group'>
+                            <label for='sourceUrl' class='control-label col-xs-2 required'>Resource URL</label>
+                            <div class="col-md-7">
+                                <input type='text' class='form-control' id='sourceUrl' placeholder="http://">
+                                <div id="sourceUrlLabel" class="help-inline validationMsg">Resource URL is a required field.</div>
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-sm" id="btnValidate">Validate</button>
+                            </div>
+
+                        </div>
+                        <div class='form-group'>
+
+                            <label for='contentType' class='control-label col-xs-2 required'>Content Type</label>
+                            <div class="col-md-3">
+                                <input type='text' class='form-control' id='contentType' placeholder="" readonly="readonly">                                
+                            </div>
+                            <div class="col-md-2">
+                                <span id="fileIcon" class="fa fa-file"></span>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+
+                            <label for='contentLength' class='control-label col-xs-2 required'>Size</label>
+                            <div class="col-md-3">
+                                <input type='text' class='form-control' id='contentLength' placeholder="" readonly="readonly">
+                            </div>
+
+                        </div>
+
+                        <div class='form-group'>
+
+                            <label class='control-label col-xs-2'></label>
+                            <div class="col-md-7">
+                                Files with the following file extensions are allowed:  *.mp3, *.mp4, *.m3p, *.m4p, *.mpg, *.mpeg, *.wav, *.wmv, *.avi, *.qt, *.jpg, *.jpeg, *.gif, *.tif, *.png, *.bmp, *.ico, *.xml, *.pdf, *.rtf, *.doc, *.docx, *.ppt, *.pptx, *.xls, *.xlsx, *.zip, *.gz, *.swf, *.txt, *.htm, *.html
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <p></p>
+
+                </form>
+
+            </div>
+            <!--modal-body-->
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="clear" data-dismiss="modal">Clear</button>
+                <button type="button" class="btn btn-default" id="cancel" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveEnclosure">Save changes</button>
+            </div>
+
+        </div>
+        <!--modal-content-->
+    </div>
+    <!--modal-dialog-->
+</div>
+

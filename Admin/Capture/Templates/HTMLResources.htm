@@ -1,0 +1,90 @@
+﻿<!-- validation -->
+<h4 class="subHeader" id="sourceHeader">Validation and Preview</h4>
+
+<div id="validate">
+
+	<div class="row" style="font-size: 1em; margin: 15px 0px 5px 0px;">
+		Test your pages here to ensure they are properly marked up for syndication.
+	</div>
+	<div class="row">
+		<div class="form-group control-group col-md-8" style="margin-right: -5px;">
+			<input id="urlToValidate" class="form-control" placeholder="http://" type="text" />
+			<div class="hide" id="urlLabel">URL is required.</div>
+		</div>
+		<div class="form-group control-group col-md-4" style="padding-left:0;">
+			<span style="color: red; margin-right: 5px;">*</span>
+			<input class="btn btn-default" id="validateUrl" type="button" value="Test My Page" />
+			<input class="btn btn-default" id="resetResources" type="button" value="Reset" />
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group col-md-3">
+			<label label-default="label-default" class="control-label" for="webExtractionType">Web Criteria Type</label>
+			<select id="webExtractionType" class="form-control">
+				<option selected="selected" value="clsids">Class Names</option>
+				<option value="elemids">Element IDs</option>
+				<option value="xpath">XPath</option>
+			</select>
+		</div>
+		<div class="form-group control-group col-md-3">
+			<label label-default="label-default" class="control-label required" for="webCriteria">Value</label>
+			<input id="webCriteria" class="form-control" required="" type="text" value="syndicate" />
+			<div class="help-inline hide" id="webCriteriaLabel"></div>
+		</div>
+		<div class="form-group col-md-3">
+			<label label-default="label-default" class="control-label" for="mobileExtractionType">Mobile Criteria Type</label>
+			<select id="mobileExtractionType" class="form-control">
+				<option selected="selected" value="clsids">Class Names</option>
+				<option value="elemids">Element IDs</option>
+				<option value="xpath">XPath</option>
+			</select>
+		</div>
+		<div class="form-group col-md-3">
+			<label label-default="label-default" class="control-label required" for="mobileCriteria">
+				Value</label>
+			<input id="mobileCriteria" class="form-control" type="text" value="mSyndicate" />
+		</div>
+	</div>
+
+	<div class="row"></div>
+	<div class="row" id="spinner"></div>
+	<div class="alert alert-danger hide" id="validationError"></div>
+	<div class="alert alert-success hide" id="validationSuccess">
+		Page validation succeeded!
+		<div style="margin: 10px 0px 5px 0px;">
+			<input class="btn btn-success" id="continueButton" type="button" value="Continue" />
+			<input class="btn btn-default" id="cancelButton" type="button" value="Not now" />
+		</div>
+	</div>
+	<ul class="nav nav-tabs hide">
+		<li class="active"><a href="#" id="testOutputTab">Test Output</a> </li>
+		<li><a href="#" id="webPreviewTab">Web Preview</a> </li>
+		<li><a href="#" id="mobilePreviewTab">Mobile Preview</a> </li>
+	</ul>
+	<div class="webTestOutput hide"></div>
+	<div class="mobileTestOutput hide"></div>
+	<div class="webPreview hide"></div>
+	<div class="hide" id="mobilePreviewContainer">
+		<div class="row">
+			<div class="alert alert-danger" id="invalidSize">Mobile preview should be between 320 and 2048 pixels.</div>
+		</div>
+		<div class="row">
+			<div class="alert alert-danger" id="invalidCharacter">You must enter a numerical value.</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label label-default="label-default" class="control-label" for="previewWidth">Width</label> (px)
+				<input class="input-mini form-control" id="previewWidth" maxlength="4" type="text" />
+			</div>
+			<div class="col-md-3">
+				<label label-default="label-default" class="control-label" for="previewHeight">Height</label> (px)
+				<input class="input-mini form-control" id="previewHeight" maxlength="4" type="text" />
+			</div>
+		</div>
+		<div class="row"></div>
+		<div class="mobilePreview"></div>
+	</div>
+
+</div><!--#validate-->
+<!-- end validation -->

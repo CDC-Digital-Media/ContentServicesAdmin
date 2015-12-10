@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Proxy Cache</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+ <!--regular bootstrap stuff -->
+    <script src="../bootstrap/js/bootstrap3.min.js" type="text/javascript"></script>
+    <script src="../bootstrap/js/bootstrap-datepicker.js" type="text/javascript"></script>    
+    <!--<link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />-->
+    <link href="../bootstrap/css/bootstrap3.min.css" rel="stylesheet" type="text/css" />  
+              
+    <link href="../Styles/Site.css" rel="stylesheet" type="text/css" />
+
+    <script src="../bootstrap/js/bootstrap-typeahead.js" type="text/javascript"></script>  
+
+    <script src="../Scripts/htmlEncode.js?2_11_14" type="text/javascript"></script>  
+    <script src="../Scripts/jquery.unique-element-id.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.watermark.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.scrollTo.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.highlight.js" type="text/javascript"></script>
+    
+
+    <script src="../Scripts/jquery.cookie.js" type="text/javascript"></script>
+
+    <link href="../dataTables/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="../dataTables/jquery.dataTables.min.js" type="text/javascript"></script>
+
+    <script src="../scripts/__common.js" type="text/javascript"></script>
+    
+    <script src="../Scripts/Admin.Header_0.1.js" type="text/javascript"></script>
+
+    <script src="../Scripts/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+
+    <link href="../bootstrap-timepicker-gh-pages/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+    <script src="../bootstrap-timepicker-gh-pages/js/bootstrap-timepicker.js" type="text/javascript"></script>
+    <script src="../bootstrap/js/bootstrap-datepicker.js" type="text/javascript"></script> 
+
+    <script src="Scripts/_proxyCacheForm.js" type="text/javascript"></script>
+    <script src="Scripts/ProxyCacheForm.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <div class="head"></div>
+    <div class="trail">
+        <small>
+
+            <ul class="breadcrumb">
+                <li><a class="crumb-results" href="/Data/ProxyCache.htm">Proxy Cache List</a> <span class="divider">&gt;</span> </li>
+                <li class="active crumb-addContent">Edit Proxy Cache</li>
+            </ul>
+
+        </small>
+    </div>
+    <div id="content" class="container pull-left">
+
+        <h4 class="subHeader" id="editProxyCacheHeader">Add/Edit Proxy Cache Data</h4>
+
+        <div class="form-group">
+	        <label label-default="label-default" class="required" for="url">URL</label>
+	        <div class="control-group">
+		        <input type="text" id="url" class="form-control" />
+		        <div id="urlLabel" class="help-inline" style="display: none;"></div>
+	        </div>
+        </div>
+
+        <div class="form-group">
+	        <label label-default="label-default" for="datasetid">Dataset ID</label>
+	        <div class="control-group">
+		        <input type="text" id="datasetid" class="form-control" />
+		        <div id="datasetidLabel" class="help-inline" style="display: none;"></div>
+	        </div>
+        </div>
+
+		<div class="form-group">
+			<label label-default="label-default" for="expiredate" class="required">Expire Date</label>
+			<div class="input-group date" data-date-format="mm/dd/yyyy">
+				<input type="text" class="input-sm form-control" id="expiredate" />
+				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			</div>
+			<div class="help-inline" id="expiredateLabel" style="display: none;"></div>
+        </div>
+        <div class="form-group">
+			<label label-default="label-default" for="expiretime" class="required">Expire Time</label>
+			<div class="input-group bootstrap-timepicker">
+				<input id="expiretime" type="text" class="input-sm form-control" />
+				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+			</div>
+			<div class="help-inline" id="expiretimeLabel" style="display: none;"></div>
+		</div>
+
+        <div class="form-horizontal">
+	        <div class="form-group">
+		        <div class="control-group col-md-2">
+			        <label label-default="label-default" for="expiredays" class="control-label required">Expiration Days</label>
+			        <input type="text" id="expiredays" class="form-control" maxlength="4" />
+                    <div id="expiredaysLabel" class="help-inline" style="display: none;"></div>
+		        </div>
+		        <div class="control-group col-md-2">
+			        <label label-default="label-default" for="expirehours" class="control-label required">Expiration Hours</label>
+			        <input type="text" id="expirehours" class="form-control" maxlength="2" />
+                    <div id="expirehoursLabel" class="help-inline" style="display: none;"></div>
+		        </div>
+	        </div>
+        </div>
+
+        <div class="form-group">
+	        <label label-default="label-default" for="failures">Consecutive Data Failures</label>
+	        <div class="control-group">
+		        <input type="text" id="failures" class="form-control" />
+		        <div id="failuresLabel" class="help-inline" style="display: none;"></div>
+	        </div>
+        </div>
+
+        <input id="data" type="hidden" />
+        <input id="id" type="hidden" />
+
+        <div class="col-md-9 container detail">
+            <div class="alert alert-danger" id="badSave" style="margin-top: 10px; display: none;"></div>
+            <div class="alert alert-success" id="goodSave" style="margin-top: 10px; display: none;">Saved successfully</div>
+		
+		    <div class="control-group formActions alert alert-info">
+		        <div class="controls text-right">
+			        <button id="save" class="btn btn-primary">Save</button>
+		        </div>
+                <p></p>
+	        </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JSON Preview</title>    
+    <script src="../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    
+    <script src="../Scripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../scripts/__common.js" type="text/javascript"></script>
+
+    <script src="../Scripts/json-viewer/jquery.json-viewer.js"></script>
+    <link href="../Scripts/json-viewer/jquery.json-viewer.css" rel="stylesheet" />
+    
+    <script>
+
+        var id = getURLParameter('id');
+        var showchildlevel = getURLParameter('showchildlevel');
+
+        var loadMediaData = function (postProcess) {
+
+            function handlePostProcess(oMedia) {
+                var func = postProcess;
+                if (typeof func === 'function') {
+                    func(oMedia);
+                }
+            }
+
+            var url = APIRoot + "/adminapi/v1/resources/media/" + id ;
+
+            if (!showchildlevel === "null") {
+                url += "&showchildlevel=1";
+            }
+
+            $.ajax({
+                url: url,
+                dataType: 'jsonp'
+            }).done(function (response) {
+
+
+                //twitter response
+                if (!response.results) {
+                    handlePostProcess(response);
+                    return;
+                }
+
+                //regular feed response
+                var results = response.results;
+                if (results.length !== 1) {
+                    alert("Expected media item, received " + results.length);
+                    return;
+                }
+                handlePostProcess(results[0]);
+            })
+            .fail(function (xhr, ajaxOptions, thrownError) {
+                console.debug(xhr.status);
+                console.debug(thrownError);
+                console.debug(xhr.responseText);
+            });
+
+        }
+
+        loadConfigValues(function () {
+            loadMediaData(function (result) {
+                $('#json-viewer').jsonViewer(result);
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+    <pre id="json-viewer"></pre>
+
+</body>
+</html>

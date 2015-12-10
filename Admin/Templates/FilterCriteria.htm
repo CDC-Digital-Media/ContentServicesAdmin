@@ -1,0 +1,129 @@
+﻿<div class="well container">
+    <div class="messages row hide" id="apiError">
+        <div class="alert alert-error">A server error has occurred.</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <input type="text" id="filterTopic" class="form-control valueSearch" placeholder="Topic" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" id="filterTitle" class="form-control" placeholder="Title" />
+        </div>
+
+        <div class="col-md-4">
+            <input type="text" id="url" class="form-control" placeholder="Domain / URL" />
+        </div>
+
+        <div class="col-md-3">
+            <select id="filterMediaType" class="form-control"></select>
+        </div>
+    </div>
+
+    <div class="searchFilterBtns">
+        <div class="row">
+            <div class="col-md-3 status-list">
+                <input type="text" id="filterMediaId" class="form-control" placeholder="Media ID (Other filters will be ignored)" />
+            </div>
+            <div class="col-md-9">
+                <span><span class="glyphicon glyphicon-chevron-down"></span><a id="hideFilterLink" href="#"><span>Show</span> Advanced Filters</a></span>
+                <a id="clearFilter" class="btn btn-default" style="margin-right: 6px;">Reset</a>
+                <a id="applyFilter" class="btn btn-primary">Search</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="filterSection" style="display: none;" class="filterClosed">
+
+        <div class="row">
+            <div class="col-md-2 status-list">
+                <label label-default="label-default" for="filterStatus">Status</label>
+                &nbsp; <small class="selectAllStatuses"><a href="#" class="statustxt selectAll">Select All</a></small>
+                <div class="checkbox">
+                    <label label-default="label-default">
+                        <input type="checkbox" name="status" value="staged" />Staged
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label label-default="label-default">
+                        <input type="checkbox" name="status" value="published" checked="checked" />Published
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label label-default="label-default">
+                        <input type="checkbox" name="status" value="archived" />Archived
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label label-default="label-default">
+                        <input type="checkbox" name="status" value="hidden" />Hidden
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <label label-default="label-default" for="fromDate">Date Range</label>
+                <div class="input-group">
+                    <input type="text" id="fromDate" class="form-control" />
+                    <label label-default="label-default" for="fromDate" class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </label>
+                </div>
+                <span>to</span>
+                <div class="input-group">
+                    <input type="text" id="toDate" class="form-control" />
+                    <label label-default="label-default" for="toDate" class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </label>
+                </div>
+
+                <div class="checkbox">
+                    <label label-default="label-default">
+                        <input type="radio" name="dateType" value="publishDate" checked="checked" />
+                        Publish Date
+                    </label>
+                    <label label-default="label-default">
+                        <input type="radio" name="dateType" value="dateModified" />
+                        Modified Date</label>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <label label-default="label-default" for="filterAudience">Audience</label>
+                <input type="text" id="filterAudience" name="filterAudience" class="form-control" />
+
+                <label label-default="label-default" for="filterOwningOrganization">Owning Organization</label>
+                <select id="filterOwningOrganization" class="form-control"></select>
+
+                <label label-default="label-default" for="filterMaintainingOrganization">Maintaining Organization</label>
+                <select id="filterMaintainingOrganization" class="form-control"></select>
+            </div>
+
+
+            <div class="col-md-3">
+                <label label-default="label-default" for="filterLanguage">Language</label>
+                <select id="filterLanguage" class="form-control"></select>
+
+                <label label-default="label-default" for="filterSource">Source</label>
+                <select id="filterSource" class="form-control"></select>
+
+                <!--<label label-default="label-default" for="url">Domain/URL</label>
+				<input type="text" id="url" class="form-control" />-->
+
+                <div>
+                    <label label-default="label-default" for="filterPersistentUrlKey">Persistent URL Key</label>
+                    <input type="text" id="filterPersistentUrlKey" class="form-control" />
+                </div>
+            </div>
+
+        </div>
+        <!-- row -->
+
+
+
+
+    </div>
+</div>

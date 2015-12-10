@@ -1,0 +1,90 @@
+﻿<div class="adminHeader">
+    <h1>PHML <span class="ttl_split">Administration</span> <span class='versionNumber'></span></h1>
+</div>
+<div class="adminWelcome"><span class="userAvatar fa fa-user"></span><span class="hed_userName">Not logged in</span></div>
+<nav class="topNavBar navbar navbar-inverse" role="navigation">
+
+    <a navtarget='Home' class="homeButton navbar-brand glyphicon glyphicon-home" id="home" href="/Index.htm"></a>
+
+    <div class="container-fluid">
+
+        <!-- Mobile hamburger menu -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+
+            <ul class='nav navbar-nav'>
+                <li><a navtarget='SyndicationAdmin' class='aSearch' href="/Search/FilterMedia.htm">Search</a></li>
+
+                <li class='dropdown capture'>
+                    <a navtarget='Capture' class='dropdown-toggle' data-toggle="dropdown" href="#">Add Content <b class='caret white-caret'></b></a>
+                    <ul class='dropdown-menu'>
+                        <li><a href='/Capture/Capture.htm' captureview='html'>Add HTML Content</a></li>
+                        <li><a href='/Capture/Capture.htm' captureview='ecard'>Add eCard Content</a></li>
+                        <li><a href='/Capture/Capture.htm' captureview='video'>Add Video Content</a></li>
+                        <li><a href='/Capture/Capture.htm' captureview='image'>Add Image Content</a></li>
+                        <li><a href='/Capture/Capture.htm' captureview='infographic'>Add Infographic Content</a></li>
+                        <li><a href='/Capture/Capture.htm' captureview='button'>Add Button Content</a></li>
+                        <li><a href='/Capture/Capture.htm' captureview='badge'>Add Badge Content</a></li>
+                        <li><a href='/Capture/Capture.htm' captureview='widget'>Add Widget Content</a></li>
+                        <li><a href='/Capture/Capture.htm' captureview='pdf'>Add PDF Content</a></li>
+                        <li><a href='/Capture/Capture.htm' captureview='collection'>Add Collection</a></li>
+                    </ul>
+                </li>
+
+                <li class='dropdown vocab'>
+                    <a navtarget='Vocabulary' class='dropdown-toggle' data-toggle="dropdown" href="#">Vocabulary <b class='caret white-caret'></b></a>
+                    <ul class='dropdown-menu'>
+                        <!--<li><a href='/Vocabulary/Vocabulary.htm?view=mediaAttributes'>Media Attributes</a></li>-->
+                        <li><a href='/Vocab/Vocab.htm?view=valueSets'>Value Sets</a></li>
+                        <!--<li><a href='/Vocabulary/Vocabulary.htm?view=allValues'>All Values</a></li>-->
+                    </ul>
+                </li>
+                <li class="collections"><a navtarget='Collections' href="/Collections/Collections.htm">Collections</a></li>
+                <li class='dropdown feeds'>
+                    <a navtarget='Feeds' class='dropdown-toggle' data-toggle="dropdown" href="#">Feeds <b class='caret white-caret'></b></a>
+                    <ul class='dropdown-menu'>
+                        <li><a href="/Feeds/Feeds.htm">Feeds</a></li>
+                        <li><a href="/Feeds/ContentGroups.htm">Content Groups</a></li>
+                    </ul>
+                </li>
+                <li class="podcasts"><a navtarget='Podcasts' href="/Podcasts/Podcasts.htm">Podcasts</a></li>
+                
+                <!--
+                <li><a navtarget='PersistentURL' href="/PersistentURL/PersistentURL.htm">Persistent URL</a></li>
+                <li><a navtarget="Campaign" href="/Campaign/campaign.htm">Campaign</a></li>
+                -->
+                
+                <li class="authorization"><a navtarget="Auth" href="/Authorization/auth.htm">Authorization</a></li>
+
+                <!--<li class="dropdown">
+					<a navTarget="Auth" class="dropdown-toggle" data-toggle="dropdown" href="/Authorization/auth.htm">Authorization<span class="caret white-caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="/Authorization/auth.htm?view=roles">By Role</a></li>
+						<li><a href="/Authorization/auth.htm?view=users">By User</a></li>
+						<li><a href="/Authorization/auth.htm?view=mediasets">By Media Set</a></li>
+						<li><a href="/Authorization/auth.htm?view=auth">Auth UI</a></li>
+					</ul>
+				</li>-->
+                <li class="utilities"><a navtarget="Utilities" href="/Utilities/Utilities.htm">Utilities</a></li>
+                <li class='dropdown data'>
+                  <a navTarget='Data' class='dropdown-toggle' data-toggle="dropdown" href="#">Data <b class='caret white-caret'></b></a>
+                  <ul class='dropdown-menu'>
+                    <li><a href='/Data/ProxyCache.htm'>Proxy Cache</a></li>
+                    <li><a href='/Data/ProxyCacheAppKey.htm'>App Key</a></li>
+                  </ul>
+                </li>                 
+            </ul>
+        </div>
+        <!-- .navbar-collapse -->
+
+    </div>
+    <!-- .container-fluid -->
+</nav>

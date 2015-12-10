@@ -1,0 +1,198 @@
+﻿<h4 class="subHeader" id="itemInfo">Item Information</h4>
+
+<form class="form" role="form">
+    <div class="form-group">
+        <label label-default="label-default" class="required" for="shortTitle">Short Title</label>
+        <div class="control-group">
+            <input type="text" id="shortTitle" class="form-control" />
+            <div id="shortTitleLabel" class="help-inline hide"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label label-default="label-default" class="required" for="longTitle">Long Title</label>
+        <div class="control-group">
+            <input type="text" id="longTitle" class="form-control" />
+            <div id="longTitleLabel" class="help-inline hide"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label label-default="label-default" class="required" for="description">Description</label>
+        <div class="control-group">
+            <textarea rows="3" id="description" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label label-default="label-default" class="required" for="language">Language</label>
+        <select id="language" class="form-control"></select>
+        <span id="languageLabel" class="help-inline hide"></span>
+    </div>
+
+    <div class="form-group">
+        <label label-default="label-default" class="required" for="targetUrl">Item URL</label>
+        <div class="control-group">
+            <input class="form-control" type="text" id="targetUrl" placeholder="http://" />
+            <div id="targetUrlLabel" class="help-inline hide"></div>
+        </div>
+    </div>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="control-group col-md-3">
+                <label label-default="label-default" class="required" for="mediaStatus">Media Status</label>
+
+                <div id="mediaStatusLabel" class="help-inline hide"></div>
+
+                <div class="radio">
+                    <label label-default="label-default">
+                        <input type="radio" name="mediaStatus" id="Published" value="Published" />Published</label>
+                </div>
+
+                <div class="radio">
+                    <label label-default="label-default">
+                        <input type="radio" name="mediaStatus" id="Staged" value="Staged" />Staged</label>
+                </div>
+
+                <div class="radio">
+                    <label label-default="label-default">
+                        <input type="radio" name="mediaStatus" id="Archived" value="Archived" />Archived</label>
+                </div>
+
+                <div class="radio">
+                    <label label-default="label-default">
+                        <input type="radio" name="mediaStatus" id="Hidden" value="Hidden" />Hidden</label>
+                </div>
+            </div>
+
+            <div class="control-group col-md-4">
+
+                <span id="publishDateTime">
+                    <label label-default="label-default" for="publishDate" class="required">Publish Date</label>
+                    <div class="input-group date" data-date-format="mm/dd/yyyy">
+                        <input type="text" class="input-sm form-control" id="publishDate" />
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                    <div class="help-inline" id="publishDateLabel" style="display: none;"></div>
+
+                    <label label-default="label-default" for="timepicker1" class="required">Publish Time</label>
+                    <div class="input-group bootstrap-timepicker">
+                        <input id="timepicker1" type="text" class="input-sm form-control" />
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                    </div>
+                    <div class="help-inline" id="timePicker1Label" style="display: none;"></div>
+
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+<h4 class="subHeader" id="feedImage">Feed Image</h4>
+<form class="form-horizontal" role="form">
+
+    <div class="form-group imgRow">
+        <div class="col-md-5" style="padding-right: 0px;">
+            <label label-default="label-default">Image Source</label>
+            <input name="textinput" placeholder="Use the Browse button to choose an image." class="txtFilePath form-control  input-sm" readonly="true" type="text">
+        </div>
+        <div class="col-md-1" style="padding-left: 5px;">
+            <label label-default="label-default">&nbsp;</label>
+            <span class="btn-file btn btn-default btn-sm">Browse<input type="file" class='filePicker'>
+            </span>
+        </div>
+        <div class="col-md-1" style="padding-right: 5px;">
+            <label label-default="label-default">W</label>
+            <input name="textinput" placeholder="" class="txtWidth form-control input input-sm" maxlength="4" type="text" value="0">
+        </div>
+        <div class="col-md-1" style="padding-right: 5px;">
+            <label label-default="label-default">H</label>
+            <input name="textinput" placeholder="" class="txtHeight form-control input input-sm" maxlength="4" type="text" value="0">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4">
+            <label label-default="label-default">Image Title</label>
+            <input name="textinput" placeholder="Title" class="txtWidth form-control input" maxlength="200" type="text">
+        </div>
+        <div class="col-md-4">
+            <label label-default="label-default">Image Description</label>
+            <input name="textinput" placeholder="Description" class="txtWidth form-control input" type="text">
+        </div>
+        <div class="col-md-4">
+            <label label-default="label-default">Feed Image Link</label>
+            <input name="textinput" placeholder="http://" class="txtWidth form-control input" maxlength="1024" type="text">
+        </div>
+    </div>
+</form>
+
+<h4 class="subHeader" id="thumbnailImage">Thumbnail Image</h4>
+<form class="form-horizontal" role="form">
+
+    <div class="form-group imgRow">
+        <div class="col-md-5" style="padding-right: 0px;">
+            <label label-default="label-default">Thumbnail Source</label>
+            <input name="textinput" placeholder="Use the Browse button to choose an image." class="txtFilePath form-control  input-sm" readonly="true" type="text">
+        </div>
+        <div class="col-md-1" style="padding-left: 5px;">
+            <label label-default="label-default">&nbsp;</label>
+            <span class="btn-file btn btn-default btn-sm">Browse<input type="file" class='filePicker'>
+            </span>
+        </div>
+        <div class="col-md-1" style="padding-right: 5px;">
+            <label label-default="label-default">W</label>
+            <input name="textinput" placeholder="" class="txtWidth form-control input input-sm" maxlength="4" type="text" value="0">
+        </div>
+        <div class="col-md-1" style="padding-right: 5px;">
+            <label label-default="label-default">H</label>
+            <input name="textinput" placeholder="" class="txtHeight form-control input input-sm" maxlength="4" type="text" value="0">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <label label-default="label-default">Thumbnail Title</label>
+            <input name="textinput" placeholder="Title" class="txtThumbTitle form-control input" maxlength="200" type="text">
+        </div>
+    </div>
+</form>
+
+
+<div class="topContainer" id="categorization">
+</div>
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <div class="col-md-6">
+            <label label-default="label-default" class="required" for="category">Category</label>
+            <select id="category" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <label label-default="label-default" class="required" for="subCategory">SubCategory</label>
+            <select id="subCategory" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <label label-default="label-default" class="required" for="omnitureChannel">Omniture Channel</label>
+            <select id="omnitureChannel" class="form-control"></select>
+        </div>
+    </div>
+    
+
+</form>
+
+<form class="form-horizontal" role="form">
+    <div class="control-group alert alert-info">
+        <div class="controls text-right">
+            <button id="save" class="btn btn-primary">Save</button>
+            <button id="btnCancel" class="btn btn-default btnCancel" name="btnCancel">Cancel</button>
+        </div>
+        <p></p>
+    </div>
+</form>

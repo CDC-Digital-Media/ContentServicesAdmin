@@ -1,0 +1,65 @@
+﻿<h4 class="subHeader" id="altImages">Alternate Images</h4>
+
+<div class="control-group">
+    <div class="help-inline" id="altImgLabel" style="display: none;"></div>
+</div>
+
+<form class="form-horizontal" role="form">
+
+    <div class="gallery form-group">
+    </div>
+
+
+    <div class="form-group">
+        <label label-default="label-default" class="col-md-4 required">File Path</label>
+        <label label-default="label-default" class="col-md-1">&nbsp;</label>
+        <label label-default="label-default" class="col-md-1 required">W</label>
+        <label label-default="label-default" class="col-md-1 required">H</label>
+        <label label-default="label-default" class="col-md-3 required">Type</label>
+        <label label-default="label-default" class="col-md-2 required">Name</label>
+    </div>
+
+    <div class="form-group imgRow">
+        <div class="col-md-4" style="padding-right: 0px;">
+            <input name="textinput" placeholder="Use the Browse button to choose an image." class="txtFilePath form-control input-sm" tabindex="-1" readonly="true" type="text">
+        </div>
+        <div class="col-md-1" style="padding-left: 5px;">
+            <span class="btn-file btn btn-default btn-sm">Browse<input type="file" class='filePicker input-sm'>
+            </span>
+        </div>
+        <div class="col-md-1" style="padding-right: 5px;">
+            <input name="textinput" placeholder="" class="txtWidth form-control input input-sm" maxlength="4" type="text" value="0">
+        </div>
+        <div class="col-md-1" style="padding-right: 5px;">
+            <input name="textinput" placeholder="" class="txtHeight form-control input input-sm" maxlength="4" type="text" value="0">
+        </div>
+        <div class="col-md-3">
+            <select name="txtType" class="txtType form-control input-sm">
+                <option>StorefrontThumbnail</option>
+                <option>Large Preview</option>
+                <option>Media Thumbnail</option>
+                <option>MediaFeatureThumbnail</option>
+                <option>Medium Preview</option>
+                <option>Small Preview</option>
+                <option>ThumbnailViewInsert</option>
+                <option>Unclassified</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input name="textinput" placeholder="" class="txtName form-control input input-sm" type="text">
+        </div>
+
+		<a title="Remove this Image" class="pull-right btnRemoveAltImage" href="#"><span class="removeImage glyphicon glyphicon-remove"></span></a>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8">
+            All fields are required for each Alternate Image.
+            Each file size must be less that .5 MB. JPG and PNG formats only.<br />            
+        </div>
+        <div class="col-md-4">
+            <input class="addAltImage btn btn-sm pull-right" style="margin-bottom: 10px;" type="button" value="Add Alternate Image">
+        </div>
+    </div>
+
+</form>

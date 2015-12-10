@@ -1,0 +1,85 @@
+﻿<!-- Modal -->
+<div class="modal thumbnailModal" tabindex="-1" role="dialog" style="position: fixed;"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 1000px;">
+        <div class="modal-content" style="min-height: 500px;">
+
+
+            <div class="content pull-left" style="display: inline-block">
+                <div id="srcImgContainer" style="display: inline-block"></div>
+
+                <form class="form-horizontal uploadForm" role="form" style="width: 700px; display: none;">
+                    <div class="form-group imgRow">
+                        <div class="col-md-2">
+                            <label style="padding-top: 3px;">File Path</label>
+                        </div>
+                        <div class="col-md-6" style="padding-right: 0px;">
+                            <input name="textinput" placeholder="Use the Browse button to choose an image." class="txtFilePath form-control input-sm" readonly="true" type="text">
+                        </div>
+                        <div class="col-md-2" style="padding-left: 5px;">
+                            <span class="btn-file btn btn-default btn-sm">Browse<input type="file" class='filePicker input-sm'>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            &nbsp;
+                        </div>
+                        <div class="col-md-8" style="padding-right: 0px;">
+                            <button type="button" class="btn span3 btn-primary btn-sm" id="uploadSave">Save as Thumbnail</button>
+                            <button type="button" class="btn span3 btn-default btn-sm" id="uploadCancel">Cancel</button>
+                            <p>
+                                &nbsp;
+                            </p>
+                            <ul>
+                                <li>Thumbnail upload must be in .jpg or .png format.</li>
+                                <li>Thumbnail upload will be constrained to 155w x 84h pixels.</li>
+                            </ul>
+                            <p>
+                                &nbsp;
+                            </p>
+                            <div>
+                                <img class="showUploadImage" style="display: none; border:1px solid #999;" />
+                            </div>
+                            <p>
+                                &nbsp;
+                            </p>
+                            <div class="alert alert-warning uploadSizeWarning" style="display:none;">This image is not 155 x 84 pixels. For best results, please use an image that has been sized to those dimensions.</div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="content pull-right"><a class="close" data-dismiss="modal">×</a></div>
+
+            <div class="content actions pull-right" style="display: none;">
+                <div style="width: 150px;">
+                    Click and Drag an area from the image on the left and then click the preview button below.
+                </div>
+                <button type="button" class="btn span3 btn-default btn-sm" id="preview">Preview Thumbnail</button>
+                <div style="padding: 20px 0px 20px 0px;">
+                    <img id="previewImg" src="#" alt="" style="display: none; border: 1px solid #999999;">
+                </div>
+                <button type="button" class="btn span3 btn-primary btn-sm" id="savethisthumb">Save this Thumbnail</button>
+                <br />
+                <br />
+                <div style="width: 150px;">
+                    ... or you may upload an Alternative Image to use as a thumbnail:
+                </div>
+                <br />
+                <button type="button" class="btn span3 btn-default btn-sm" id="uploadImage">Upload an Image</button>
+                <br />
+                <div style="padding: 20px 0px 20px 0px; display: none;" id="existingAltImgDiv">
+                    <img id="existingAltImg" src="#" alt="" style="border: 1px solid #999999; width:155px; height:84px;">
+                    <br />
+                    <small>
+                        <a title="Remove Alt Image Thumbnail" class="pull-right" href="#" style="margin:2px;"><span class="glyphicon glyphicon-remove"></span></a>
+                        <em>Current Alt Thumb</em>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

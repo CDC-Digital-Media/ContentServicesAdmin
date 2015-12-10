@@ -1,0 +1,381 @@
+﻿<div tabindex="-1" class="modal in" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: block;">
+    <div class="modal-dialog" style="width: 1000px;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add Feed Item</h4>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="sr-only">0% Complete</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" style="min-height: 300px;">
+
+                <form class="form-horizontal">
+
+                    <div class="page_0" style="display: block;">
+
+                        <h4 class="subHeader" id="modalHeader">General Information</h4>
+
+                        <div class='form-group'>
+                            <label for='title' class='control-label col-xs-2 required'>Title</label>
+                            <div class='col-xs-10'>
+                                <input type='text' class='form-control' id='title' maxlength='200'>
+                                <div id="titleLabel" class="help-inline validationMsg">This field is required.</div>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='description' class='control-label col-xs-2 required'>Description</label>
+                            <div class='col-xs-10'>
+                                <textarea rows="3" id="description" class="form-control"></textarea>
+                                <div id="descriptionLabel" class="help-inline validationMsg">This field is required.</div>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='sourceUrl' class='control-label col-xs-2 required'>Source URL</label><div class='col-xs-10'>
+                                <input type='text' class='form-control' id='sourceUrl' placeholder='http://'>
+                                <div id="sourceUrlLabel" class="help-inline validationMsg">This field is required.</div>
+                            </div>
+                        </div>
+                        <!--                        <div class='form-group'>
+                            <label for='targetUrl' class='control-label col-xs-2'>Target URL</label><div class='col-xs-10'>
+                                <input type='text' class='form-control' id='targetUrl' placeholder='http://'>
+                                <div id="targetUrlLabel" class="help-inline validationMsg"></div>
+                            </div>
+                        </div>-->
+
+                        <div class="form-group">
+                            <label label-default="label-default" class="control-label col-xs-2 required" for="language">Language</label>
+                            <div class='col-xs-5'>
+                                <select id="language" class="form-control"></select>
+                                <span id="languageLabel" class="help-inline hide"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label label-default="label-default" class="control-label col-xs-2 required" for="mediaStatus">Media Status</label>
+                            <div class="control-group col-md-3">
+
+                                <div id="Div1" class="help-inline hide"></div>
+
+                                <div class="radio">
+                                    <label label-default="label-default">
+                                        <input type="radio" name="mediaStatus" id="Radio1" value="Published" />Published</label>
+                                </div>
+
+                                <div class="radio">
+                                    <label label-default="label-default">
+                                        <input type="radio" name="mediaStatus" id="Radio2" value="Staged" />Staged</label>
+                                </div>
+
+                                <div class="radio">
+                                    <label label-default="label-default">
+                                        <input type="radio" name="mediaStatus" id="Radio3" value="Archived" />Archived</label>
+                                </div>
+
+                                <div class="radio">
+                                    <label label-default="label-default">
+                                        <input type="radio" name="mediaStatus" id="Radio4" value="Hidden" />Hidden</label>
+                                </div>
+
+                                <div id="statusLabel" class="help-inline validationMsg">Status is required.</div>
+                            </div>
+
+                            <div id="publishDateTime" style="display: none;" class="col-md-6">
+
+                                <div class="form-group" class="col-md-7">
+
+                                    <label label-default="label-default" for="publishDate" class="required col-xs-4 control-label">Publish Date</label>
+
+                                    <div class="col-md-4">
+                                        <div class="input-group date" data-date-format="mm/dd/yyyy">
+                                            <input type="text" class="input-sm form-control" id="publishDate" />
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                        <div class="help-inline validationMsg" id="publishDateLabel">stuff</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group" class="col-md-7">
+
+                                    <label label-default="label-default" for="timepicker1" class="required col-xs-4 control-label">Publish Time</label>
+
+                                    <div class="col-md-4">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input id="timepicker1" type="text" class="input-sm form-control" />
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                        </div>
+                                        <div class="help-inline validationMsg" id="timePicker1Label">stuff</div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="page_1" style="display: none;">
+
+                        <h4 class="subHeader" id="H6">Feed Item Thumbnail</h4>
+
+                        <div class="form-group">
+                            <label label-default="label-default" class="col-md-5 thumbLabel">File Path</label>
+                            <label label-default="label-default" class="col-md-1">&nbsp;</label>
+                            <label label-default="label-default" class="col-md-1 thumbLabel">W</label>
+                            <label label-default="label-default" class="col-md-1 thumbLabel">H</label>
+                            <label label-default="label-default" class="col-md-4 thumbLabel">Title</label>
+                        </div>
+
+                        <div class="form-group imgRow">
+                            <div class="col-md-5" style="padding-right: 0px;">
+                                <input name="textinput" placeholder="Use the Browse button to choose an image." class="txtFilePath form-control input-sm" tabindex="-1" readonly="true" type="text">
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                            <div class="col-md-1" style="padding-left: 5px;">
+                                <span class="btn-file btn btn-default btn-sm">Browse<input type="file" class='filePicker input-sm'></span>
+                            </div>
+                            <div class="col-md-1" style="padding-right: 5px;">
+                                <input name="textinput" placeholder="" class="txtWidth form-control input input-sm" maxlength="4" readonly="true" type="text" value="0">
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                            <div class="col-md-1" style="padding-right: 5px;">
+                                <input name="textinput" placeholder="" class="txtHeight form-control input input-sm" maxlength="4" readonly="true" type="text" value="0">
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="textinput" placeholder="" class="txtTitle form-control input input-sm" readonly="true" type="text">
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                Thumbnail must be be less that .5 MB. JPG and PNG formats only.<br />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12" style="">
+                                <div class="feedItemThumbContainer">
+                                    <img id="feedItmThumbImg" src="" class="feedItemThumb" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="page_2 feedImageForm" style="display: none;">
+
+                        <h4 class="subHeader" id="H1">Feed Item Image</h4>
+
+                        <div class='form-group'>
+                            <label for='cbxCopyThumb' class='control-label col-xs-2'>&nbsp</label>
+                            <div class='col-xs-1'>
+                                <input type='checkbox' id='cbxCopyThumb' checked>
+                            </div>
+                            <div class='col-xs-9'>
+                                Populate title, description and link from feed item data. Populate image fields using thumbnail data.<br />
+                                Data may not be visible until after save is completed.
+                            </div>
+                        </div>
+
+                        <div class='form-group'>
+                            <label for='imgTitle' class='control-label col-xs-2'>Title</label>
+                            <div class='col-xs-10'>
+                                <input type='text' class='form-control' id='imgTitle' maxlength="200">
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='imgDescription' class='control-label col-xs-2'>Description</label><div class='col-xs-10'>
+                                <textarea rows="3" id="imgDescription" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label for='imgSrc' class='control-label col-xs-2'>Source URL</label>
+                            <div class='col-xs-10'>
+                                <input type='text' class='form-control' id='imgSrc' placeholder='http://'>
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="control-group">
+                                <label label-default="label-default" for="width" class="control-label col-xs-2">Width</label>
+                                <div class='col-xs-2'>
+                                    <input type="text" id="width" class="form-control" maxlength="4" value="" readonly="" />
+                                    <div class="help-inline warningMsg" style="white-space: nowrap;"></div>
+                                </div>
+                                <label label-default="label-default" for="height" class="control-label col-xs-2">Height</label>
+                                <div class='col-xs-2'>
+                                    <input type="text" id="height" class="form-control" maxlength="4" value="" readonly="" />
+                                </div>
+                                <div class='col-xs-4'>
+                                    <button class="btn btn-sm" id="btnActualSize">Actual Size</button>
+                                    <button class="btn btn-sm" id="btnDefaultSize">Recommended Size</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='form-group'>
+                            <label for='imgLink' class='control-label col-xs-2'>Link</label><div class='col-xs-10'>
+                                <input type='text' class='form-control' id='imgLink' placeholder='http://'>
+                                <div class="help-inline validationMsg"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="page_3" style="display: none;">
+
+                        <h4 class="subHeader" id="H4">Topics</h4>
+
+                        <div class='modalSelectedValues'>
+                            <span style="font-style: italic;">No topics have been selected for this feed.</span>
+                            <ul></ul>
+                            <div class="help-inline validationMsg"></div>
+                        </div>
+
+                        <div class='categoryBlock'>
+                            <div class="treeViewContainer"></div>
+                        </div>
+                    </div>
+                    <div class="page_4" style="display: none;">
+
+                        <h4 class="subHeader" id="H3">Source</h4>
+                        <div class="form-group">
+                            <label label-default="label-default" for="source" class="control-label col-xs-3">Source</label>
+                            <div class="col-md-8">
+                                <select id="source" class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label label-default="label-default" for="owningOrg" class="control-label col-xs-3">Owning Organization</label>
+                            <div class="col-md-8">
+                                <select id="owningOrg" class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label label-default="label-default" for="maintainingOrg" class="control-label col-xs-3">Maintaining Organization</label>
+                            <div class="col-md-8">
+                                <select id="maintainingOrg" class="form-control"></select>
+                            </div>
+                        </div>
+                        <p></p>
+                        <h4 class="subHeader" id="H2">Category</h4>
+                        <div class="form-group">
+                            <label label-default="label-default" for="category" class="control-label col-xs-3">Category</label>
+                            <div class="col-md-8">
+                                <select id="category" class="form-control"></select>
+                                <table class="table selectedCategories">
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--                        <div class='form-group'>
+                            <label for='omnitureChannel' class='control-label col-xs-3'>Omniture Channel</label>
+                            <div class="col-md-8">
+                                <input type='text' class='form-control' id='omnitureChannel'>
+                            </div>
+
+                        </div>-->
+
+                    </div>
+
+
+                    <div class="page_5" style="display: none;">
+
+                        <h4 class="subHeader" id="H5">Locations</h4>
+
+                        <div class="form-horizontal currentLocations">
+                            <label label-default="label-default" for="" class="col-md-4">Selected Locations</label>
+                        </div>
+                        <table class="table selectedLocations">
+                            <tbody></tbody>
+                        </table>
+
+                        <div class="form-group">
+                            <label label-default="label-default" for="selectContinent" class="control-label col-xs-2">Continent</label>
+                            <div class="col-md-8">
+                                <select id="selectContinent" class="form-control location">
+                                    <option value="">Select a Continent</option>
+                                </select>
+                            </div>
+
+                            <div class="control-group">
+                                <div id="continentLabel" class="help-inline hide"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label label-default="label-default" for="selectCountry" class="control-label col-xs-2">Country</label>
+                            <div class="col-md-8">
+                                <select id="selectCountry" class="form-control location">
+                                    <option value="">Select a Country</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label label-default="label-default" for="selectState" class="control-label col-xs-2">State/Province</label>
+                            <div class="col-md-8">
+                                <select id="selectState" class="form-control location">
+                                    <option value="">Select a State/Province</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label label-default="label-default" for="selectRegion" class="control-label col-xs-2">County/Region</label>
+                            <div class="col-md-8">
+                                <select id="selectRegion" class="form-control location">
+                                    <option value="">Select a County/Region</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="btn btn-sm pull-right" id="addLocation" style="margin-bottom: 10px;" type="button" value="Add Location">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="page_6" style="display: none;">
+                        <h4 class="subHeader" id="H7">Creating a new feed item</h4>
+
+                        <p>To create a new feed item, make a selection from existing media which will prepopulate many of the fields in the feed item form. You can also start with a blank form to create this feed item from scratch. </p>
+                        <p>&nbsp;</p>
+                        <div class="row text-center">
+                            <a class="btn btn-primary btn-lg col-md-4 col-md-offset-1" id="chooseExisting">Choose from existing media</a>
+                            <a class="btn btn-primary btn-lg col-md-4 col-md-offset-1" id="createNew">Start with blank form</a>
+                        </div>
+
+                    </div>
+
+                    <p></p>
+
+                </form>
+
+            </div>
+            <!--modal-body-->
+
+            <div class="modal-footer">
+                <div class="pull-left">
+                    <a class="btn btn-default" id="prev">Previous</a>
+                    <a class="btn btn-primary" id="next">Next</a>
+                </div>
+                <button type="button" class="btn btn-default" id="clear" data-dismiss="modal">Clear</button>
+                <button type="button" class="btn btn-default" id="cancel" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveFeed">Save changes</button>
+            </div>
+
+        </div>
+        <!--modal-content-->
+    </div>
+    <!--modal-dialog-->
+</div>

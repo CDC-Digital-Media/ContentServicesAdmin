@@ -1,0 +1,54 @@
+﻿<!-- validation -->
+<h4 class="subHeader" id="sourceHeader">Validate Resources</h4>
+
+<div id="validate">
+    <div class="row" style="font-size: 1em; margin: 15px 0px 5px 0px;">
+        You must specify either an SWF source or an HTML 5 source.
+    </div>
+
+    <div class="form-group">
+        <label label-default="label-default" for="swfSourceUrl" class="">SWF Source</label>
+		<div class="control-group">
+            <input id="swfSourceUrl" class="form-control" placeholder="http://" type="text" />
+            <small><span class="help-block">Source must contain a valid MIME type for SWF (Flash).</span></small>
+            <div id="swfLabel" class="help-inline hide"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label label-default="label-default" for="html5SourceUrl" class="">HTML 5 Source</label>
+		<div class="control-group">
+            <input id="html5SourceUrl" class="form-control" placeholder="http://" type="text" />
+            <small><span class="help-block">Source must contain a valid MIME type for HTML.</span></small>
+            <div id="html5Label" class="help-inline hide"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label label-default="label-default" for="targetUrl" class="">Target URL <span style="color: red;">*</span></label>
+		<div class="control-group">
+            <input id="targetUrl" class="form-control" placeholder="http://" type="text" />
+            <small><span class="help-block">Address for more information about the content of this eCard.</span></small>
+            <div id="targetLabel" class="help-inline hide"></div>
+        </div>
+    </div>
+
+    <input class="btn btn-default" id="validateResources" style="margin-bottom: 10px;" type="button" value="Validate Resources"/>
+    
+    <input class="btn" id="resetResources" style="margin-bottom: 10px; display: none;" type="button" value="Reset Resources"/>
+
+
+    <div class="alert alert-danger hide" id="validationError">
+    </div>
+    <div class="alert alert-success hide">
+        Resource validation succeeded!
+        <div style="margin: 10px 0px 5px 0px;">
+            <input type="button" class="btn btn-success" value="Continue" id="continueButton" />
+            <input type="button" class="btn btn-default" value="Not now" id="cancelButton" />
+        </div>
+    </div>
+
+
+</div>
+<!-- end validation -->
+

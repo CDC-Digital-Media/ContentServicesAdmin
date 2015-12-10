@@ -1,0 +1,58 @@
+﻿<h4 class="subHeader" id="location">Location</h4>
+
+<div class="form-horizontal currentLocations">
+    <label label-default="label-default" for="" class="col-md-4">Selected Locations</label>
+</div>
+<table class="table selectedLocations">
+    <tbody></tbody>
+</table>
+
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label label-default="label-default" for="selectContinent" class="col-md-4">Continent</label>
+        <div class="col-md-8">
+            <select id="selectContinent" class="form-control location">
+                <option value="">Select a Continent</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <div id="continentLabel" class="help-inline hide"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label label-default="label-default" for="selectCountry" class="col-md-4">Country</label>
+        <div class="col-md-8">
+            <select id="selectCountry" class="form-control location">
+                <option value="">Select a Country</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label label-default="label-default" for="selectState" class="col-md-4">State/Province</label>
+        <div class="col-md-8">
+            <select id="selectState" class="form-control location">
+                <option value="">Select a State/Province</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label label-default="label-default" for="selectRegion" class="col-md-4">County/Region</label>
+        <div class="col-md-8">
+            <select id="selectRegion" class="form-control location">
+                <option value="">Select a County/Region</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <input class="btn btn-sm pull-right" id="addLocation" style="margin-bottom: 10px;" type="button" value="Add Location">
+        </div>
+    </div>
+
+</form>

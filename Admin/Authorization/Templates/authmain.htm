@@ -1,0 +1,56 @@
+﻿<h3>Authorization</h3>
+
+<ul class="nav nav-tabs" role="tablist" id="myTab">
+	<li class="active"><a href="#roles" role="tab" data-toggle="tab">By Role</a></li>
+	<li><a href="#byuser" role="tab" data-toggle="tab">By User</a></li>
+	<li><a href="#bymediaset" role="tab" data-toggle="tab">By Media Set</a></li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="roles">
+		<div class="util-buttons">
+			<a class="btn btn-success btn-sm btnAdd">Add User</a>
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="showMessage"></div>
+
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th width="30%">Role</th>
+						<th width="30%">Media Set</th>
+						<th width="20%">User List</th>
+						<th width="20%">Action</th>
+					</tr>
+				</thead>
+				<tbody id="rolesBody">
+				</tbody>
+			</table>
+		</div><!--table-responsive-->
+
+	</div>
+	<div class="tab-pane" id="byuser">
+
+		<div id="users" class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th width="25%">User</th>
+						<th width="25%">Media Set</th>
+						<th width="25%">Role(s)</th>
+						<th width="25%">Action</th>
+					</tr>
+				</thead>
+				<tbody id="usersBody">
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+	<div class="tab-pane" id="bymediaset">
+		<div id="mediasetBody"></div>
+
+	</div><!--tab-pane-->
+</div><!--tab-content-->

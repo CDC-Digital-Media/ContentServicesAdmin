@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JSON Preview</title>    
+    <script src="../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    
+    <script src="../Scripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../scripts/__common.js" type="text/javascript"></script>
+
+    <script src="../Scripts/json-viewer/jquery.json-viewer.js"></script>
+    <link href="../Scripts/json-viewer/jquery.json-viewer.css" rel="stylesheet" />
+    
+    <script>
+
+        var cg = getURLParameter('contentgroup');
+
+        var loadMediaData = function (postProcess) {
+
+            function handlePostProcess(oMedia) {
+                var func = postProcess;
+                if (typeof func === 'function') {
+                    func(oMedia);
+                }
+            }
+
+            var url = publicAPIRoot + "/v2/resources/media.json?contentgroup=" + cg
+            url += "&fields=id,name,description,mediaType,thumbnailUrl,syndicateUrl,embedUrl,contentUrl,alternateImages,tags,sourceUrl,targetUrl,status,enclosures";
+            //defeat caching 
+            var d = new Date();
+            var n = d.getMilliseconds();
+
+            url += "&ts=" + n;
+
+            $.ajax({
+                url: url,
+                dataType: 'jsonp'
+            }).done(function (response) {
+                handlePostProcess(response);
+            })
+            .fail(function (xhr, ajaxOptions, thrownError) {
+                console.debug(xhr.status);
+                console.debug(thrownError);
+                console.debug(xhr.responseText);
+            });
+
+        }
+
+        loadConfigValues(function () {
+            loadMediaData(function (result) {
+                $('#json-viewer').jsonViewer(result);
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+    <pre id="json-viewer"></pre>
+
+</body>
+</html>

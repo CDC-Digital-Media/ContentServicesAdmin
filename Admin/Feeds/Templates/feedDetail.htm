@@ -1,0 +1,322 @@
+﻿<div id="content">
+    <form class="form-horizontal">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mediaTitle"></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="platform">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>&nbsp;</p>
+                            <div>
+                                <h4><span class="catLabel">Categorization</span> <a href="#" class="sectionEdit util-edit" data-page="0"><span class="fa fa-pencil"></span>Edit</a></h4>
+                            </div>
+                            <div class="proxyData" style="display: none;">
+                                <div class='form-group'>
+                                    <label for='proxyUrl' class='control-label col-xs-2'>Proxy URL</label>
+                                    <div class='col-xs-9 controls'>
+                                        <p class="form-control-static" id="proxyUrl"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="importData" style="display: none;">
+                                <div class='form-group'>
+                                    <label for='importUrl' class='control-label col-xs-2'>Import URL</label>
+                                    <div class='col-xs-9 controls'>
+                                        <p class="form-control-static" id="importUrl"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aggregateData" style="display: none;">
+                                <div class='form-group'>
+                                    <label for='aggregateSources' class='control-label col-xs-2'>Source(s)</label>
+                                    <div class='col-xs-9 controls'>
+                                        <p class="form-control-static" id="aggregateSources"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='form-group contentGroupData'>
+                                <label for='contentGroups' class='control-label col-xs-2'>Content Groups</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="contentGroups"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>&nbsp;</p>
+                            <h4>General Information <a href="#" class="sectionEdit util-edit" data-page="1"><span class="fa fa-pencil"></span>Edit</a></h4>
+                            <div class='form-group'>
+                                <label for='title' class='control-label col-xs-2'>Title</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="title"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='description' class='control-label col-xs-2'>Description</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="description"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='moreInfo' class='control-label col-xs-2'>More Info URL</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="targetUrl"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='language' class='control-label col-xs-2'>Language</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="language"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='mediaStatus' class='control-label col-xs-2'>Media Status</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="mediaStatus"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>&nbsp;</p>
+                            <h4 id="H3">Source <a href="#" class="sectionEdit util-edit" data-page="2"><span class="fa fa-pencil"></span>Edit</a></h4>
+                            <div class='form-group'>
+                                <label for='copyright' class='control-label col-xs-2'>Copyright</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="copyright"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='author' class='control-label col-xs-2'>Author</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="author"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='editorialManager' class='control-label col-xs-2'>Editorial Manager</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="editorialManager"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='webMasterEmail' class='control-label col-xs-2'>Web Master Email</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="webMasterEmail"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='det_source' class='control-label col-xs-2'>Source</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="det_source"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='det_owningOrg' class='control-label col-xs-2'>Owning Organization</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="det_owningOrg"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='det_maintainingOrg' class='control-label col-xs-2'>Maintaining Organization</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="det_maintainingOrg"></p>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='det_omniture' class='control-label col-xs-2'>Omniture Channel</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="det_omniture"></p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--col-md-12-->
+                    </div>
+                    <!--row-->
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>&nbsp;</p>
+                            <h4 id="H4">Topics <a href="#" class="sectionEdit util-edit" data-page="3"><span class="fa fa-pencil"></span>Edit</a></h4>
+
+                            <div class='form-group'>
+                                <label for='topics' class='control-label col-xs-2'>Topics</label>
+                                <div class='col-xs-9 controls'>
+                                    <p class="form-control-static" id="topics"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--col-md-12-->
+                    </div>
+                    <!--row-->
+                </div>
+                <!--platform-->
+
+                <div class="platform feedItemContainer">
+                    <div class="util-buttons">
+                        <h4 class="pull-left">Feed Items</h4>
+                        <a class="btn btn-success btn-sm pull-right" style="margin-left: 20px;" id="newFeedItem">Add Feed Item</a>
+                        <div class='pagination pull-right'></div>
+                        <div class='pubOnlytoggle pull-right'>
+                            Published Items Only
+                            <input type="checkbox" checked="checked" />
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="feedItems_Wrap">
+                        <ul class="feedItem_Wraplist">
+                            <li class="feedItem" style="display: none;">
+                                <div class="feedItem_ttl" id="itm_title"></div>
+                                <div class="feedItem_util text-right">
+                                    <a tabindex="-1" href="#" class="actionEdit btn btn-secondary btn-sm"><span class="fa fa-pencil"></span>Edit</a>
+                                    <a tabindex="-1" href="#" class="actionAttach btn btn-secondary btn-sm"><span class="fa fa-paperclip"></span>Add Resource</a>
+                                    <a class="fa fa-angle-down toggleShowDetail" href="#"></a>
+                                </div>
+
+                                <div class="feedItem_detail" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="feedItem_detail_desc detail_block"><strong>Description:</strong> <span class="injectval" id="itm_description"></span></div>
+                                            <div class="feedItem_detail_sourceUrl detail_block"><strong>Source URL:</strong>  <span class="injectval" id="itm_sourceUrl"></span></div>
+                                            <!--<div class="feedItem_detail_targetUrl detail_block"><strong>Target URL:</strong>  <span class="injectval" id="itm_targetUrl"></span></div>-->
+                                        </div>
+                                        <!--col-md-4-->
+                                        <div class="col-md-4">
+                                            <div class="feedItem_detail_lang detail_block"><strong>Language:</strong>  <span class="injectval" id="itm_language"></span></div>
+                                            <div class="feedItem_detail_status detail_block"><strong>Media Status:</strong>  <span class="injectval" id="itm_status"></span></div>
+                                            <div class="feedItem_detail_topics detail_block"><strong>Topics:</strong>  <span class="injectval" id="itm_topics"></span></div>
+                                            <div class="feedItem_detail_category detail_block"><strong>Category:</strong>  <span class="injectval" id="itm_category"></span></div>
+                                            <!--<div class="feedItem_detail_omniture detail_block"><strong>Omniture Channel:</strong>  <span class="injectval" id="itm_omniture"></span></div>-->
+                                            <div class="feedItem_detail_locations detail_block"><strong>Locations:</strong>  <span class="injectval" id="itm_locations"></span></div>
+                                        </div>
+                                        <!--col-md-4-->
+                                        <div class="col-md-4">
+                                            <div class="feedItem_detail_imgsrc detail_block"><strong>Image Source:</strong>  <span class="injectval" id="itm_imgsrc"></span></div>
+                                            <div class="feedItem_detail_imgwidth detail_block"><strong>Width:</strong>  <span class="injectval" id="itm_imgwidth"></span>&nbsp; <strong>Height:</strong>  <span class="injectval" id="itm_imgheight"></span></div>
+                                            <div class="feedItem_detail_imgtitle detail_block"><strong>Image Title:</strong>  <span class="injectval" id="itm_imgtitle"></span></div>
+                                            <div class="feedItem_detail_imgdesc detail_block"><strong>Image Description:</strong> <span class="injectval" id="itm_imgdesc"></span></div>
+                                            <div class="feedItem_detail_feedimglink detail_block"><strong>Feed Image Link:</strong>  <span class="injectval" id="itm_feedimglink"></span></div>
+
+                                            <div class="feedItem_detail_thumbsrc detail_block"><strong>Thumbnail Source:</strong>  <span class="injectval" id="itm_thumbsrc"></span></div>
+                                            <div class="feedItem_detail_thumbwidth detail_block"><strong>Width:</strong>  <span class="injectval" id="itm_thumbwidth"></span>&nbsp; <strong>Height:</strong>  <span class="injectval" id="itm_thumbheight"></span></div>
+                                            <div class="feedItem_detail_thumbtitle detail_block"><strong>Thumbnail Title:</strong>  <span class="injectval" id="itm_thumbtitle"></span></div>
+                                        </div>
+                                        <!--col-md-4-->
+                                    </div>
+                                    <!--row-->
+                                </div>
+                                <ul class="feedItem_enclosure"></ul>
+                            </li>
+                            <!--feedItem-->
+
+
+
+                        </ul>
+                        <!--feedItems_Wrap-->
+                    </div>
+                    <!--feedItems_Wrap-->
+
+                </div>
+                <!--platform-->
+
+            </div>
+            <!--col-md-9-->
+
+            <div class="col-md-3">
+                <div class="sidebarModule feedPreview">
+                    <h4>Preview <span class="pubWarning">(available when feed is published)</span></h4>
+                    <ul class="nodots">
+                        <li>
+                            <input type="text" value="" class="pull-right" />
+                            <a href="#" class="showRssPreview"><span class="fa fa-rss"></span>Preview as RSS</a>
+                        </li>
+                        <li>
+                            <input type="text" value="" class="pull-right" />
+                            <a href="#" class="showAtomPreview"><span class="fa fa-rss"></span>Preview as Atom</a>
+                        </li>
+                        <li>
+                            <input type="text" value="" class="pull-right" />
+                            <a href="#" class="showJsonPreview"><span class="fa fa-file-code-o"></span>Preview as JSON</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebarModule importOptions">
+                    <h4>Import Options</h4>
+                    <ul class="nodots">
+                        <li>
+                            <a class="btn btn-success btn-sm" id="importFeedItems">Import Feed Items</a><span class="importCount"></span>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="cbxArchiveMissing">
+                                    Archive any items that are not currently found in this feed.
+                                </label>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidebarModule exportOptions">
+                    <h4>Export Options</h4>
+                    <ul class="nodots">
+                        <li class="existing">
+                            <div class="path"></div>
+                            <div class="format"></div>
+                            <div style="clear:both; height:20px;">
+                                <a href='#' class='btn btn-xs pull-right btnExportDelete'><span class='fa fa-trash'></span></a>
+                                <a class="btn btn-default btn-xs pull-right btnExportEdit" style="margin-right: 10px;">Edit</a>
+                                <a class="btn btn-success btn-xs pull-right btnExport" style="margin-right: 10px;">Export to File</a>
+                            </div>
+                        </li>
+                        <li>
+
+                            <a href="#" class="btnExportNew"><span class="fa fa-upload"></span>Add Export Setting</a>
+
+                        </li>
+
+                    </ul>
+                </div>
+                <!--sidebarModule-->
+
+                <div class="sidebarModule">
+                    <h4>Feed Thumbnail <a href="#" class="sectionEdit util-edit" data-page="4"><span class="fa fa-pencil"></span>Edit</a></h4>
+                    <div style="text-align: center;">
+                        <div class="feedThumbnailContainer">
+                            <em>
+                                <p>No thumbnail has been specified for this feed.</p>
+                            </em>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebarModule">
+                    <h4>Feed Image <a href="#" class="sectionEdit util-edit" data-page="5"><span class="fa fa-pencil"></span>Edit</a></h4>
+                    <div style="text-align: center;">
+                        <div class="feedImageContainer">
+                            <em>
+                                <p>No image has been specified for this feed.</p>
+                            </em>
+                        </div>
+                    </div>
+                </div>
+                <!--sidebarModule-->
+
+            </div>
+            <!--col-md-3-->
+        </div>
+        <!--row-->
+
+    </form>
+</div>
+

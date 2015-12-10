@@ -1,0 +1,49 @@
+﻿<div class="util-buttons">
+	<a class="btn btn-success btn-sm btnAddMediaSet">Add Media Set</a>
+	<div class="clearfix"></div>
+</div>
+
+<div class="newUserContainer" style="display:none;"></div>
+
+<div id="MediaSetList" style="margin: 10px;" class="dataTable">			
+	<div class="well container">
+		<div class="messages row hide" id="apiError">
+			<div class="alert alert-error">A server error has occurred.</div>
+		</div>
+    
+		<div class="row">
+			<div class="col-md-2">
+				<input type="text" id="" class="form-control" placeholder="MediaID" />
+			</div>
+			<div class="col-md-3">
+				<input type="text" id="" class="form-control" placeholder="Title" />
+			</div>
+			<div class="col-md-3">
+				<select id="Select1" class="form-control">
+					<option selected="selected">Language</option>
+					<option>English</option>
+					<option>Spanish</option>
+				</select>
+			</div>
+		</div><!--row-->
+		<div class="row">
+			<div class="col-md-4">
+				<label label-default="label-default" for="filterOwningOrganization">Owning Organization</label>
+				<select id="filterOwningOrganization" class="form-control"><option value="">Select One</option><option value="37">CDC - Office on Smoking and Health</option><option value="18">CDC - ONDIEH/NCCDPHP</option><option value="16">CDC OADC DENM</option><option value="7">CDC OSTLTS KMB</option><option value="9">CDC/NCEZID</option><option value="23">CDC/NCIRD</option><option value="15">CDC/OADC/DENM</option><option value="10">CDC/OPHPR/DEO/SA</option><option value="1">Centers for Disease Control and Prevention</option><option value="3">CGH</option><option value="21">Community Guide Task Force</option><option value="34">NCBDDD</option><option value="12">NCCDPHP</option><option value="24">NCCDPHP - DHDSP</option><option value="25">NCCDPHP - DRH</option><option value="36">NCEH</option><option value="5">NCEZID</option><option value="38">NCEZID - DFWED</option><option value="26">NCEZID - DHQP</option><option value="14">NCHHSTP</option><option value="27">NCHHSTP - DHAP</option><option value="28">NCHHSTP - DTE</option><option value="2">NCIPC</option><option value="4">NCIRD</option><option value="33">NIOSH</option><option value="11">OADC</option><option value="39">OADC - Features</option><option value="40">OADC - Flu</option><option value="41">OADC - Spanish</option><option value="29">OCOO</option><option value="35">OMHHE</option><option value="22">ONDIEH - PCD</option><option value="17">OPHPR</option><option value="19">OSELS</option><option value="20">OSELS - EAPO</option><option value="30">OSELS - NCHS</option><option value="31">OSELS - OPHG</option><option value="32">OSELS - PHITPO</option><option value="8">OSTLTS</option><option value="6">PCD</option></select>
+			</div>
+
+			<div class="col-md-4">
+				<label label-default="label-default" for="">Maintaining Organization</label>
+				<select id="filterMaintainingOrganization" class="form-control"><option value="">Select One</option><option value="37">CDC - Office on Smoking and Health</option><option value="18">CDC - ONDIEH/NCCDPHP</option><option value="16">CDC OADC DENM</option><option value="7">CDC OSTLTS KMB</option><option value="9">CDC/NCEZID</option><option value="23">CDC/NCIRD</option><option value="15">CDC/OADC/DENM</option><option value="10">CDC/OPHPR/DEO/SA</option><option value="1">Centers for Disease Control and Prevention</option><option value="3">CGH</option><option value="21">Community Guide Task Force</option><option value="34">NCBDDD</option><option value="12">NCCDPHP</option><option value="24">NCCDPHP - DHDSP</option><option value="25">NCCDPHP - DRH</option><option value="36">NCEH</option><option value="5">NCEZID</option><option value="38">NCEZID - DFWED</option><option value="26">NCEZID - DHQP</option><option value="14">NCHHSTP</option><option value="27">NCHHSTP - DHAP</option><option value="28">NCHHSTP - DTE</option><option value="2">NCIPC</option><option value="4">NCIRD</option><option value="33">NIOSH</option><option value="11">OADC</option><option value="39">OADC - Features</option><option value="40">OADC - Flu</option><option value="41">OADC - Spanish</option><option value="29">OCOO</option><option value="35">OMHHE</option><option value="22">ONDIEH - PCD</option><option value="17">OPHPR</option><option value="19">OSELS</option><option value="20">OSELS - EAPO</option><option value="30">OSELS - NCHS</option><option value="31">OSELS - OPHG</option><option value="32">OSELS - PHITPO</option><option value="8">OSTLTS</option><option value="6">PCD</option></select>
+			</div>
+		</div><!--row-->
+
+		<div class="searchFilterBtns">
+			<a id="clearFilter" class="btn btn-default" style="margin-right: 6px;">Reset</a>
+			<a id="applyFilter" class="btn btn-primary">Search</a>
+		</div>
+
+
+	</div>
+
+</div>

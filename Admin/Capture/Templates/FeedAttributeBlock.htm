@@ -1,0 +1,202 @@
+﻿&nbsp;
+    <h4 class="subHeader" id="feedAttributes">Feed Attributes</h4>
+    <form class="form-horizontal" role="form">
+
+        <div class="form-group imgRow">
+            <div class="col-md-5" style="padding-right: 0px;">
+                <label label-default="label-default">Feed Image Source</label>
+                <input name="textinput" placeholder="Use the Browse button to choose an image." class="txtFilePath form-control  input-sm" readonly="true" type="text">
+            </div>
+            <div class="col-md-1" style="padding-left: 5px;">
+                <label label-default="label-default">&nbsp;</label>
+                <span class="btn-file btn btn-default btn-sm">Browse<input type="file" class='filePicker'>
+                </span>
+            </div>
+            <div class="col-md-1" style="padding-right: 5px;">
+                <label label-default="label-default">W</label>
+                <input name="textinput" placeholder="" class="txtWidth form-control input input-sm" maxlength="4" type="text" value="0">
+            </div>
+            <div class="col-md-1" style="padding-right: 5px;">
+                <label label-default="label-default">H</label>
+                <input name="textinput" placeholder="" class="txtHeight form-control input input-sm" maxlength="4" type="text" value="0">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <label label-default="label-default">Feed Image Title</label>
+                <input name="textinput" placeholder="Title" class="txtWidth form-control input" maxlength="200" type="text">
+            </div>
+            <div class="col-md-4">
+                <label label-default="label-default">Feed Image Description</label>
+                <input name="textinput" placeholder="Description" class="txtWidth form-control input" type="text">
+            </div>
+            <div class="col-md-4">
+                <label label-default="label-default">Feed Image Link</label>
+                <input name="textinput" placeholder="http://" class="txtWidth form-control input" maxlength="1024" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label label-default="label-default">Copyright</label>
+                <input name="textinput" placeholder="" class="txtWidth form-control input" maxlength="255" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label label-default="label-default">Author</label>
+                <input name="textinput" placeholder="" class="txtWidth form-control input" maxlength="100" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label label-default="label-default">Editorial Manager</label>
+                <input name="textinput" placeholder="" class="txtWidth form-control input" maxlength="100" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label label-default="label-default">Web Master Name</label>
+                <input name="textinput" placeholder="" class="txtWidth form-control input" maxlength="100" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                <label label-default="label-default">Web Master Email</label>
+                <input name="textinput" placeholder="" class="txtWidth form-control input" maxlength="100" type="text">
+            </div>
+        </div>
+
+    </form>
+
+    <h4 class="subHeader" id="H1">Import Settings</h4>
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="allowImport">
+                        Enable Import from an External Source
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group optImport">
+            <div class="col-md-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        Use feed header information from imported feed
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group optImport">
+            <div class="col-md-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        Automatically deactivate existing feed items not found in imported feed
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group optImport">
+            <label label-default="label-default" for="importUrl" class="col-md-4">Import URL</label>
+            <div class="col-md-8">
+                <input name="textinput" placeholder="http://" id="importUrl" class="form-control input" type="text">
+            </div>
+        </div>
+        <div class="form-group optImport">
+            <label label-default="label-default" for="selectFormat" class="col-md-4">Import Feed Format</label>
+            <div class="col-md-8">
+                <select id="selectFormat" class="form-control">
+                    <option value="">Select a Format</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group optImport">
+            <label label-default="label-default" for="selectAuthTypeImport" class="col-md-4">Import Authentication Type</label>
+            <div class="col-md-8">
+                <select id="selectAuthTypeImport" class="form-control">
+                    <option value="-1">Select Authentication Type</option>
+                    <option value="1">Anonymous</option>
+                    <option value="2">Forms</option>
+                    <option value="3">Integrated Windows Authentication</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group optImport optImportForms" style="display:none;">
+            <label label-default="label-default" for="authUserNameImport" class="col-md-4">User Name</label>
+            <div class="col-md-8">
+                <input name="textinput" placeholder="" id="authUserNameImport" class="form-control input" type="text">
+            </div>
+        </div>
+        <div class="form-group optImport optImportForms" style="display:none;">
+            <label label-default="label-default" for="authUserPassImport" class="col-md-4">Password</label>
+            <div class="col-md-8">
+                <input name="textinput" placeholder="" id="authUserPassImport" class="form-control input" type="text">
+            </div>
+        </div>
+    </form>
+
+    <h4 class="subHeader" id="H2">Export Settings</h4>
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="allowExport">
+                        Enable Export to an External File
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group optExport">
+            <label label-default="label-default" for="importUrl" class="col-md-4">Export file location</label>
+            <div class="col-md-8">
+                <input name="textinput" placeholder="" id="Text1" class="form-control input" type="text">
+            </div>
+        </div>
+        <div class="form-group optExport">
+            <label label-default="label-default" for="selectFormat" class="col-md-4">Export Feed Format</label>
+            <div class="col-md-8">
+                <select id="select1" class="form-control">
+                    <option value="">Select a Format</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group optExport">
+            <label label-default="label-default" for="selectAuthTypeExport" class="col-md-4">Export Authentication Type</label>
+            <div class="col-md-8">
+                <select id="selectAuthTypeExport" class="form-control">
+                    <option value="-1">Select Authentication Type</option>
+                    <option value="1">Anonymous</option>
+                    <option value="2">Forms</option>
+                    <option value="3">Integrated Windows Authentication</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group optExport optExportForms" style="display:none;">
+            <label label-default="label-default" for="authUserNameExport" class="col-md-4">User Name</label>
+            <div class="col-md-8">
+                <input name="textinput" placeholder="" id="authUserNameExport" class="form-control input" type="text">
+            </div>
+        </div>
+        <div class="form-group optExport optExportForms" style="display:none;">
+            <label label-default="label-default" for="authUserPassExport" class="col-md-4">Password</label>
+            <div class="col-md-8">
+                <input name="textinput" placeholder="" id="authUserPassExport" class="form-control input" type="text">
+            </div>
+        </div>
+
+    </form>
+&nbsp;

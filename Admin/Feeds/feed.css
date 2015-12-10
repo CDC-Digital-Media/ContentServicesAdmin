@@ -1,0 +1,56 @@
+﻿.datepicker, .bootstrap-timepicker-widget {
+    z-index:1060;
+}
+
+.modal .subHeader {
+    padding-top:0px;
+    margin-top:0px;
+    border-bottom: #ddd 1px solid;
+    background-image: none;
+    padding-bottom:5px;
+    margin-bottom:10px;
+}
+
+.modal .modalSelectedValues {
+    border-bottom: #ddd 1px solid;    
+    padding-bottom:10px;
+    margin-bottom:11px;
+}
+
+.modal .modalSelectedValues ul {
+    margin-bottom:0px; 
+}
+
+.modal .validationMsg {
+    background-color:rgb(219, 105, 93);
+    color:white;
+    border-radius: 2px;
+    font-size: 9pt;
+    padding:0 8px 0 8px;
+    line-height: 19px;
+    left: 187px;
+    display: inline-block;
+}
+
+.modal .warningMsg {
+    background-color:wheat;
+    color:black;
+    border-radius: 2px;
+    font-size: 9pt;
+    padding:0 8px 0 8px;
+    line-height: 19px;
+    left: 187px;
+    display: inline-block;
+}
+
+.modal .progress{
+    margin:4px 0 0 0;
+}
+
+#feedDetail .form-group {
+    margin-bottom:0px;
+}
+
+.cgList td{
+    padding:10px 5px 10px 5px;
+}
