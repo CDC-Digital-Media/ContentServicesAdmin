@@ -6,8 +6,8 @@
     {
     	defaults:
         {
-        	feed: {},
-        	feedItem: {},
+        	series: {},
+        	podcast: {},
         	page: 1,
         	saveHandler: ''
         }
@@ -27,8 +27,8 @@
 		}
 
 		var $t = options.target;
-		var _itm = options.feedItem;
-		var _f = options.feed;
+		var _itm = options.podcast;
+		var _s = options.series;
 		var _step = eval(options.page);
 		var _isCopied = false;
 
@@ -38,7 +38,7 @@
 
 		var main = function () {
 
-			$t.load("Templates/feedItemModal.htm", function () {
+			$t.load("Templates/podcastModal.htm", function () {
 
 				if (_step == 6) {
 					$t.find(".modal-title").text("New Feed Item");
@@ -51,7 +51,7 @@
 					});
 
 					$t.find("#chooseExisting").off().click(function () {
-						_ctx.setSelectedFeed(_f.id, _f.title);
+						_ctx.setSelectedFeed(_s.id, _s.title);
 						document.location = urlRoot + "/Search/FilterMedia.htm";
 					});
 
@@ -100,7 +100,7 @@
 			}
 
 			// have to set this as it's not populated when requesting media
-			_itm.parentRelationships = [{ relatedMediaId: _f.id }];
+			_itm.parentRelationships = [{ relatedMediaId: _s.id }];
 
 			getGeneralInfo(_itm, $t);
 			getRelatedImageInfo(_itm, $t);
@@ -207,7 +207,7 @@
 			};
 
 			function saveFeedImageFromThumb(oMedia, imgSrc) {
-				oMedia.parentRelationships = [{ relatedMediaId: _f.id }];
+				oMedia.parentRelationships = [{ relatedMediaId: _s.id }];
 				oMedia.feed = {};
 				oMedia.feed.imageTitle = oMedia.title;
 				oMedia.feed.imageDescription = oMedia.description;

@@ -265,7 +265,6 @@
     <Content Include="Campaign\Templates\AddCampaign.htm" />
     <Content Include="Capture\Capture.htm" />
     <Content Include="Capture\Scripts\Admin.ExportFormatPicker.js" />
-    <Content Include="Capture\Scripts\Admin.TopicPicker.js" />
     <Content Include="Capture\Scripts\AltImageBlock.js" />
     <Content Include="Capture\Scripts\Capture.Microsite.js" />
     <Content Include="Capture\Scripts\CategoryBlock.js" />
@@ -405,6 +404,7 @@
     <Content Include="Images\logo_bug%402x.png" />
     <Content Include="Images\logo_bug.png" />
     <Content Include="Preview.htm" />
+    <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jCrop\css\Jcrop.gif" />
     <Content Include="Scripts\jCrop\css\jquery.Jcrop.css" />
     <Content Include="Scripts\jCrop\css\jquery.Jcrop.min.css" />
@@ -419,6 +419,7 @@
     <Content Include="Scripts\MagicSuggest\magicsuggest-min.js" />
     <Content Include="Scripts\MagicSuggest\magicsuggest.css" />
     <Content Include="Scripts\MagicSuggest\magicsuggest.js" />
+    <Content Include="Scripts\topSyndicated.js" />
     <Content Include="Scripts\_preview.js" />
     <Content Include="Search\FilterMedia.htm" />
     <Content Include="Images\ajax-loader.gif" />

@@ -245,12 +245,18 @@
 
 		function setupEvents() {
 
+			// in some cases, modal makes scrollbar dissapear
+			$t.on('hidden.bs.modal', function () {
+				$('body').css('overflow-y', 'scroll');
+			})
+
 			if (!_m.id) { // if no id (new feed) then close and cancel should take use back to feed list
 				$t.find('.close, #cancel, #createCancel').off().click(function () {
 					document.location = urlRoot + "/Feeds/Feeds.htm";
 					return false;
 				})
-			}
+			} 
+
 
 			$t.find('.validationMsg').hide();
 
@@ -312,6 +318,8 @@
 				});
 
 				$t.find(".modalSelectedValues:visible .btn[termId]").click();
+
+				$t.find(".glyphicon-remove:visible").click();
 
 				return false;
 			});

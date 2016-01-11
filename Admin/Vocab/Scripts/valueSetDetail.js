@@ -21,6 +21,9 @@
         var selectedTermName = '';
         var selectedTerm = '';
         var $detailContent;
+        var languages = [];
+        var valueSets = [];
+
 
         // event handlers
         var termSelectHandler = function (term, relatedTermSelectHandler, updatehandler, hideHandler) {
@@ -29,7 +32,9 @@
                 term: term,
                 relatedTermSelectHandler: relatedTermSelectHandler,
                 updateHandler: updatehandler,
-                hideHandler: hideHandler
+                hideHandler: hideHandler,
+                valueSets: valueSets,
+                languages: languages
             });
         };
 
@@ -172,7 +177,15 @@
             selectedTerm = '';
         };
 
-        main();
+		// load dependencies then run main
+        CDC.Admin.Lookup.getLanguages(function (results) {
+        	languages = results;
+        	CDC.Admin.Lookup.getValueSets(function (response) {
+        		valueSets = response.results;
+        		main();
+        	});
+        });
+        
 
     };
 

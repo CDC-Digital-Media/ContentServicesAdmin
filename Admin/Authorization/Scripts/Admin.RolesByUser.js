@@ -129,7 +129,6 @@
                 });
 
             });
-
         }
 
         function buildRoleDropdown(sender) {
@@ -166,8 +165,8 @@
 
                 btnAddRole.parent().append(html.join(''));
 
-                $(options.target).find("#btnSave").click(function () {
-                    submitUserRoles(event.target);
+                $("#btnSave").click(function () {
+                    submitUserRoles($(this));
                 });
 
             }).error(function (xhr, ajaxOptions, thrownError) {
@@ -194,15 +193,9 @@
             });
             if (result.length === 1) {
                 var user = result[0];
-                var userName;
                 console.log(user);
 
-                if (user.userName.startsWith("CDC\\")) {
-                    userName = user.userName.substring(4);
-                }
-                else {
-                    userName = user.userName;
-                }
+                var userName = trimPrefix(user.userName, "CDC\\");
 
                 console.log(userName);
 

@@ -87,7 +87,7 @@ namespace Admin
         public static string UpdateImportFeed(string apiUrl)
         {
             string dummyData = string.Empty;
-            return makeCall(ref dummyData, apiUrl, RequestMethods.PUT);
+            return makeCall(ref dummyData, apiUrl, RequestMethods.PUT, 20);
         }
 
         [WebMethod()]
@@ -159,13 +159,13 @@ namespace Admin
         [WebMethod()]
         public static string GetCurrentUserInfo(string apiURL)
         {
-            var root = GetAPIRoot(); //"https://.....[devReportingApplicationServer2]...../adminapi";
+            //var root = GetAPIRoot(); //"https://.....[devReportingApplicationServer2]...../adminapi";
             var currentUser = HttpContext.Current.Request.LogonUserIdentity.Name;
             if (currentUser.StartsWith("CDC\\"))
             {
                 currentUser = currentUser.Substring(4);
             }
-            var url = root + apiURL.Replace("adminusers/", "adminusers/" + currentUser);
+            var url = apiURL.Replace("adminusers/", "adminusers/" + currentUser);
             return makeCall(url);
         }
 
@@ -530,6 +530,7 @@ namespace Admin
                 get
                 {
                     var userId = UserName;
+                    if (userId == null) return string.Empty;
                     if (userId.StartsWith("CDC\\"))
                     {
                         userId = userId.Substring(4);
@@ -573,14 +574,20 @@ namespace Admin
             return response;
         }
 
-        private static string makeCall(ref string data, string apiUrl, RequestMethods method)
+        private static string makeCall(ref string data, string apiUrl, RequestMethods method, int? timeoutSeconds)
         {
             //data = data.Replace("\\u0027", "'");
 
             string response = string.Empty;
-            var webClient = new WebClient();            
-            webClient.Encoding = System.Text.Encoding.UTF8;
-            //webClient.Headers.Add("admin_user", HttpContext.Current.User.Identity.Name);
+            WebClientEx webClient = new WebClientEx();
+            if (timeoutSeconds != null)
+            {
+                webClient.Timeout = (int)timeoutSeconds * 1000;
+            } else {
+                webClient.Timeout = 15000; // set default to 15 seconds
+            }
+            
+            webClient.Encoding = System.Text.Encoding.UTF8;            
             webClient.Headers.Add("admin_user", HttpContext.Current.Request.LogonUserIdentity.Name);
             webClient.Headers.Add("Authorization", GetAuthorizationHeader(ref webClient, apiUrl, method.ToString(), data));
 
@@ -604,13 +611,18 @@ namespace Admin
 
         }
 
+        private static string makeCall(ref string data, string apiUrl, RequestMethods method)
+        {
+            return makeCall(ref data, apiUrl, method, null);
+        }
+
         //for testing purpose only, accept any dodgy certificate... 
         public static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
             return true;
         }
 
-        private static string GetAuthorizationHeader(ref WebClient request, string url, string method, string requestBody)
+        private static string GetAuthorizationHeader(ref WebClientEx request, string url, string method, string requestBody)
         {
             AuthorizationHeaderGenerator.KeyAgreement keyAgreement = new AuthorizationHeaderGenerator.KeyAgreement();
             keyAgreement.publicKey = ConfigurationManager.AppSettings["API_PublicKey"];
@@ -645,4 +657,17 @@ namespace Admin
             }
         }
     }
+
+    public class WebClientEx : WebClient
+    {
+        public int Timeout { get; set; }
+
+        protected override WebRequest GetWebRequest(Uri address)
+        {
+            var request = base.GetWebRequest(address);
+            request.Timeout = Timeout;
+            return request;
+        }
+    }
+
 }

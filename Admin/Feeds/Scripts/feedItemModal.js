@@ -233,6 +233,12 @@
 
 		function setupEvents() {
 
+			// in some cases, modal makes scrollbar dissapear
+			$t.on('hidden.bs.modal', function () {
+				$('body').css('overflow-y', 'scroll');
+			})
+
+
 			$t.find('.validationMsg').hide();
 
 			generalInfoEvents($t);
@@ -254,7 +260,7 @@
 
 			$t.find("#clear").off().click(function () {
 
-				$t.find("input:visible, textarea:visible").not('input:radio, #publishDate, #timepicker1').val("");
+				$t.find("input:visible, textarea:visible").not('input:radio, #publishDate, #timepicker1, input:button').val("");
 
 				$t.find("#publishDate").datepicker("setValue", new Date());
 				$t.find('#timepicker1').timepicker('setTime', formatAMPM(new Date()));
@@ -267,6 +273,10 @@
 				});
 
 				$t.find(".modalSelectedValues:visible .btn[termId]").click();
+
+				$t.find(".glyphicon-remove:visible").click();
+
+				$t.find("#selectContinent:visible").val("6255149");
 
 				return false;
 			});

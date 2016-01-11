@@ -47,7 +47,7 @@
             if (isIE()) {
             	pgHolder.push('<div class="pagination_total form-group">Total Items (' + options.count + ') </div>');
             } else {
-            	pgHolder.push('<div class="pagination_total form-group"><a href="#" id="toCsv"><img src="/Images/excelIcon.png"></a><br>Total Items (' + options.count + ') </div>');
+            	pgHolder.push('<div class="pagination_total form-group"><a href="#" id="toCsv"><img src="../Images/excelIcon.png"></a><br>Total Items (' + options.count + ') </div>');
             }
             
             pgHolder.push('<ul class="pagination form-group">');

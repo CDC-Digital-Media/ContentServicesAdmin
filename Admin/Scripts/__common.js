@@ -15,11 +15,10 @@ var getWebFolder = function () {
 	var webFolder = '';
 
 	if (
-    document.location.toString().toLowerCase().indexOf('//.....[productionAdminServer].....') > -1
-    || document.location.toString().toLowerCase().indexOf('//.....[devReportingApplicationServer2].....') > -1
-    || document.location.toString().toLowerCase().indexOf('//.....[testReportingApplicationServer2].....') > -1
-    || document.location.toString().toLowerCase().indexOf('//oadc-dmb-stage-.....[productionAdminServer].....') > -1
-    ) {
+    document.location.toString().toLowerCase().indexOf('//.....[productionAdminServer].....') > -1 ||
+		document.location.toString().toLowerCase().indexOf('//.....[devReportingApplicationServer2].....') > -1 ||
+		document.location.toString().toLowerCase().indexOf('//.....[testReportingApplicationServer2].....') > -1 ||
+		document.location.toString().toLowerCase().indexOf('//oadc-dmb-stage-.....[productionAdminServer].....') > -1){
 		webFolder = 'medialibraryadmin';
 	}
 	else if (document.location.toString().toLowerCase().indexOf('test_admin') > -1) {
@@ -33,7 +32,7 @@ var getWebFolder = function () {
 	}
 
 	return webFolder;
-}
+};
 
 var loadConfigValues = function (postProcess) {
 
@@ -71,7 +70,7 @@ var loadConfigValues = function (postProcess) {
 				console.debug(xhr.responseText);
 			}
 		});
-	}
+	};
 
 	loadConfigValues();
 
@@ -154,7 +153,7 @@ CDC.Admin.Global = {
 
 		// filter parms ////////////////////
 		setFilterMediaId: function (FilterMediaId) {
-			if (FilterMediaId != '') {
+			if (FilterMediaId !== '') {
 				this.FilterLoaded = true;
 			}
 			this.Filter.MediaId = FilterMediaId;
@@ -180,7 +179,7 @@ CDC.Admin.Global = {
 		},
 
 		setFilterUrl: function (FilterUrl) {
-			if (FilterUrl != '') {
+			if (FilterUrl !== '') {
 				this.FilterLoaded = true;
 			}
 			this.Filter.Url = FilterUrl;
@@ -196,7 +195,7 @@ CDC.Admin.Global = {
 		},
 
 		setFilterPersistentUrlKey: function (FilterPersistentUrlKey) {
-			if (FilterPersistentUrlKey != '') {
+			if (FilterPersistentUrlKey !== '') {
 				this.FilterLoaded = true;
 			}
 			this.Filter.PersistentUrlKey = FilterPersistentUrlKey;
@@ -347,7 +346,7 @@ CDC.Admin.Global = {
 function getCurrentContext(c) {
 	var o;
 	var stored = $.cookie("ContentServicesAdminContext");
-	if (stored != null && stored !== '') {
+	if (stored !== null && stored !== '') {
 		o = jQuery.parseJSON(stored);
 
 		c.NavTarget = o.NavTarget;
@@ -392,7 +391,7 @@ _ctx = CDC.Admin.Global.ctx;
 function getCurrentCache(c) {
 	var o;
 	var stored = $.cookie("ContentServicesAdminCache");
-	if (stored != null && stored !== '') {
+	if (stored !== null && stored !== '') {
 		o = jQuery.parseJSON(stored);
 		c.languages = o.languages;
 		c.sources = o.sources;
@@ -419,8 +418,8 @@ CDC.Admin.Collection = {
 			}
 		};
 
-		CDC.Admin.Media.getMedia(collectionId, function (oMedia) {
-			if (oMedia.childRelationships != null && oMedia.childRelationships instanceof Array) {
+		CDC.Admin.Media.getMedia(collectionId, function (oMedia) {			
+			if (oMedia.childRelationships !== null && oMedia.childRelationships instanceof Array) {
 				oMedia.childRelationships.push({ relatedMediaId: mediaId, displayOrdinal: 0 });
 				CDC.Admin.Media.saveMedia(oMedia, handleCallback);
 			} else {
@@ -433,14 +432,14 @@ CDC.Admin.Collection = {
 
 		var handleCallback = function (oMedia) {
 			_ctx.SelectedCollection.aValues = jQuery.grep(_ctx.SelectedCollection.aValues, function (value) {
-				return value != eval(mediaId);
+				return value !== eval(mediaId);
 			});
 			var func = callBack;
 			if (typeof func === 'function') { func(oMedia); }
 		};
 
 		CDC.Admin.Media.getMedia(collectionId, function (oMedia) {
-			if (oMedia.childRelationships != null && oMedia.childRelationships instanceof Array) {
+			if (oMedia.childRelationships !== null && oMedia.childRelationships instanceof Array) {
 
 				var child = $.grep(oMedia.childRelationships, function (itm, idx) { return itm.relatedMediaId == mediaId; })[0];
 
@@ -463,7 +462,7 @@ CDC.Admin.Collection = {
 		};
 
 		CDC.Admin.Media.getMedia(collectionId, function (oMedia) {
-			if (oMedia.childRelationships != null && oMedia.childRelationships instanceof Array) {
+			if (oMedia.childRelationships !== null && oMedia.childRelationships instanceof Array) {
 				oMedia.childRelationships = aRelationships;
 				CDC.Admin.Media.saveMedia(oMedia, handleCallback);
 			} else {
@@ -475,34 +474,43 @@ CDC.Admin.Collection = {
 };
 
 CDC.Admin.Media = CDC.Admin.Media || {};
-
 CDC.Admin.Media = {
-	getMedia: function (mediaId, callBack) {
+	getMedia: function (id, postProcess) {
+
+		function handlePostProcess(response) { var func = postProcess; if (typeof func === 'function') { func(response); } }
+
+		var url = APIRoot + "/adminapi/v1/resources/media/" + id;
+		_getJsonP(url, {}, function (response) {
+			var results = response.results;
+			if (results.length !== 1) {
+				alert("Expected single media item, received " + results.length);
+				return;
+			}
+			handlePostProcess(response.results[0]);
+		});
+	},
+	saveMedia: function (oMedia, callBack) {
 
 		function handleCallback(oMedia) {
 			var func = callBack;
 			if (typeof func === 'function') { func(oMedia); }
 		}
 
-		var url = APIRoot + "/adminapi/v1/resources/media/" + mediaId + "/?callback=?";
+		// clearing attribution and tag name values in order to
+		// hack around issue saving media object that migh potentially
+		// have special (spanish) characters in these fields.
+		// -- fails validation on api side.
+		oMedia.attribution = "";
+		oMedia.children = [];
+		oMedia.title = replaceWordChars(oMedia.title);
+		oMedia.description = replaceWordChars(oMedia.description);
 
-		$.ajax({
-			url: url,
-			dataType: 'jsonp'
-		}).done(function (response) {
-			handleCallback(response.results[0]);
-		}).fail(function (xhr, ajaxOptions, thrownError) {
-			console.debug(xhr.status);
-			console.debug(xhr.responseText);
-			console.debug(thrownError);
-		});
-	},
-
-	saveMedia: function (oMedia, callBack) {
-
-		function handleCallback(oMedia) {
-			var func = callBack;
-			if (typeof func === 'function') { func(oMedia); }
+		for (var prop in oMedia.tags) {
+			if (oMedia.tags.hasOwnProperty(prop) && $.isArray(oMedia.tags[prop])) {
+				$(oMedia.tags[prop]).each(function (i, o) {
+					o.name = '';
+				});
+			}
 		}
 
 		var localUrl = urlRoot + "/Secure.aspx/" + (oMedia.id ? 'UpdateMedia' : 'SaveMedia');
@@ -529,121 +537,136 @@ CDC.Admin.Media = {
 	}
 };
 
-
 CDC.Admin.User = CDC.Admin.User || {};
-
 CDC.Admin.User = {
 	getNetworkUser: function (callback) {
 
-		function handleCallback(user) {
-			var func = callback;
-			if (typeof func === 'function') { func(user); }
-		}
+		function handleCallback(user) {var func = callback; if (typeof func === 'function') { func(user); }}
 
 		if (!$.isEmptyObject(_ctx.UserInfo)) {
 			handleCallback(_ctx.UserInfo); return;
-		}
-		else {
+		} else {
 			$().showSpinner();
 		}
 
-		var userInfoUrl = "/adminapi/v1/resources/adminusers/";
+		var data = "{'apiURL': '" + APIRoot + "/adminapi/v1/resources/adminusers/'}";
+		var url = urlRoot + "/Secure.aspx/GetCurrentUserInfo";
+
+		_getSecureJsonP(url, data,
+			function (response) {
+				var obj = $.parseJSON(response.d).results[0];
+				_ctx.setUserInfo(obj);
+				handleCallback(obj);
+				$().hideSpinner();
+			},
+			function(){
+				$().hideSpinner();
+			}
+		)
+	}
+};
+
+CDC.Admin.Lookup = CDC.Admin.Lookup || {};
+CDC.Admin.Lookup = {
+	getValuesForValueSet: function (valueSetId, postProcess) {
+
+		var url = APIRoot + '/adminapi/v1/resources/valuesets/' + valueSetId + '.json/?max=0&callback=?';
+		_getJsonP(url, {}, postProcess);
+
+	},
+	getValueSets: function (postProcess) {
+
+		var url = APIRoot + "/adminapi/v1/resources/valuesets.json?max=0&callback=?";
+		_getJsonP(url, {}, postProcess);
+
+	},
+	getLanguages: function (postProcess) {
+		if (!$.isEmptyObject(CDC.Admin.Global.cache.languages)) {
+			postProcess(CDC.Admin.Global.cache.languages);
+			return;
+		}
+		var url = APIRoot + "/adminapi/v1/resources/languages.json?callback=?";
+		_getJsonP(url, {}, function (response) {
+			CDC.Admin.Global.cache.setLanguages(response.results);
+			postProcess(response.results);
+		});
+	},
+	addValueRelationship: function (termId, oRel, onSuccess, onError) {
+		function handleSuccess(termData) {
+			var func = onSuccess;
+			if (typeof func === 'function') { func(termData); }
+		}
+
+		function handleError(response) {
+			var func = onError;
+			if (typeof func === 'function') { func(response); }
+		}
+
+		var url = APIRoot + '/adminapi/v1/resources/values/';
+		url += termId;
+		url += '/addRelationships';
+
+		var localUrl = urlRoot + "/Secure.aspx/UpdateTerm";
+		var call = JSON.stringify({ "data": JSON.stringify(oRel), "apiUrl": url });
 
 		$.ajax({
 			type: "POST",
-			url: urlRoot + "/Secure.aspx/GetCurrentUserInfo",
-			data: "{'apiURL': '" + userInfoUrl + "'}",
+			url: localUrl,
+			data: call,
 			contentType: "application/json; charset=utf-8",
-			dataType: "json",
-			success: function (response) {
-				var obj = $.parseJSON(response.d);
-				_ctx.setUserInfo(obj.results[0]);
-				handleCallback(obj.results[0]);
-				$().hideSpinner();
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				console.debug(xhr.status);
-				console.debug(thrownError);
-				console.debug(xhr.responseText);
-				$().hideSpinner();
-			}
-		});
-	}
-};
-
-
-CDC.Admin.Lookup = {
-	GetLanguages: function (postProcess) {
-
-		function handlePostProcess(results) {
-			var func = postProcess;
-			if (typeof func === 'function') {
-				func(results);
-			}
-		}
-
-		if (!$.isEmptyObject(CDC.Admin.Global.cache.languages)) {
-			handlePostProcess(CDC.Admin.Global.cache.languages);
-			return;
-		}
-
-		var url = APIRoot + "/adminapi/v1/resources/languages.json?callback=?";
-
-		$.ajax({
-			url: url,
-			dataType: "jsonp"
+			dataType: "json"
 		}).done(function (response) {
-
-			CDC.Admin.Global.cache.setLanguages(response.results);
-			handlePostProcess(response.results);
-
+			handleSuccess(JSON.parse(response.d).results[0]);
 		}).fail(function (xhr, ajaxOptions, thrownError) {
 			console.debug(xhr.status);
-			console.debug(thrownError);
 			console.debug(xhr.responseText);
-			$("#apiError").show();
+			console.debug(thrownError);
+			handleError(response);
+		});
+	},
+	deleteValueRelationship: function (termId, oRel, onSuccess, onError) {
+		function handleSuccess(termData) {
+			var func = onSuccess;
+			if (typeof func === 'function') { func(termData); }
+		}
+
+		function handleError(response) {
+			var func = onError;
+			if (typeof func === 'function') { func(response); }
+		}
+
+		var url = APIRoot + '/adminapi/v1/resources/values/';
+		url += termId;
+		url += '/deleteRelationships';
+
+		var localUrl = urlRoot + "/Secure.aspx/UpdateTerm";
+		var call = JSON.stringify({ "data": JSON.stringify(oRel), "apiUrl": url });
+
+		$.ajax({
+			type: "POST",
+			url: localUrl,
+			data: call,
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function (response) {
+			handleSuccess(JSON.parse(response.d).results[0]);
+		}).fail(function (xhr, ajaxOptions, thrownError) {
+			console.debug(xhr.status);
+			console.debug(xhr.responseText);
+			console.debug(thrownError);
+			handleError(response);
 		});
 	}
 };
 
+CDC.Admin.Capture = CDC.Admin.Capture || {};
 CDC.Admin.Capture = {
-	loadMediaData: function (id, postProcess) {
 
-		function handlePostProcess(oMedia) {
-			var func = postProcess;
-			if (typeof func === 'function') {
-				func(oMedia);
-			}
-		}
-
-		var url = APIRoot + "/adminapi/v1/resources/media/" + id;
-
-		$.ajax({
-			url: url,
-			dataType: 'jsonp'
-		}).done(function (response) {
-			var results = response.results;
-			if (results.length !== 1) {
-				alert("Expected media item, received " + results.length);
-				return;
-			}
-
-			handlePostProcess(results[0]);
-		})
-        .fail(function (xhr, ajaxOptions, thrownError) {
-        	console.debug(xhr.status);
-        	console.debug(thrownError);
-        	console.debug(xhr.responseText);
-        	$("#apiError").show();
-        });
-
-	},
 	saveMediaData: function (media, onSuccess, onError) {
 
 		// lets clean up some stuff -
 		media.title = replaceWordChars(media.title);
 		media.description = replaceWordChars(media.description);
-
 
 		function successHandler(oMedia, blnRunThumbnail) {
 			var func = onSuccess;
@@ -678,7 +701,7 @@ CDC.Admin.Capture = {
 			},
 			success: function (response) {
 				var obj = (typeof response.d) === 'string' ? eval('(' + response.d + ')') : response.d;
-				if (obj.meta.status != 200) {
+				if (obj.meta.status !== 200) {
 					errorHandler(obj.meta.message);
 				}
 				else {
@@ -694,182 +717,81 @@ CDC.Admin.Capture = {
 		});
 	},
 	saveAltImageFromUrl: function (imageUrl, mediaid, height, width, name, type, postProcess) {
-		function handleCallback(response) {
-			var func = postProcess;
-			if (typeof func === 'function') {
-				func(response);
-			}
-		}
+		function handleCallback(response) { var func = postProcess; if (typeof func === 'function') { func(response); } }
 
-		var apiUrl = APIRoot + "/adminapi/v1/resources/links";
+		var url = urlRoot + '/Capture/Upload.ashx';
 		var formData = new window.FormData();
 		formData.append("mediaId", mediaid);
 		formData.append("height", height);
 		formData.append("width", width);
 		formData.append("name", name);
 		formData.append("type", type);
-		formData.append("apiUrl", apiUrl);
+		formData.append("apiUrl", APIRoot + "/adminapi/v1/resources/links");
 		formData.append("filePath", imageUrl);
 
-		$.ajax({
-			url: urlRoot + '/Capture/Upload.ashx',
-			data: formData,
-			processData: false,
-			contentType: false,
-			type: 'POST',
-			success: function (response) {
-
-				if (response.d == "File size too large") {
-					alert('File size cannot be greater than .5 MB : ' + filePath);
-				}
-				if (response.toLowerCase().indexOf('error:') > -1) {
-					alert(response)
-				}
-				else {
-					handleCallback(response);
-				}
-
-
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				console.debug(xhr.status);
-				console.debug(thrownError);
-				console.debug(xhr.responseText);
+		_postToWebMethod(url, formData,
+			function (response) {
+				if (response.d == "File size too large") { alert('File size cannot be greater than .5 MB : ' + filePath); }
+				if (response.toLowerCase().indexOf('error:') > -1) { alert(response) }
+				else { handleCallback(response); }
 			}
-		});
+		);
 	},
 	saveAltImage: function ($filePicker, filePath, mediaid, height, width, name, type, postProcess) {
 
-		function handleCallback(response) {
-			var func = postProcess;
-			if (typeof func === 'function') {
-				func(response);
-			}
-		}
+		function handleCallback(response) { var func = postProcess; if (typeof func === 'function') { func(response); } }
 
-		// http:/ / stackoverflow.com / questions / 17109357 / file - upload - using - jquery - ajax - and - asp - net - handler
-
-		var url = APIRoot + "/adminapi/v1/resources/links";
-
-
+		var url = urlRoot + '/Capture/Upload.ashx';
 		var fileInput = $filePicker
-		var fileData = fileInput.prop("files")[0];   // Getting the properties of file from file field
-		var formData = new window.FormData();                  // Creating object of FormData class
-		formData.append("file", fileData); // Appending parameter named file with properties of file_field to form_data
+		var fileData = fileInput.prop("files")[0];  // Getting the properties of file from file field
+		var formData = new window.FormData();       // Creating object of FormData class
+		formData.append("file", fileData);			// Appending parameter named file with properties of file_field to form_data
 		formData.append("mediaId", mediaid);
 		formData.append("height", height);
 		formData.append("width", width);
 		formData.append("name", name);
 		formData.append("type", type);
-		formData.append("apiUrl", url);
+		formData.append("apiUrl", APIRoot + "/adminapi/v1/resources/links");
 		formData.append("filePath", filePath);
 
-		$.ajax({
-			url: urlRoot + '/Capture/Upload.ashx',
-			data: formData,
-			processData: false,
-			contentType: false,
-			type: 'POST',
-			success: function (response) {
-
-				if (response.d == "File size too large") {
-					alert('File size cannot be greater than .5 MB : ' + filePath);
-				}
-				if (response.toLowerCase().indexOf('error:') > -1) {
-					alert(response)
-				}
-				else {
-					handleCallback(response);
-				}
-
-
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				console.debug(xhr.status);
-				console.debug(thrownError);
-				console.debug(xhr.responseText);
+		_postToWebMethod(url, formData,
+			function (response) {
+				if (response.d == "File size too large") { alert('File size cannot be greater than .5 MB : ' + filePath); }
+				if (response.toLowerCase().indexOf('error:') > -1) { alert(response) }
+				else { handleCallback(response); }
 			}
-		});
+		);
 
 	},
 	testAltImage: function ($filePicker, filePath, postProcess) {
 
-		function handleCallback(data) {
-			var func = postProcess;
-			if (typeof func === 'function') {
-				func(data);
+		function handleCallback(response) { var func = postProcess; if (typeof func === 'function') { func(response); } }
+
+		var url = urlRoot + '/Feeds/FileTest.ashx';
+		var fileInput = $filePicker;
+		var fileData = fileInput.prop("files")[0];  // Getting the properties of file from file field
+		var formData = new window.FormData();       // Creating object of FormData class
+		formData.append("file", fileData);			// Appending parameter named file with properties of file_field to form_data
+
+		_postToWebMethod(url, formData,
+			function (response) {
+				if (response.d == "File size too large") { alert('File size cannot be greater than .5 MB : ' + filePath); }
+				if (response.toLowerCase().indexOf('error:') > -1) { alert(response) }
+				else { handleCallback(response); }
 			}
-		}
-
-		// http:/ / stackoverflow.com / questions / 17109357 / file - upload - using - jquery - ajax - and - asp - net - handler
-
-		var url = APIRoot + "/adminapi/v1/resources/links";
-
-
-		var fileInput = $filePicker
-		var fileData = fileInput.prop("files")[0];   // Getting the properties of file from file field
-		var formData = new window.FormData();                  // Creating object of FormData class
-		formData.append("file", fileData); // Appending parameter named file with properties of file_field to form_data
-
-		$.ajax({
-			url: urlRoot + '/Feeds/FileTest.ashx',
-			data: formData,
-			processData: false,
-			contentType: false,
-			type: 'POST',
-			success: function (response) {
-
-				if (response.d == "File size too large") {
-					alert('File size cannot be greater than .5 MB : ' + filePath);
-				}
-				if (response.toLowerCase().indexOf('error:') > -1) {
-					alert(response)
-				}
-				else {
-					handleCallback(response);
-				}
-
-
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				console.debug(xhr.status);
-				console.debug(thrownError);
-				console.debug(xhr.responseText);
-			}
-		});
+		);
 
 	},
 	loadAltImageData: function (id, postProcess) {
-
-		function handlePostProcess(oMedia) {
-			var func = postProcess;
-			if (typeof func === 'function') {
-				func(oMedia);
-			}
-		}
-
-		var apiURL = APIRoot + "/adminapi/v1/resources/media/" + id;
-
-		$.ajax({
-			url: apiURL,
-			dataType: 'jsonp'
-		}).done(function (response) {
-			handlePostProcess(response.results[0].alternateImages);
-		})
-        .fail(function (xhr, ajaxOptions, thrownError) {
-        	console.debug(xhr.status);
-        	console.debug(thrownError);
-        	console.debug(xhr.responseText);
-        });
-
+		var url = APIRoot + "/adminapi/v1/resources/media/" + id;
+		_getJsonP(url, {}, function (response) {
+			postProcess(response.results[0].alternateImages);
+		});
 	},
 	getFileSize: function (url, postProcess) {
 
 		var j = { "url": url };
-
-		var call = JSON.stringify(j);
-
-		console.debug(call);
+		var data = JSON.stringify(j);
 
 		$.ajax({
 			type: "POST",
@@ -932,12 +854,19 @@ CDC.Admin.Capture = {
         });
 
 	},
-	updateImportFeed: function (url, mediaId, postProcess) { //temp
+	updateImportFeed: function (url, mediaId, postProcess, interimProcess) { //temp
 
 		function handlePostProcess(count) {
 			var func = postProcess;
 			if (typeof func === 'function') {
 				func(count);
+			}
+		}
+
+		function handleInterim(current, total) {
+			var func = interimProcess;
+			if (typeof func === 'function') {
+				func(current, total);
 			}
 		}
 
@@ -958,7 +887,19 @@ CDC.Admin.Capture = {
 			if ($.parseJSON(response.d).meta.status == 408) {
 				interim();
 			} else {
-				handlePostProcess(response.results.length);
+				// get currently processed count
+				var out = $.grep(response.results, function (itm) { return itm.extendedAttributes.LastImport == timestamp });
+				if (out && out.length > 0) {
+					if (out[0].extendedAttributes && out[0].extendedAttributes.ImportCount) {
+						var countString = out[0].extendedAttributes.ImportCount;
+						var countArr = countString.split(" of ");
+						if (countArr.length > 0) {
+							var current = countArr[0];
+							var count = countArr[1];
+							handlePostProcess(count + " items processed.");
+						}
+					}					
+				}
 			}
 		})
         .fail(function (xhr, ajaxOptions, thrownError) {
@@ -969,28 +910,32 @@ CDC.Admin.Capture = {
         });
 
 		function interim() {
-			CDC.Admin.Capture.loadChildItems(feedItemUrl, function (response) {
+			CDC.Admin.Capture.loadChildItems(feedItemUrl, function (response) {				
+
 				var out = $.grep(response.results, function (itm) { return itm.extendedAttributes.LastImport == timestamp });
 				if (out && out.length > 0) {
 					if (out[0].extendedAttributes && out[0].extendedAttributes.ImportCount) {
 						var countString = out[0].extendedAttributes.ImportCount;
 						var countArr = countString.split(" of ");
 						if (countArr.length > 0) {
-							var current = countArr[0];
-							var count = countArr[1];
+							var current = parseInt(countArr[0]);
+							var count = parseInt(countArr[1]);
 							if (current >= count) {
-								handlePostProcess(count);
+								console.log('current:' + current + " total:" + count);
+								handlePostProcess(count + " items processed.");
 							} else {
-								setTimeout(interim, 1000);
+								console.log('current:' + current + " total:" + count);
+								handleInterim(current + " of " + count + " items processed.");
+								setTimeout(interim, 3000);
 							}
 						} else {
-							handlePostProcess(response.results.length);
+							handlePostProcess("No new items found");
 						}
 					} else {
-						handlePostProcess(response.results.length);
+						handlePostProcess("No new items found");
 					}
 				} else {
-					handlePostProcess(response.results.length);
+					handlePostProcess("No new items found");
 				}
 			});
 		}
@@ -1020,6 +965,66 @@ CDC.Admin.Capture = {
 
 	}
 }
+
+
+
+// function to process API and webmethod calls
+function _getJsonP(url, params, callback) {
+	function handleCallback(response) { var func = callback; if (typeof func === 'function') { func(response); } }
+	$.ajax({
+		url: url,
+		dataType: 'jsonp'
+	}).done(function (response) {
+		handleCallback(response);
+	}).fail(function (xhr, ajaxOptions, thrownError) {
+		console.debug(xhr.status);
+		console.debug(xhr.responseText);
+		console.debug(thrownError);
+	});
+}
+
+// function to process API and webmethod calls
+function _getSecureJsonP(url, data, onSuccess, onError) {
+
+	function handleSuccess(response) { var func = onSuccess; if (typeof func === 'function') { func(response); } }
+	function handleError() { var func = onError; if (typeof func === 'function') { func(); } }
+
+	$.ajax({
+		type: "POST",
+		url: url,		
+		data: data,
+		contentType: "application/json; charset=utf-8",
+		dataType: "json"
+	}).done(function (response) {
+		handleSuccess(response);
+	}).fail(function (xhr, ajaxOptions, thrownError) {
+		console.debug(xhr.status);
+		console.debug(xhr.responseText);
+		console.debug(thrownError);
+		handleError();
+	});
+}
+
+function _postToWebMethod(url, data, onSuccess) {
+	function handleSuccess(response) { var func = onSuccess; if (typeof func === 'function') { func(response); } }
+	$.ajax({
+		url: url,
+		data: data,
+		processData: false,
+		contentType: false,
+		type: 'POST',
+		success: function (response) {
+			handleSuccess(response);
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.debug(xhr.status);
+			console.debug(thrownError);
+			console.debug(xhr.responseText);
+		}
+	});
+}
+
+
 
 CDC.Admin.scrolltoFirstError = function () {
 	$('html, body').animate({
@@ -1100,37 +1105,6 @@ console.debug = console.debug || console.log;
 			else {
 				options.target.find(".progressIndicator").remove();
 			}
-		}
-	};
-
-})(jQuery);
-
-(function ($) {
-	var PLUGIN_NAME = 'setupRatings';
-
-	// plugin signature ///////////////////////
-	$[PLUGIN_NAME] =
-    {
-    	defaults: {}
-    };
-
-	// main funtion //////////////////////////
-	$.fn[PLUGIN_NAME] = function (options) {
-
-		$[PLUGIN_NAME].defaults.target = this;
-		options = $.extend({}, $[PLUGIN_NAME].defaults, options);
-
-		main();
-
-		function main() {
-			options.target.find(".ratingBlock").each(function () {
-				$(this).empty();
-				$(this).csRatings({
-					appID: 'a527f0a4-8909-41c4-bed7-e50765520062',
-					restfulServiceUrl: 'http://.....[devStorefrontServer]...../.....[RatingServiceLocation].....',
-					ratingMechanismId: 1
-				});
-			});
 		}
 	};
 
@@ -1272,23 +1246,20 @@ if (!String.format) {
 	String.format = function (format) {
 		var args = Array.prototype.slice.call(arguments, 1);
 		return format.replace(/{(\d+)}/g, function (match, number) {
-			return typeof args[number] != 'undefined'
-              ? args[number]
-              : match
-			;
+			return typeof args[number] !== 'undefined' ? args[number] : match;
 		});
 	};
 }
 
 function showMessage(type, userMessage) {
 	var $container = $('.showMessage');
-
+	var messageBlock;
 	switch (type) {
 		case 'success':
-			var messageBlock = '<div class="alert alert-success" style="display:none;" role="alert"><span class="glyphicon glyphicon-ok"></span> ' + userMessage + '</div>';
+			messageBlock = '<div class="alert alert-success" style="display:none;" role="alert"><span class="glyphicon glyphicon-ok"></span> ' + userMessage + '</div>';
 			break;
 		case 'fail':
-			var messageBlock = '<div class="alert alert-danger" style="display:none;" role="alert"><span class="glyphicon glyphicon-ok"></span> ' + userMessage + '</div>';
+			messageBlock = '<div class="alert alert-danger" style="display:none;" role="alert"><span class="glyphicon glyphicon-ok"></span> ' + userMessage + '</div>';
 			break;
 	}
 
@@ -1307,11 +1278,11 @@ function formatFileSize(fileSizeInBytes) {
 	} while (fileSizeInBytes > 1024);
 
 	return Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
-};
+}
 
 function combineDateTime(datePart, timePart) {
 	var dUtc = "";
-	if (datePart != "" && timePart != "") {
+	if (datePart !== "" && timePart !== "") {
 		var time = timePart.split(" ")[0];
 		var hours = time.split(":")[0];
 		var minutes = time.split(":")[1];
@@ -1319,7 +1290,7 @@ function combineDateTime(datePart, timePart) {
 		if (timePart.split(" ")[1] === 'PM')
 		{ hours = eval(hours) + 12; }
 
-		if (datePart != "") {
+		if (datePart !== "") {
 			try {
 				var d = new Date(datePart);
 				d.setHours(hours);
@@ -1348,7 +1319,7 @@ function formatAMPM(date) {
 
 function convertToZDate(publishDate, publishTime) {
 	var dUtc = "";
-	if (publishDate != "" && publishTime != "") {
+	if (publishDate !== "" && publishTime !== "") {
 		var time = publishTime.split(" ")[0];
 		var hours = time.split(":")[0];
 		var minutes = time.split(":")[1];
@@ -1356,7 +1327,7 @@ function convertToZDate(publishDate, publishTime) {
 		if (publishTime.split(" ")[1] === 'PM')
 		{ hours = eval(hours) + 12; }
 
-		if (publishDate != "") {
+		if (publishDate !== "") {
 			try {
 				var d = new Date(publishDate);
 				d.setHours(hours);
@@ -1385,7 +1356,7 @@ function isValidEmailFormat(email) {
 }
 
 
-function isDate(e, t, r, n, a) { try { var i = void 0 !== r ? r : 1, l = void 0 !== n ? n : 0, g = void 0 !== a ? a : 2; e = e.replace(/-/g, "/").replace(/\./g, "/"); var v = e.split(t || "/"), h = !0; if (1 != v[i].length && 2 != v[i].length && (h = !1), h && 1 != v[l].length && 2 != v[l].length && (h = !1), h && 4 != v[g].length && (h = !1), h) { var p = parseInt(v[i], 10), c = parseInt(v[l], 10), s = parseInt(v[g], 10); if ((h = s > 1900) && (h = 12 >= c && c > 0)) { var o = s % 4 == 0 && s % 100 != 0 || s % 400 == 0; (h = p > 0) && (h = 2 == c ? o ? 29 >= p : 28 >= p : 4 == c || 6 == c || 9 == c || 11 == c ? 30 >= p : 31 >= p) } } return h } catch (d) { return !1 } }
+function isDate(e, t, r, n, a) { try { var i = void 0 !== r ? r : 1, l = void 0 !== n ? n : 0, g = void 0 !== a ? a : 2; e = e.replace(/-/g, "/").replace(/\./g, "/"); var v = e.split(t || "/"), h = !0; if (1 !== v[i].length && 2 !== v[i].length && (h = !1), h && 1 !== v[l].length && 2 !== v[l].length && (h = !1), h && 4 !== v[g].length && (h = !1), h) { var p = parseInt(v[i], 10), c = parseInt(v[l], 10), s = parseInt(v[g], 10); if ((h = s > 1900) && (h = 12 >= c && c > 0)) { var o = s % 4 == 0 && s % 100 !== 0 || s % 400 == 0; (h = p > 0) && (h = 2 == c ? o ? 29 >= p : 28 >= p : 4 == c || 6 == c || 9 == c || 11 == c ? 30 >= p : 31 >= p) } } return h } catch (d) { return !1 } }
 
 
 function urlExists(data, existsCallback, msg) {
@@ -1592,44 +1563,153 @@ function getFeedTypePill(type, source) {
 	}
 }
 
-function hasRole(roleName) {
-    return $.inArray(roleName, _ctx.UserInfo.Roles) > -1;
+
+// common code to handle setup of treeview interface - treeview is shared by vocab, capture and feed/podcast setup.
+// THIS code is used by the topic assignment functionality.
+var setupTreeviewEvents = function (_m, $t, treeData, selectedValueData) {
+	var $tree = $t.find('.treeViewContainer');
+	var topicCount = _m.tags && _m.tags.topic ? _m.tags.topic.length : 0;
+
+	// clear existing bindings
+	$tree.find("li > a.btn").unbind("click");
+
+	// flag selected and deal with pills.
+	if (_m.tags) {
+		$(_m.tags.topic).each(function () {
+			selectedValueData.push({
+				id: this.id,
+				name: this.name
+			});
+			// select in tree
+			var termId = this.id;
+			var $aTerm = $tree.find("[termId = '" + termId + "' ]");
+			$aTerm.addClass('btn-info').removeClass('btn-default');
+			// create pill
+			var termData = $.grep(treeData, function (e, i) {
+				return e.valueId === termId;
+			})[0];
+			if (termData !== undefined) {
+				var $pillLi = $("<li class='btn btn-gray btn-sm' termId='" + termData.valueId + "'>" + termData.valueName + " <i class='glyphicon glyphicon-remove icon-white'></i></li>");
+				$t.find(".modalSelectedValues").find("ul").append($pillLi);
+				$pillLi.click(function () {
+					$tree.find("[termId = '" + termId + "' ]").removeClass('btn-info').addClass('btn-default');
+					deselectMe(termData);
+				});
+			}
+		});
+		if ($t.find(".modalSelectedValues").find("ul li").length === 0) {
+			$t.find(".modalSelectedValues").find("span").show();
+		}
+
+	}
+	else {
+		$t.find(".modalSelectedValues").find("span").show();
+	}
+
+	// add add/remove handlers to tree items
+	$tree.find(".treeRootNode>.btn").addClass("inactive").click(function () { alert('Topics cannot be assigned at the root level. Please narrow your selection to a child item.'); });
+
+	$tree.find(".topicListContainer .btn").not(".treeRootNode>.btn").click(function () {
+		if ($(this).parents().hasClass('inactive')) {
+			alert('This topic is inactive and cannot be assigned.');
+			return false;
+		}
+		// add back in these tree handlers for any button click event:
+		$tree.find('.topicListContainer').unhighlight();
+		$t.find('.btnSearch').show();
+		$t.find('.btnRemove').hide();
+		var termId = $(this).attr("termId");
+		var termData = $.grep(treeData, function (e, i) {
+			return e.valueId === eval(termId);
+		})[0];
+		if ($(this).hasClass('btn-info')) {
+			deselectMe(termData);
+		} else {
+			selectMe(termData);
+		}
+		if (topicCount > 15) {
+			$('#tooManyTopics').show();
+			return;
+		}
+		if (topicCount <= 15) {
+			$('#tooManyTopics').hide();
+		}
+	});
+	// hide spinner
+	$('.topicListContainer').hideSpinner();
+
+
+	var selectMe = function (termData) {
+		if (topicCount >= 15) {
+			alert('You cannot assign more than 15 topics to a media.');
+			return;
+		}
+		if (termData === undefined) {
+			return;
+		}
+		var termName = $('<div/>').html(termData.valueName).text();
+		var $pillLi = $("<li class='btn btn-gray btn-sm' termId='" + termData.valueId + "'>" + termName + " <i class='glyphicon glyphicon-remove icon-white'></i></li>");
+		$pillLi.click(function () {
+			deselectMe(termData);
+		});
+		$t.find("[termId = '" + termData.valueId + "' ]").not(".inactive").addClass('btn-info').removeClass('btn-default');
+		$t.find(".selectedValues, .modalSelectedValues").find("ul").append($pillLi);
+		var o = {
+			id: termData.valueId,
+			name: termData.valueName
+		};
+		selectedValueData.push(o);
+		var values = [];
+		values = $.map(selectedValueData, function (value) {
+			return value.id;
+		});
+		$t.find(".modalSelectedValues").find("ul").show();
+		$t.find(".modalSelectedValues").find("span").hide();
+		topicCount++;
+		$t.data("values", jQuery.unique(values));
+	};
+	var deselectMe = function (termData) {
+		$t.find(".selectedValues, .modalSelectedValues").find('[termId="' + htmlDecode(termData.valueId) + '"]').remove();
+		$t.find("[termId = '" + termData.valueId + "' ]").removeClass('btn-info').addClass('btn-default');
+		var values = [];
+		selectedValueData = $.grep(selectedValueData, function (value) {
+			return value.id !== termData.valueId;
+		});
+		values = $.map(selectedValueData, function (value) {
+			return value.id;
+		});
+		if (values.length === 0) {
+			$t.find(".modalSelectedValues").find("ul").hide();
+			$t.find(".modalSelectedValues").find("span").show();
+		}
+		topicCount--;
+		$t.data("values", jQuery.unique(values));
+	};
+
 }
 
-function canSearch() {
-    return (hasRole("System Admin") || hasRole("Storefront Manager") || hasRole("Media Admin"));
+CDC.Admin.Auth = CDC.Admin.Auth || {};
+CDC.Admin.Auth = {
+	hasRole: function (roleName) { return $.inArray(roleName, _ctx.UserInfo.roles) > -1; },
+	canSearch: function () { return (this.hasRole("System Admin") || this.hasRole("Storefront Manager") || this.hasRole("Media Admin")); },
+	canAddContent: function () { return (this.hasRole("System Admin") || this.hasRole("Media Admin")); },
+	canAdministerVocab: function () { return (this.hasRole("System Admin") || this.hasRole("Vocabulary Admin")); },
+	canManageCollections: function () { return (this.hasRole("System Admin") || this.hasRole("Storefront Manager")); },
+	canManageFeeds: function () { return (this.hasRole("System Admin") || this.hasRole("Feeds Admin")); },
+	canManagePodcasts: function () { return (this.hasRole("System Admin") || this.hasRole("Media Admin")); },
+	canManageAuthorization: function () { return (this.hasRole("System Admin")); },
+	canUseUtilities: function () { return (this.hasRole("System Admin")); },
+	canUseData: function () { return (this.hasRole("System Admin")); }
 }
 
-function canAddContent() {
-    return (hasRole("System Admin") || hasRole("Media Admin"));
-}
-
-function canAdministerVocab() {
-    return (hasRole("System Admin") ||hasRole("Vocabulary Admin"));
-}
-
-function canManageCollections() {
-    return (hasRole("System Admin") || hasRole("Storefront Manager"));
-}
-
-function canManageFeeds() {
-    return (hasRole("System Admin") || hasRole("Feeds Admin"));
-}
-
-function canManagePodcasts() {
-    return (hasRole("System Admin") || hasRole("Media Admin"));
-}
-
-function canManageAuthorization() {
-    return (hasRole("System Admin"));
-}
-
-function canUseUtilities() {
-    return (hasRole("System Admin"));
-}
-
-function canUseData() {
-    return (hasRole("System Admin"));
+function trimPrefix(string, prefix) {
+	if (string === undefined) {
+		return "";
+	}
+	if (string.slice(0, prefix.length) == prefix) {
+		return string.substring(prefix.length);
+	}
+	return string;
 }
 
 /* originally based on https://gist.github.com/3782074 */

@@ -1,178 +1,183 @@
 ﻿<h4 class="subHeader" id="generalInfo">General Information</h4>
 
 <div id="mediaIdContainer" class="form-group row">
-	<div class="col-md-4">
-		<label label-default="label-default" for="mediaId">Media ID</label>
-		<span id="mediaId"></span>
-	</div>
-	<div class="col-md-4">
-		<label label-default="label-default" for="persistentURL">Persistent URL</label>
-		<span id="persistentURL"></span>
-	</div>
-	<span id="historyIcon" style="float: right; display: none;" class="glyphicon glyphicon-info-sign"></span>
+    <div class="col-md-4">
+        <label label-default="label-default" for="mediaId">Media ID</label>
+        <span id="mediaId"></span>
+    </div>
+    <div class="col-md-4">
+        <label label-default="label-default" for="persistentURL">Persistent URL</label>
+        <span id="persistentURL"></span>
+    </div>
+    <span id="historyIcon" style="float: right; display: none;" class="glyphicon glyphicon-info-sign"></span>
     <div class="col-md-4" id="historyView" style="display: none; border: 1px solid black; background-color: white;">
         <ul>
-            <li>Created on <span id="dateCreated"></span> by <span id="createdBy"></span></li>
-            <li>Last Updated on <span id="dateModified"></span> by <span id="modifiedBy"></span></li>
+            <li>Created on <span id="dateCreated"></span>by <span id="createdBy"></span></li>
+            <li>Last Updated on <span id="dateModified"></span>by <span id="modifiedBy"></span></li>
         </ul>
     </div>
 </div>
 
 <div class="form-group">
-	<label label-default="label-default" for="url" class="" style="padding-right: 20px;">URL</label>
-	<div>
-		<small>
-			<a href="#" id="url"></a>
-			<button class="btn btn-sm" style="margin-left: 20px;" id="btnEditUrl">Edit</button>
-		</small>
-	</div>
+    <label label-default="label-default" for="url" class="" style="padding-right: 20px;">URL</label>
+    <div>
+        <small>
+            <a href="#" id="url"></a>
+            <button class="btn btn-sm" style="margin-left: 20px;" id="btnEditUrl">Edit</button>
+        </small>
+    </div>
 </div>
 
 <div class="form-group">
-	<label label-default="label-default" class="required" for="title">Title</label>
-	<div class="control-group">
-		<input type="text" id="title" class="form-control" />
-		<div id="titleLabel" class="help-inline hide"></div>
-	</div>
+    <label label-default="label-default" class="required" for="title">Title</label>
+    <div class="control-group">
+        <input type="text" id="title" class="form-control" />
+        <div id="titleLabel" class="help-inline hide"></div>
+    </div>
 </div>
 
 <div class="form-group">
-	<label label-default="label-default" for="description">Description</label>
-	<div class="control-group">
-		<textarea rows="3" id="description" class="form-control"></textarea>
-	</div>
+    <label label-default="label-default" for="description">Description</label>
+    <div class="control-group">
+        <textarea rows="3" id="description" class="form-control"></textarea>
+    </div>
 </div>
 
 <div class="form-group">
-	<label label-default="label-default" for="text">Text</label>
-	<div class="control-group">
-		<textarea rows="3" id="text" class="form-control"></textarea>
-	</div>
+    <label label-default="label-default" for="text">Text</label>
+    <div class="control-group">
+        <textarea rows="3" id="text" class="form-control"></textarea>
+    </div>
 </div>
 
 <div class="form-group">
-	<label label-default="label-default" for="text">Embed Code</label>
-	<div class="control-group">
-		<textarea rows="5" id="embedCode" class="form-control" readonly></textarea>
+    <label label-default="label-default" for="text">Embed Code</label>
+    <div class="control-group">
+        <textarea rows="5" id="embedCode" class="form-control" readonly></textarea>
         <div id="embedCodeLabel" class="help-inline hide"></div>
-	</div>
+    </div>
 </div>
 
 <div class="form-group">
-	<label label-default="label-default" class="required" for="language">Language</label>
-	<select id="language" class="form-control"></select>
+    <label label-default="label-default" class="required" for="language">Language</label>
+    <select id="language" class="form-control"></select>
     <span id="languageLabel" class="help-inline hide"></span>
 </div>
 
 <!-- regular target url -->
 <div class="form-group">
-	<label label-default="label-default" class="" for="targetUrl">Target URL</label>
-	<div class="control-group">
-		<input class="form-control" type="text" id="targetUrl" placeholder="http://"/>
+    <label label-default="label-default" class="" for="targetUrl">Target URL</label>
+    <div class="control-group">
+        <input class="form-control" type="text" id="targetUrl" placeholder="http://" />
         <div id="targetUrlLabel" class="help-inline hide"></div>
-		<span id="lblTargetUrl" class="help-inline hide"></span><small><span class="help-block">
-			Address for more information about the content of this media.</span></small>
-	</div>
+        <span id="lblTargetUrl" class="help-inline hide"></span><small><span class="help-block">Address for more information about the content of this media.</span></small>
+    </div>
 </div>
 
 <!-- target url as required resource entered from resource page -->
 <div class="form-group">
-	<label label-default="label-default" class="" style="padding-right: 20px;">Target URL</label>
-	<div>
-		<small>
-			<a href="#" id="targetUrlResource"></a>
-			<button class="btn btn-sm" style="margin-left: 20px;" id="btnEditTargetUrl">Edit</button>
-		</small>
-	</div>
+    <label label-default="label-default" class="" style="padding-right: 20px;">Target URL</label>
+    <div>
+        <small>
+            <a href="#" id="targetUrlResource"></a>
+            <button class="btn btn-sm" style="margin-left: 20px;" id="btnEditTargetUrl">Edit</button>
+        </small>
+    </div>
 </div>
 
 <div class="form-horizontal">
-	<div class="form-group">
-		<div class="control-group col-md-2">
-			<label label-default="label-default" for="width" class="control-label required">Width</label>
-			<input type="text" id="width" class="form-control" maxlength="4" value="580"  />
-		</div>
-
-		<div class="control-group col-md-2">
-			<label label-default="label-default" for="height" class="control-label required">Height</label>
-			<input type="text" id="height" class="form-control" maxlength="4" value="400" />            
-		</div>
+    <div class="form-group">
         <div class="control-group col-md-2">
-            <button class="btn btn-sm" style="margin-top: 30px;" id="btnDefaultSize">Set Default</button>    
+            <label label-default="label-default" for="width" class="control-label required">Width</label>
+            <input type="text" id="width" class="form-control" maxlength="4" value="580" />
         </div>
-        
-	</div>
-	<div id="widthLabel" class="help-inline hide"></div>
-	<div id="heightLabel" class="help-inline hide"></div>
+
+        <div class="control-group col-md-2">
+            <label label-default="label-default" for="height" class="control-label required">Height</label>
+            <input type="text" id="height" class="form-control" maxlength="4" value="400" />
+        </div>
+        <div class="control-group col-md-2">
+            <button class="btn btn-sm" style="margin-top: 30px;" id="btnDefaultSize">Set Default</button>
+        </div>
+
+    </div>
+    <div id="widthLabel" class="help-inline hide"></div>
+    <div id="heightLabel" class="help-inline hide"></div>
 </div>
 
 <div class="form-horizontal">
-	<div class="form-group">
-		<div class="control-group col-md-2">
-			<label label-default="label-default" for="width" class="control-label required">File Size</label>
-			<input type="text" id="fileSize" class="form-control" maxlength="10" value="" disabled/>
-		</div>
+    <div class="form-group">
+        <div class="control-group col-md-2">
+            <label label-default="label-default" for="width" class="control-label required">File Size</label>
+            <input type="text" id="fileSize" class="form-control" maxlength="10" value="" disabled />
+        </div>
 
-		<div class="control-group col-md-2">
-			<label label-default="label-default" for="height" class="control-label">Page Count</label>
-			<input type="text" id="pageCount" class="form-control" maxlength="4" value=""/>    
-            <div id="pageCountLabel" class="help-inline hide"></div>        
-		</div>
-        
-	</div>
+        <div class="control-group col-md-2">
+            <label label-default="label-default" for="height" class="control-label">Page Count</label>
+            <input type="text" id="pageCount" class="form-control" maxlength="4" value="" />
+            <div id="pageCountLabel" class="help-inline hide"></div>
+        </div>
+
+    </div>
 </div>
 
 <div class="form-horizontal">
-	<div class="form-group">
-		<div class="control-group col-md-3">
-			<label label-default="label-default" class="required" for="mediaStatus">Media Status</label>
+    <div class="form-group">
+        <div class="control-group col-md-3">
+            <label label-default="label-default" class="required" for="mediaStatus">Media Status</label>
 
-			<div id="mediaStatusLabel" class="help-inline hide"></div>
+            <div id="mediaStatusLabel" class="help-inline hide"></div>
 
-			<div class="radio">
-				<label label-default="label-default">
-				<input type="radio" name="mediaStatus" id="Published" value="Published" />Published</label>
-			</div>
+            <div class="radio">
+                <label label-default="label-default">
+                    <input type="radio" name="mediaStatus" id="Published" value="Published" />Published</label>
+            </div>
 
-			<div class="radio">
-				<label label-default="label-default">
-				<input type="radio" name="mediaStatus" id="Staged" value="Staged" />Staged</label>
-			</div>
+            <div class="radio">
+                <label label-default="label-default">
+                    <input type="radio" name="mediaStatus" id="Staged" value="Staged" />Staged</label>
+            </div>
 
-			<div class="radio">
-				<label label-default="label-default">
-				<input type="radio" name="mediaStatus" id="Archived" value="Archived" />Archived</label>
-			</div>
+            <div class="radio">
+                <label label-default="label-default">
+                    <input type="radio" name="mediaStatus" id="Archived" value="Archived" />Archived</label>
+            </div>
 
-			<div class="radio">
-				<label label-default="label-default">
-				<input type="radio" name="mediaStatus" id="Hidden" value="Hidden" />Hidden</label>
-			</div>
-		</div>
+            <div class="radio">
+                <label label-default="label-default">
+                    <input type="radio" name="mediaStatus" id="Hidden" value="Hidden" />Hidden</label>
+            </div>
+        </div>
 
-		<div class="control-group col-md-4">
+        <div class="control-group col-md-4">
 
-			<span id="publishDateTime" class="hide">
-				<label label-default="label-default" for="publishDate" class="required">Publish Date</label>
-				<div class="input-group date" data-date-format="mm/dd/yyyy">
-					<input type="text" class="input-sm form-control" id="publishDate" />
-					<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-				</div>
-				<div class="help-inline" id="publishDateLabel" style="display: none;"></div>
+            <span id="publishDateTime" class="hide">
+                <label label-default="label-default" for="publishDate" class="required">Publish Date</label>
+                <div class="input-group date" data-date-format="mm/dd/yyyy">
+                    <input type="text" class="input-sm form-control" id="publishDate" />
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+                <div class="help-inline" id="publishDateLabel" style="display: none;"></div>
 
-				<label label-default="label-default" for="timepicker1" class="required">Publish Time</label>
-				<div class="input-group bootstrap-timepicker">
-					<input id="timepicker1" type="text" class="input-sm form-control" />
-					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-				</div>
-				<div class="help-inline" id="timePicker1Label" style="display: none;"></div>
+                <label label-default="label-default" for="timepicker1" class="required">Publish Time</label>
+                <div class="input-group bootstrap-timepicker">
+                    <input id="timepicker1" type="text" class="input-sm form-control" />
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+                <div class="help-inline" id="timePicker1Label" style="display: none;"></div>
 
-			</span>
-		</div>
+            </span>
+        </div>
 
-	</div>
+        <div class="control-group col-md-4 pageViews">
+            <label>Weekly Page Views</label>
+            <div class="topSyndicatedChart">
+                <div class="chart"></div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <div class="form-group">
-
 </div>

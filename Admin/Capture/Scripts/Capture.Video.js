@@ -47,7 +47,7 @@
 
             if (options.mediaId !== '') {
                 // existing media object
-                CDC.Admin.Capture.loadMediaData(options.mediaId, loadPage);
+                CDC.Admin.Media.getMedia(options.mediaId, loadPage);
             }
             else {
                 // load new media object

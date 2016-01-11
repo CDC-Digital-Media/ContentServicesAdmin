@@ -19,7 +19,7 @@
         $[PLUGIN_NAME].defaults.target = this;
         options = $.extend({}, $[PLUGIN_NAME].defaults, options);
 
-        var $target = options.target;
+        var $t = options.target;
 
         var _media;
 
@@ -49,23 +49,23 @@
             _media = options.media;
 
             $(options.target).load("Templates/GeneralBlock.htm", function () {
-                $target.find(".hide").hide().removeClass('hide');
+                $t.find(".hide").hide().removeClass('hide');
 
                 if (_media.id) {
                     loadMediaData();
                 }
                 else {
-                    $target.find("#embedCode").text("Embed code will be generated when media is saved.");
-                    $target.find("#publishDate").datepicker("setValue", new Date());
-                    $target.find('#timepicker1').timepicker({ defaultTime: formatAMPM(new Date()) });
-                    $target.find("#language").languagePicker();
+                    $t.find("#embedCode").text("Embed code will be generated when media is saved.");
+                    $t.find("#publishDate").datepicker("setValue", new Date());
+                    $t.find('#timepicker1').timepicker({ defaultTime: formatAMPM(new Date()) });
+                    $t.find("#language").languagePicker();
                     setDefaultDimensions();                    
                 }
 
                 setVisibilityForType();
                 setupEvents();
                 if (features.auth0) {
-                    $target.find("#historyIcon").show()
+                    $t.find("#historyIcon").show()
                     .click(function () { $("#historyView").toggle(); });
 
                 }
@@ -75,47 +75,47 @@
         function loadMediaData() {
 
         	if (!_media.id) {
-        		$target.find("#mediaIdContainer").hide();
+        		$t.find("#mediaIdContainer").hide();
         	}
         	else {
-        		$target.find("#mediaIdContainer").show();
+        		$t.find("#mediaIdContainer").show();
         	}
 
-            $target.find("#mediaId").text(_media.id);
-            $target.find("#persistentURL").text(_media.persistentUrlToken);
-            $target.find("#title").val(htmlDecode(_media.title));
-            $target.find("#description").val(htmlDecode(_media.description));
+            $t.find("#mediaId").text(_media.id);
+            $t.find("#persistentURL").text(_media.persistentUrlToken);
+            $t.find("#title").val(htmlDecode(_media.title));
+            $t.find("#description").val(htmlDecode(_media.description));
             if (_media.eCard) {
-                $target.find("#text").val(htmlDecode(_media.eCard.cardText));
+                $t.find("#text").val(htmlDecode(_media.eCard.cardText));
             }
 
             if (features.auth0) {
-                $target.find("#createdBy").text(_media.createdBy);
+                $t.find("#createdBy").text(_media.createdBy);
                 var dc = new Date(_media.dateCreated);
-                $target.find("#dateCreated").text(dc.toLocaleString());
-                $target.find("#modifiedBy").text(_media.modifiedBy);
+                $t.find("#dateCreated").text(dc.toLocaleString());
+                $t.find("#modifiedBy").text(_media.modifiedBy);
                 var dm = new Date(_media.dateModified);
-                $target.find("#dateModified").text(dm.toLocaleString());
+                $t.find("#dateModified").text(dm.toLocaleString());
             }
 
             if (_media.embedcode) {
                 var escapeFix = _media.embedcode;
                 escapeFix = escapeFix.split("\\\"").join("\"");
                 escapeFix = escapeFix.split("\\r\\n").join("\r\n");
-                $target.find("#embedCode").val(escapeFix);
+                $t.find("#embedCode").val(escapeFix);
             }
 
-            $target.find("#url").text(_media.sourceUrl);
-            $target.find("#targetUrl").val(_media.targetUrl);
+            $t.find("#url").text(_media.sourceUrl);
+            $t.find("#targetUrl").val(_media.targetUrl);
 
             if (_media.targetUrl != _media.sourceUrl) {
-                $target.find("#targetUrlResource").text(_media.targetUrl);
+                $t.find("#targetUrlResource").text(_media.targetUrl);
             }
            
-            $target.find("#width").val(_media.width);
-            $target.find("#height").val(_media.height);
-            $target.find("#fileSize").val(_media.dataSize);
-            $target.find("#pageCount").val(_media.pageCount);
+            $t.find("#width").val(_media.width);
+            $t.find("#height").val(_media.height);
+            $t.find("#fileSize").val(_media.dataSize);
+            $t.find("#pageCount").val(_media.pageCount);
 
 
             if (_media.status === "Published") {
@@ -156,6 +156,15 @@
 
             $("#language").languagePicker({ selectedValue: _media.language });
 
+            $t.find('.topSyndicatedChart .chart').topSyndicatedChart({
+            	url: _media.sourceUrl,
+            	postProcess: function () {
+            		if ($t.find('.topSyndicatedChart .chart').html() === '') {
+            			$t.find('.pageViews').hide();
+            		}
+            	}
+            });
+
         }
 
         function setVisibilityForType() {
@@ -163,45 +172,45 @@
             switch (_media.mediaType.toLowerCase()) {
                 case 'html':
 
-                    $target.find("#text").parents('.form-group').first().hide();
-                    $target.find("#targetUrl").parents('.form-group').first().hide();
-                    $target.find("#btnEditTargetUrl").parents('.form-group').first().hide();
-                    $target.find("#width").parents('.form-group').first().hide();
-                    $target.find("#fileSize").parents('.form-group').first().hide();
+                    $t.find("#text").parents('.form-group').first().hide();
+                    $t.find("#targetUrl").parents('.form-group').first().hide();
+                    $t.find("#btnEditTargetUrl").parents('.form-group').first().hide();
+                    $t.find("#width").parents('.form-group').first().hide();
+                    $t.find("#fileSize").parents('.form-group').first().hide();
                     
                     break;
 
                 case 'ecard':
 
-                	$target.find("#mediaIdContainer").find('.col-md-4').last().hide();
-                	$target.find("#persistentURL").parents('.col-md-4').last().hide();
-                    $target.find("#btnEditUrl").parents('.form-group').first().hide();
-                    $target.find("#targetUrl").parents('.form-group').first().hide();
-                    $target.find("#embedCode").parents('.form-group').first().hide();
-                    $target.find("#fileSize").parents('.form-group').first().hide();
+                	$t.find("#mediaIdContainer").find('.col-md-4').last().hide();
+                	$t.find("#persistentURL").parents('.col-md-4').last().hide();
+                    $t.find("#btnEditUrl").parents('.form-group').first().hide();
+                    $t.find("#targetUrl").parents('.form-group').first().hide();
+                    $t.find("#embedCode").parents('.form-group').first().hide();
+                    $t.find("#fileSize").parents('.form-group').first().hide();
 
                     break;
 
                 case 'collection':
 
-                	$target.find("#mediaIdContainer").find('.col-md-4').last().hide();
-                	$target.find("#persistentURL").parents('.col-md-4').last().hide();
-                    $target.find("#text").parents('.form-group').first().hide();
-                    $target.find("#btnEditUrl").parents('.form-group').first().hide();
-                    $target.find("#btnEditTargetUrl").parents('.form-group').first().hide();
-                    $target.find("#width").parents('.form-group').first().hide();
-                    $target.find("#embedCode").parents('.form-group').first().hide();
-                    $target.find("#fileSize").parents('.form-group').first().hide();
+                	$t.find("#mediaIdContainer").find('.col-md-4').last().hide();
+                	$t.find("#persistentURL").parents('.col-md-4').last().hide();
+                    $t.find("#text").parents('.form-group').first().hide();
+                    $t.find("#btnEditUrl").parents('.form-group').first().hide();
+                    $t.find("#btnEditTargetUrl").parents('.form-group').first().hide();
+                    $t.find("#width").parents('.form-group').first().hide();
+                    $t.find("#embedCode").parents('.form-group').first().hide();
+                    $t.find("#fileSize").parents('.form-group').first().hide();
 
                     break;
 
                 case 'video':
-                	$target.find("#mediaIdContainer").find('.col-md-4').last().hide();
-                	$target.find("#persistentURL").parents('.col-md-4').last().hide();
-                    $target.find("#text").parents('.form-group').first().hide();
-                    $target.find("#targetUrl").parents('.form-group').first().hide();
-                    $target.find("#btnEditTargetUrl").parents('.form-group').first().hide();
-                    $target.find("#fileSize").parents('.form-group').first().hide();
+                	$t.find("#mediaIdContainer").find('.col-md-4').last().hide();
+                	$t.find("#persistentURL").parents('.col-md-4').last().hide();
+                    $t.find("#text").parents('.form-group').first().hide();
+                    $t.find("#targetUrl").parents('.form-group').first().hide();
+                    $t.find("#btnEditTargetUrl").parents('.form-group').first().hide();
+                    $t.find("#fileSize").parents('.form-group').first().hide();
 
                     break;
 
@@ -209,44 +218,44 @@
                 case 'infographic':
                 case 'button':
                 case 'badge':
-                	$target.find("#mediaIdContainer").find('.col-md-4').last().hide();
-                	$target.find("#persistentURL").parents('.col-md-4').last().hide();
-                    $target.find("#text").parents('.form-group').first().hide();
-                    $target.find("#targetUrl").parents('.form-group').first().hide();
-                    $target.find("#fileSize").parents('.form-group').first().hide();
+                	$t.find("#mediaIdContainer").find('.col-md-4').last().hide();
+                	$t.find("#persistentURL").parents('.col-md-4').last().hide();
+                    $t.find("#text").parents('.form-group').first().hide();
+                    $t.find("#targetUrl").parents('.form-group').first().hide();
+                    $t.find("#fileSize").parents('.form-group').first().hide();
 
                     break;
 
                 case 'pdf':
-                	$target.find("#mediaIdContainer").find('.col-md-4').last().hide();
-                	$target.find("#persistentURL").parents('.col-md-4').last().hide();
-                    $target.find("#text").parents('.form-group').first().hide();
-                    $target.find("#targetUrl").parents('.form-group').first().hide();
-                    $target.find("#width").parents('.form-group').first().hide();
+                	$t.find("#mediaIdContainer").find('.col-md-4').last().hide();
+                	$t.find("#persistentURL").parents('.col-md-4').last().hide();
+                    $t.find("#text").parents('.form-group').first().hide();
+                    $t.find("#targetUrl").parents('.form-group').first().hide();
+                    $t.find("#width").parents('.form-group').first().hide();
 
                     break;
 
                 case 'widget':
-                	$target.find("#mediaIdContainer").find('.col-md-4').last().hide();
-                	$target.find("#persistentURL").parents('.col-md-4').last().hide();
-                    $target.find("#btnEditUrl").parents('.form-group').first().hide();
-                    $target.find("#btnEditTargetUrl").parents('.form-group').first().hide();
-                    $target.find("#text").parents('.form-group').first().hide();
-                    $target.find("#targetUrl").parents('.form-group').first().hide();
-                    $target.find("#width").parents('.form-group').first().hide();
-                    $target.find("#fileSize").parents('.form-group').first().hide();
-                    $target.find("#embedCode").parents('.form-group').first().hide();
+                	$t.find("#mediaIdContainer").find('.col-md-4').last().hide();
+                	$t.find("#persistentURL").parents('.col-md-4').last().hide();
+                    $t.find("#btnEditUrl").parents('.form-group').first().hide();
+                    $t.find("#btnEditTargetUrl").parents('.form-group').first().hide();
+                    $t.find("#text").parents('.form-group').first().hide();
+                    $t.find("#targetUrl").parents('.form-group').first().hide();
+                    $t.find("#width").parents('.form-group').first().hide();
+                    $t.find("#fileSize").parents('.form-group').first().hide();
+                    $t.find("#embedCode").parents('.form-group').first().hide();
                     break;
 
                 case 'feed':
 
-                	$target.find("#mediaIdContainer").find('.col-md-4').last().hide();
-                	$target.find("#persistentURL").parents('.col-md-4').last().hide();
-                    $target.find("#btnEditUrl").parents('.form-group').first().hide();
-                    $target.find("#btnEditTargetUrl").parents('.form-group').first().hide();
-                    $target.find("#width").parents('.form-group').first().hide();
-                    $target.find("#embedCode").parents('.form-group').first().hide();
-                    $target.find("#fileSize").parents('.form-group').first().hide();
+                	$t.find("#mediaIdContainer").find('.col-md-4').last().hide();
+                	$t.find("#persistentURL").parents('.col-md-4').last().hide();
+                    $t.find("#btnEditUrl").parents('.form-group').first().hide();
+                    $t.find("#btnEditTargetUrl").parents('.form-group').first().hide();
+                    $t.find("#width").parents('.form-group').first().hide();
+                    $t.find("#embedCode").parents('.form-group').first().hide();
+                    $t.find("#fileSize").parents('.form-group').first().hide();
 
                     break;
 
@@ -259,7 +268,7 @@
         	if($("#fileSize").is(":visible")){
         		CDC.Admin.Capture.getFileSize(_media.sourceUrl, function (kbSize) {
         			var size = formatFileSize(kbSize);
-        			$target.find("#fileSize").val(size)
+        			$t.find("#fileSize").val(size)
         			_media.dataSize = size;
         		});
         	}
@@ -269,7 +278,7 @@
         	if ($("#pageCount").is(":visible")) {
         		var url = "http://docs.google.com/gview?url=" + _media.sourceUrl + "&embedded=false";
         		CDC.Admin.Capture.getPageCount(url, function (pageCount) {
-        			$target.find("#pageCount").val(pageCount)
+        			$t.find("#pageCount").val(pageCount)
         			_media.pageCount = pageCount;
         			updateEmbedCode();
         		});
@@ -279,8 +288,8 @@
         function setDefaultDimensions() {
 
             var populateDimensions = function () {
-                $target.find("#width").val(_media.width);
-                $target.find("#height").val(_media.height);
+                $t.find("#width").val(_media.width);
+                $t.find("#height").val(_media.height);
             }
 
             switch (_media.mediaType.toLowerCase()) {
@@ -326,16 +335,16 @@
 
         function setupEvents() {
 
-            $target.find("#title").keyup(function () {
+            $t.find("#title").keyup(function () {
                 updateEmbedCode();
             });
-            $target.find("#description").keyup(function () {
+            $t.find("#description").keyup(function () {
                 updateEmbedCode();
             });
 
-            $target.find('input:radio[name="mediaStatus"]').change(function () {
+            $t.find('input:radio[name="mediaStatus"]').change(function () {
                 if ($(this).is(':checked') && $(this).val() == 'Published') {
-                    $target.find("#publishDateTime").show();
+                    $t.find("#publishDateTime").show();
                     handleSetPublished();
                     return false;
                 }
@@ -346,24 +355,24 @@
                 }
             });
 
-            $target.find(".glyphicon-calendar").parent().click(function () {
-                $target.find("#publishDate").focus();
+            $t.find(".glyphicon-calendar").parent().click(function () {
+                $t.find("#publishDate").focus();
             });
 
-            $target.find(".glyphicon-time").parent().click(function () {
-                $target.find("#timepicker1").focus();
+            $t.find(".glyphicon-time").parent().click(function () {
+                $t.find("#timepicker1").focus();
             });
 
-            $target.find("#url").click(function () {
+            $t.find("#url").click(function () {
                 showPopUp(_media.sourceUrl);
             });
 
-            $target.find("#btnEditUrl").click(function () {
+            $t.find("#btnEditUrl").click(function () {
                 handleSourceUrlEdit();
             });
 
 
-            $target.find("#btnEditTargetUrl").click(function () {
+            $t.find("#btnEditTargetUrl").click(function () {
                 handleTargetUrlEdit();
             });
 
@@ -373,10 +382,10 @@
             });
 
             // handle tabbing - bootstrap is eating tab event.
-            $target.find("#publishDate").focus(function () {
+            $t.find("#publishDate").focus(function () {
                 cleanupTimePicker();
             });
-            $target.find("#timepicker1").focus(function () {
+            $t.find("#timepicker1").focus(function () {
                 cleanupDatePicker();
             });
 
@@ -391,14 +400,14 @@
                 }
             });
 
-            $target.find("#width, #height").keyup(function () {
+            $t.find("#width, #height").keyup(function () {
                 updateEmbedCode();
             });
 
-            $target.find("#btnDefaultSize").click(function () {
+            $t.find("#btnDefaultSize").click(function () {
                 setDefaultDimensions();
-                $target.find("#width").val(_media.width);
-                $target.find("#height").val(_media.height);
+                $t.find("#width").val(_media.width);
+                $t.find("#height").val(_media.height);
                 updateEmbedCode();
             });            
 
@@ -408,30 +417,30 @@
         function updateEmbedCode() {        	
 
         	if (!_media.id) { return; } // don't run because I don't yet have an embed code
-        	if (!$target.find("#embedCode").is(":visible")) { return; } // don't run because I don't have an API generated emebd code
+        	if (!$t.find("#embedCode").is(":visible")) { return; } // don't run because I don't have an API generated emebd code
 
         	mapValuesToMedia();
         	_embedCode = processNewEmbedCodeFormat(_media);
-        	$target.find("#embedCode").val(_embedCode);
+        	$t.find("#embedCode").val(_embedCode);
         }
 
         function mapValuesToMedia() {
-        	var title = replaceWordChars($target.find("#title").val());
-        	var description = replaceWordChars($target.find("#description").val());
-        	var text = replaceWordChars($target.find("#text").val());
+        	var title = replaceWordChars($t.find("#title").val());
+        	var description = replaceWordChars($t.find("#description").val());
+        	var text = replaceWordChars($t.find("#text").val());
             
-        	if (_media.id && $target.find("#embedCode").is(":visible")) {        		
-            	var embedCode = $target.find("#embedCode").val();
+        	if (_media.id && $t.find("#embedCode").is(":visible")) {        		
+            	var embedCode = $t.find("#embedCode").val();
             }
 
-            var status = $target.find("input[name=mediaStatus]:checked").val();
-            var datePublished = $target.find("#publishDate").val();
-            var publishTime = $target.find("#timepicker1").val();
-            var language = $target.find("#language option:selected").text();
-            var targetUrl = $target.find("#targetUrl").val();
-            var width = $target.find("#width").val();
-            var height = $target.find("#height").val();
-            var fs = $target.find("#fileSize").val();
+            var status = $t.find("input[name=mediaStatus]:checked").val();
+            var datePublished = $t.find("#publishDate").val();
+            var publishTime = $t.find("#timepicker1").val();
+            var language = $t.find("#language option:selected").text();
+            var targetUrl = $t.find("#targetUrl").val();
+            var width = $t.find("#width").val();
+            var height = $t.find("#height").val();
+            var fs = $t.find("#fileSize").val();
 
             if (isPubDateTimeValid()) {
                 _media.datePublished = combineDateTime(datePublished, publishTime);
@@ -451,11 +460,11 @@
             _media.status = status;
             _media.dataSize = fs;
 
-            _media.pageCount = $target.find("#pageCount").val();
+            _media.pageCount = $t.find("#pageCount").val();
 
             // targetUrl - may be handled in resource validation page for specific media types.
             // if it's not visible and not populated, need to fill so media will validate.
-            if ($target.find("#targetUrl").is(":visible")) {
+            if ($t.find("#targetUrl").is(":visible")) {
                 _media.targetUrl = targetUrl;
             } else if ($.isEmptyObject(_media.targetUrl)) {
                 _media.targetUrl = _media.sourceUrl;
@@ -478,16 +487,16 @@
             var isValid = true;
 
             // clear current errors before validating:
-            clearError($target.find('#titleLabel'));
-            clearError($target.find('#mediaStatusLabel'));
-            clearError($target.find('#publishDateLabel'));
-            clearError($target.find('#timePicker1Label'));
-            clearError($target.find('#languageLabel'));
-            clearError($target.find('#targetUrlLabel'));
-            clearError($target.find('#embedCodeLabel'));
-            clearError($target.find('#widthLabel'));
-            clearError($target.find('#heightLabel'));
-            clearError($target.find('#pageCountLabel'));
+            clearError($t.find('#titleLabel'));
+            clearError($t.find('#mediaStatusLabel'));
+            clearError($t.find('#publishDateLabel'));
+            clearError($t.find('#timePicker1Label'));
+            clearError($t.find('#languageLabel'));
+            clearError($t.find('#targetUrlLabel'));
+            clearError($t.find('#embedCodeLabel'));
+            clearError($t.find('#widthLabel'));
+            clearError($t.find('#heightLabel'));
+            clearError($t.find('#pageCountLabel'));
             
 
             // run regular validations
@@ -525,11 +534,11 @@
         function isTitleValid() {
             var isValid = true;
             if ($.isEmptyObject(_media.title)) {
-                showError($target.find('#titleLabel'), 'Title is a required field.');
+                showError($t.find('#titleLabel'), 'Title is a required field.');
                 isValid = false;
             }
             if (_media.title.length > 250) {
-                showError($target.find('#titleLabel'), 'Title must be less than 250 characters.');
+                showError($t.find('#titleLabel'), 'Title must be less than 250 characters.');
                 isValid = false;
             }
             return isValid;
@@ -538,7 +547,7 @@
         function isStatusValid() {
             var isValid = true;
             if ($.isEmptyObject(_media.status)) {
-                showError($target.find('#mediaStatusLabel'), 'Media Status is a required field.');
+                showError($t.find('#mediaStatusLabel'), 'Media Status is a required field.');
                 isValid = false;
             }
             return isValid;
@@ -547,17 +556,17 @@
         function isLanguageValid() {
             var isValid = true;
             if ($.isEmptyObject(_media.language)) {
-                showError($target.find('#mediaStatusLabel'), 'Language is a required field.');
+                showError($t.find('#mediaStatusLabel'), 'Language is a required field.');
                 isValid = false;
             }
             return isValid;
         }
 
         function isEmbedCodeValid() {
-            if (!$target.find("#embedCode").is(":visible")) { return true; }
+            if (!$t.find("#embedCode").is(":visible")) { return true; }
             var isValid = true;
             if ($.isEmptyObject(_media.embedCode)) {
-                showError($target.find('#embedCodeLabel'), 'Embed Code is required for this media type.');
+                showError($t.find('#embedCodeLabel'), 'Embed Code is required for this media type.');
                 isValid = false;
             }
             return isValid;
@@ -565,11 +574,11 @@
 
         function isTargetUrlFormatValid() {
             // return true if this field is not visible.
-            if (!$target.find("#targetUrl").is(":visible")) { return true; }
+            if (!$t.find("#targetUrl").is(":visible")) { return true; }
             var isValid = true;
             if (!$.isEmptyObject(_media.targetUrl)) {
                 if (!isValidUrlFormat(_media.targetUrl)) {
-                    showError($target.find('#targetUrlLabel'), 'Target URL is not in a valid URL format.');
+                    showError($t.find('#targetUrlLabel'), 'Target URL is not in a valid URL format.');
                     isValid = false;
                 }
             }
@@ -577,14 +586,14 @@
         }
 
         function isTargetUrlResourceValid(resultCallback) {
-            if (!$target.find("#targetUrl").is(":visible")) {
+            if (!$t.find("#targetUrl").is(":visible")) {
                 resultCallback(true);
                 return;
             }
 
             var callback = function (isValid) {
                 if (!isValid) {
-                    showError($target.find('#targetUrlLabel'), "A resource for the Target URL could not be found at '" + _media.targetUrl + "'");
+                    showError($t.find('#targetUrlLabel'), "A resource for the Target URL could not be found at '" + _media.targetUrl + "'");
                 }
                 resultCallback(isValid);
             };
@@ -607,11 +616,11 @@
             if (_media.status !== 'Published') { return true; }
 
             var isValid = true;
-            var datePublished = $target.find("#publishDate").val();
-            var timePublished = $target.find("#timepicker1").val();
+            var datePublished = $t.find("#publishDate").val();
+            var timePublished = $t.find("#timepicker1").val();
 
-            var dateLabel = $target.find('#publishDateLabel');
-            var timeLabel = $target.find('#timePicker1Label');
+            var dateLabel = $t.find('#publishDateLabel');
+            var timeLabel = $t.find('#timePicker1Label');
 
             // using form fields for this validation because media property is a combination of date and time fields.
             if (!datePublished) {
@@ -652,13 +661,13 @@
         }
 
         function isDimensionsValid() {
-            if (!$target.find("#width").is(":visible")) { return true; }
+            if (!$t.find("#width").is(":visible")) { return true; }
             var isValid = true;
-            var width = $target.find('#width').val();
-            var height = $target.find('#height').val();
+            var width = $t.find('#width').val();
+            var height = $t.find('#height').val();
 
-            var widthLabel = $target.find('#widthLabel');
-            var heightLabel = $target.find('#heightLabel');
+            var widthLabel = $t.find('#widthLabel');
+            var heightLabel = $t.find('#heightLabel');
 
             // WIDTH
             if ($.isEmptyObject(width)) {
@@ -685,11 +694,11 @@
 
 
         function isPageCountValid() {
-        	if (!$target.find("#pageCount").is(":visible")) { return true; }
+        	if (!$t.find("#pageCount").is(":visible")) { return true; }
         	var isValid = true;
-        	var pageCount = $target.find('#pageCount').val();
+        	var pageCount = $t.find('#pageCount').val();
 
-        	var pageCountLabel = $target.find('#pageCountLabel');
+        	var pageCountLabel = $t.find('#pageCountLabel');
         	if (isNaN(pageCount)) {
         		showError(pageCountLabel, 'Page Count field must contain numbers only.');
         		isValid = false;
@@ -702,7 +711,7 @@
         function cleanupDatePicker() {
             if ($(".datepicker").is(":visible")) {
                 // setting async call - directly chaining hide event to enter is failing.
-                setTimeout(function () { $(".datepicker").hide(); $target.find("#publishDate").blur(); }, 100);
+                setTimeout(function () { $(".datepicker").hide(); $t.find("#publishDate").blur(); }, 100);
             }
         }
 
@@ -711,7 +720,7 @@
                 // setting async call - directly chaining hide event to enter is failing.
                 setTimeout(function () {
                     $(".bootstrap-timepicker-widget").removeClass('open').addClass('closed');
-                    $target.find("#timepicker1").blur();
+                    $t.find("#timepicker1").blur();
                 }, 100);
             }
         }

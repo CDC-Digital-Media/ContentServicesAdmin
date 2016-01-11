@@ -26,7 +26,7 @@
             var url = urlRoot + '/Secure.aspx/UsersByRole';
             console.log(roles);
 
-            $.ajax({
+            $.ajax({                    
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
                 url: url,
@@ -36,35 +36,7 @@
 
                 
                 roleData = JSON.parse(response.d).results;
-                var html = [];
-
-                roleData.forEach(function (item) {
-                    html.push('<tr>');
-                    html.push('<td class="role">' + item.name + '</td><td>' + item.mediaSet + '</td>');
-                    html.push('<td>');
-                    html.push('<div class="dropdown">');
-                    html.push('		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">');
-                    html.push('			Assigned Users');
-                    html.push('			<span class="caret"></span>');
-                    html.push('		</button>');
-                    html.push('		<ul class="dropdown-menu user-menu rolesList" role="menu" aria-labelledby="dropdownMenu1">');
-
-                    if (item.members !== null) {
-                        item.members.forEach(function (member) {
-                            html.push('		<li>');
-                            html.push(member.DisplayName + '  <a role="menuitem" class="pull-right btnRemove" tabindex="-1" href="#" style="display:none;"><span class="glyphicon glyphicon-remove-circle"></span></a>');
-                            html.push('		</li>');
-                        });
-                    }
-					html.push('		</ul>');
-					html.push('</div>');
-					html.push('</td>');
-					html.push('<td><a class="btn btn-primary btn-xs btnAssignUser">Assign User</a><div class="utilWrap" style="display:none;"></div></td>');
-					html.push('</tr>');
-				});
-
-
-                $("#rolesBody").html(html.join(''));
+                displayRoleData();
 
                 setEvents();
 
@@ -75,6 +47,38 @@
                 $('#apiError').show();
             });
 
+        }
+
+        function displayRoleData() {
+            var html = [];
+
+            roleData.forEach(function (item) {
+                html.push('<tr>');
+                html.push('<td class="role">' + item.name + '</td><td>' + item.mediaSet + '</td>');
+                html.push('<td>');
+                html.push('<div class="dropdown">');
+                html.push('		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">');
+                html.push('			Assigned Users');
+                html.push('			<span class="caret"></span>');
+                html.push('		</button>');
+                html.push('		<ul class="dropdown-menu user-menu rolesList" role="menu" aria-labelledby="dropdownMenu1">');
+
+                if (item.members !== null) {
+                    item.members.forEach(function (member) {
+                        html.push('		<li>');
+                        html.push(member.DisplayName + '  <a role="menuitem" class="pull-right btnRemove" tabindex="-1" href="#" style="display:none;"><span class="glyphicon glyphicon-remove-circle"></span></a>');
+                        html.push('		</li>');
+                    });
+                }
+                html.push('		</ul>');
+                html.push('</div>');
+                html.push('</td>');
+                html.push('<td><a class="btn btn-primary btn-xs btnAssignUser">Assign User</a><div class="utilWrap" style="display:none;"></div></td>');
+                html.push('</tr>');
+            });
+
+
+            $("#rolesBody").html(html.join(''));    
         }
 
         function insertNewUser(formDataString) {
@@ -265,10 +269,7 @@
             });
             if (result.length === 1) {
                 var role = result[0];
-
-                if (userName.startsWith("CDC\\")) {
-                    userName = userName.substring(4);
-                }
+                userName = trimPrefix(userName, "CDC\\");
 
                 console.log(userName);
 

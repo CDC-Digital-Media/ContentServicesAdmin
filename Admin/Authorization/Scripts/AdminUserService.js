@@ -45,10 +45,7 @@ function addUserRole(userName, roleName, callback) {
 
 function addRole(user, roleName, callback) {
     user.Roles.push(roleName);
-    var userName = user.UserName;
-    if (userName.startsWith("CDC\\")) {
-        userName = userName.substring(4);
-    }
+    var userName = trimPrefix(user.UserName, "CDC\\");
 
     updateRoles(userName, user.Roles, callback);
 }

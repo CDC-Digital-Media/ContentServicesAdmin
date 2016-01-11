@@ -61,7 +61,7 @@ function loadAuthData() {
 
     $("#usersBody").byuser();
 
-    $("#mediasetBody").bymediasets();
+    $("#bymediaset").bymediasets();
 }
 
 function userIdFromDisplayName(displayName) {

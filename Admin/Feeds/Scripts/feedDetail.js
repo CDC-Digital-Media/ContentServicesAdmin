@@ -43,7 +43,7 @@
 
 				$().showSpinner();
 				if (options.mediaId) {
-					CDC.Admin.Capture.loadMediaData(options.mediaId, loadPage);
+					CDC.Admin.Media.getMedia(options.mediaId, loadPage);
 				}
 				else {
 					$('#feedModal').modal();
@@ -63,7 +63,7 @@
 		var loadPage = function (media) {
 
 			if (!media) {
-				CDC.Admin.Capture.loadMediaData(options.mediaId, loadPage);
+				CDC.Admin.Media.getMedia(options.mediaId, loadPage);
 				return;
 			}
 
@@ -143,7 +143,7 @@
 
 			if (_m.mediaType === "Feed") { // managed
 
-				$t.find(".catLabel").text("Categorization");			
+				$t.find(".catLabel").text("Categorization");
 				$t.find('.feedPreview, .exportOptions').show();
 				loadPreviewInfo(true, true, true);
 
@@ -153,6 +153,7 @@
 				$t.find(".proxyData").show();
 				s("#proxyUrl", _m.sourceUrl);
 
+				$t.find(".contentGroupData").hide();
 				$t.find(".feedItemContainer").hide();
 				$t.find('.feedPreview, .exportOptions').show();
 				loadPreviewInfo(false, false, true);
@@ -183,11 +184,15 @@
 					}
 
 					CDC.Admin.Capture.updateImportFeed(url, _m.mediaId,
-						function (count) {
-							$t.find(".importCount").text("  " + count + " items processed.");
+						function (msg) {
+							$t.find(".importCount").text("  " + msg);
 							loadFeedItems();
 							$().hideSpinner();
-						});
+						},
+						function (msg) {
+							$t.find(".importCount").text("  " + msg);
+						}
+					);
 					$().showSpinner();
 				});
 
@@ -213,7 +218,7 @@
 					var row = $t.find(".exportOptions li.existing").first().clone();
 					row.find('div.path').text(obj.filePath);
 					row.find('div.format').text(obj.feedFormat);
-					row.find('.btnExportEdit, .btnExport, .btnExportDelete').attr('data-id', obj.feedExportId);					
+					row.find('.btnExportEdit, .btnExport, .btnExportDelete').attr('data-id', obj.feedExportId);
 					$t.find(".exportOptions li.existing").first().after(row);
 				});
 
@@ -241,7 +246,7 @@
 						main();
 					}
 				});
-			});		
+			});
 
 			$t.find(".btnExportDelete").off().on('click', function () {
 				if (confirm("Are you sure you want to delete this export setting?")) {
@@ -252,9 +257,9 @@
 					});
 
 					CDC.Admin.Capture.saveMediaData(_m,
-						function () { main(); }, 
+						function () { main(); },
 						function () { $().hideSpinner(); alert('An error occurred deleting this export option.'); return false; }
-						);					
+						);
 				}
 			});
 
@@ -288,7 +293,7 @@
 			loadFeedItems();
 
 			if (selectedMediaId != "null") {
-				CDC.Admin.Capture.loadMediaData(selectedMediaId, function (itm) {
+				CDC.Admin.Media.getMedia(selectedMediaId, function (itm) {
 					$('#feedItemModal').modal();
 					$('#feedItemModal').feedItemModal({
 						feed: _m,
@@ -443,7 +448,7 @@
 				});
 				if (topics.length > 0) {
 					s("." + idClass + " #itm_topics", topics.join(", "));
-				} 
+				}
 
 				var fiCategory = [];
 				$(itm.tags["feed item category"]).each(function () {
@@ -644,10 +649,13 @@
 				if (_m.mediaType === "Feed - Aggregate") {
 					var jsonUrl = publicAPIRoot + "/v2/resources/media?parentId=" + options.mediaId;
 				}
+				else if (_m.mediaType === "Feed - Proxy") {
+					var jsonUrl = publicAPIRoot + "/v2/resources/media/" + options.mediaId + ".rss";
+				}
 				else {
 					var jsonUrl = publicAPIRoot + "/v2/resources/media/" + options.mediaId + "?showchildlevel=1";
 				}
-				
+
 				jsonUrl = jsonUrl.replace("https", "http");
 				jsonUrl = encodeURI(jsonUrl);
 

@@ -142,6 +142,7 @@
                     return '';
                 }
             });
+
             $target.find('.valueSearch').focus(function () {
                 $target.find('.btnSearch').show();
                 $target.find('.btnRemove').hide();
@@ -183,14 +184,6 @@
             }
 
             $target.find('.topicListContainer').highlight(term);
-
-			//// adding in this code to deal with the highlighter not wanting to deal with parens and other special characters.
-            //$target.find('.topicListContainer li').filter(function() {
-            //	return $(this).text() === term;
-            //}).each(function () {
-            //	if ($(this).hasClass('highlight-plugin')) {
-            //	}
-            //})
 
             var matchArray = [];
             matchArray = $target.find('.topicListContainer .highlight');
@@ -302,9 +295,6 @@
             });
         }
     };
-
-
-
 
 })(jQuery);
 

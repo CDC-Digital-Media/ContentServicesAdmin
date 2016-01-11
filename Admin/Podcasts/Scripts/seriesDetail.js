@@ -39,7 +39,7 @@
 			$t.load("Templates/seriesDetail.htm", function () {
 				$().showSpinner();
 				if (options.mediaId) {
-					CDC.Admin.Capture.loadMediaData(options.mediaId, loadPage);
+					CDC.Admin.Media.getMedia(options.mediaId, loadPage);
 				}
 				else {
 					$('#seriesModal').modal();
@@ -59,7 +59,7 @@
 		var loadPage = function (media) {
 
 			if (!media) {
-				CDC.Admin.Capture.loadMediaData(options.mediaId, loadPage);
+				CDC.Admin.Media.getMedia(options.mediaId, loadPage);
 				return;
 			}
 
@@ -166,7 +166,7 @@
 			loadPodcasts();
 
 			if (selectedMediaId != "null") {
-				CDC.Admin.Capture.loadMediaData(selectedMediaId, function (itm) {
+				CDC.Admin.Media.getMedia(selectedMediaId, function (itm) {
 					$('#podcastModal').modal();
 					$('#podcastModal').podcastModal({
 						feed: _m,
@@ -247,7 +247,7 @@
 
 		function loadPodcasts() {
 
-			$t.find("#newFeedItem").off().click(function () {
+			$t.find("#newSeries").off().click(function () {
 				$('#podcastModal').modal();
 				$('#podcastModal').podcastModal({
 					feed: _m,

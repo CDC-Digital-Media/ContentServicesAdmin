@@ -50,9 +50,10 @@ function loadFeedCategories(postProcess) {
 
 function initalize() {
 	_ctx.setMediaType("podcast series");
-	$("#newFeed").click(function () {
-		//document.location = urlRoot + "/Feeds/Feeds.htm?view=detail";
+	$("#newSeries").click(function () {
+		document.location = urlRoot + "/Podcasts/Podcasts.htm?view=detail";
 	});
+
 	var view = getURLParameter('view');
 	var id = getURLParameter('id');
 	switch (view) {

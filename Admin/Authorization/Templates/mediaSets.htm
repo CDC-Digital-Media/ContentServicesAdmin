@@ -1,4 +1,9 @@
-﻿<div class="util-buttons">
+﻿
+
+
+
+
+<div class="util-buttons">
 	<a class="btn btn-success btn-sm btnAddMediaSet">Add Media Set</a>
 	<div class="clearfix"></div>
 </div>
@@ -16,7 +21,14 @@
 				<input type="text" id="" class="form-control" placeholder="MediaID" />
 			</div>
 			<div class="col-md-3">
-				<input type="text" id="" class="form-control" placeholder="Title" />
+				<input type="text" id="" class="form-control" placeholder="Source URL" />
+			</div>
+			<div class="col-md-3">
+				<select id="mediaType" class="form-control">
+					<option selected="selected">MediaType</option>
+					<option>HTML</option>
+					<option>etc, wire me up</option>
+				</select>
 			</div>
 			<div class="col-md-3">
 				<select id="Select1" class="form-control">
@@ -26,6 +38,7 @@
 				</select>
 			</div>
 		</div><!--row-->
+        <div class="row">&nbsp;</div>
 		<div class="row">
 			<div class="col-md-4">
 				<label label-default="label-default" for="filterOwningOrganization">Owning Organization</label>
@@ -47,3 +60,16 @@
 	</div>
 
 </div>
+
+    <table id="mediaSets" width="100%">
+        <thead>
+            <tr>
+                <th width="30%">Name</th>
+                <th width="30%">Criteria</th>
+                <th width="30%">User List</th>
+                <th width="10%">Action</th>
+            </tr>
+            
+        </thead>
+        <tbody id="mediaSetsBody"></tbody>
+    </table>

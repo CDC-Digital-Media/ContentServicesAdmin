@@ -112,34 +112,34 @@
         }
 
         function setUser(userInfo) {
-            $(".adminWelcome .hed_userName").html("Welcome, " + userInfo.Name);
+            $(".adminWelcome .hed_userName").html("Welcome, " + userInfo.name);
             $(options.target).find(".navbar a#home").show();
             //$(options.target).find(".navbar a").show();
-        	if (canSearch()) {
+            if (CDC.Admin.Auth.canSearch()) {
         	    $(options.target).find(".aSearch").show();
         	}
-        	if (canAddContent()) {
+            if (CDC.Admin.Auth.canAddContent()) {
         	    $(options.target).find("li.capture a").show();
         	}
-        	if (canAdministerVocab()) {
+            if (CDC.Admin.Auth.canAdministerVocab()) {
         	    $(options.target).find("li.vocab a").show();
         	}
-        	if (canManageCollections()) {
+            if (CDC.Admin.Auth.canManageCollections()) {
         	    $(options.target).find("li.collections a").show();
         	}
-        	if (canManageFeeds()) {
+            if (CDC.Admin.Auth.canManageFeeds()) {
         	    $(options.target).find("li.feeds a").show();
         	}
-        	if (canManagePodcasts()) {
+            if (CDC.Admin.Auth.canManagePodcasts()) {
         	    $(options.target).find("li.podcasts a").show();
         	}
-        	if (canManageAuthorization()) {
+            if (CDC.Admin.Auth.canManageAuthorization()) {
         	    $(options.target).find("li.authorization a").show();
         	}
-        	if (canUseUtilities()) {
+            if (CDC.Admin.Auth.canUseUtilities()) {
         	    $(options.target).find("li.utilities a").show();
         	}
-        	if (canUseData()) {
+            if (CDC.Admin.Auth.canUseData()) {
         	    $(options.target).find("li.data a").show();
         	}
         }

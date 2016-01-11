@@ -17,7 +17,7 @@
                 <form class="form-horizontal">
 
                     <div class="page_0" style="display: block;">
-                                
+
                         <h4 class="subHeader catHeader" id="modalHeader"></h4>
                         <div class='form-group  isProxy'>
                             <label for='proxyUrl' class='control-label col-xs-2 required'>Proxy Source</label>
@@ -26,7 +26,7 @@
                                 <div id="proxyUrlLabel" class="help-inline validationMsg">This field is required.</div>
                             </div>
                         </div>
-                        
+
                         <div class='form-group  isImport'>
                             <label for='importUrl' class='control-label col-xs-2 required'>Import Source</label>
                             <div class='col-xs-10'>
@@ -35,7 +35,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group isProxy isImport isManaged">
+                        <div class="form-group isImport isManaged">
                             <label label-default="label-default" class="control-label col-xs-2" for="contentGroup">Content Group</label>
                             <div class='col-xs-6'>
                                 <select id="contentGroup" class="form-control"></select>
@@ -66,8 +66,8 @@
                         <div class="form-group aggSourceRow isAggregate">
                             <label label-default="label-default" class="control-label col-xs-2" for="aggSource">Source URL</label>
                             <div class='col-xs-8'>
-                                <input type='text' class='form-control col-xs-6' id='aggSource' placeholder='contentgroup=&max='>                                
-                                <div id="aggSourceLabel" class="help-inline validationMsg">At least one Aggregate Source is required.</div>                                
+                                <input type='text' class='form-control col-xs-6' id='aggSource' placeholder='contentgroup=&max='>
+                                <div id="aggSourceLabel" class="help-inline validationMsg">At least one Aggregate Source is required.</div>
                             </div>
                             <div class='col-xs-1 aggSourceDelete'>
                                 <a href="#" class="pull-left" title="Remove this Source"><span class="glyphicon glyphicon-remove"></span></a>
@@ -76,7 +76,7 @@
 
                         <div class="form-group aggSourceBtnRow isAggregate">
                             <div class='col-xs-10'>
-                                <div class="pull-right" style="padding-top:5px;">
+                                <div class="pull-right" style="padding-top: 5px;">
                                     <button type="button" class="btn btn-default" id="addAggSource">Add Additional Source</button>
                                 </div>
                             </div>
@@ -297,7 +297,7 @@
                         <div class="form-group">
                             <div class="col-md-12" style="">
                                 <div class="feedItemThumbContainer">
-                                    <img id="feedItmThumbImg" src="" class="feedItemThumb"/>
+                                    <img id="feedItmThumbImg" src="" class="feedItemThumb" />
                                 </div>
                             </div>
                         </div>
@@ -373,6 +373,7 @@
                         <p>
                             You can create
                             <ul>
+                                <li>A aggregate feed which combines the results of other feeds.</li>
                                 <li>A managed feed which will be curated by an administrative user within this application.</li>
                                 <li>A proxy feed that will simply pass along the content from another feed source.</li>
                                 <li>An import feed that will create a local copy of an existing feed.</li>
@@ -382,7 +383,11 @@
                         <div class="row text-center">
                             <a class="btn btn-primary btn-md col-md-3 col-md-offset-1" id="createAggregate">Create Aggregate Feed</a>
                             <a class="btn btn-primary btn-md col-md-3 col-md-offset-1" id="createManaged">Create Managed Feed</a>
-                            <a class="btn btn-primary btn-md col-md-2 col-md-offset-1" id="createImport">Create Import Feed</a>
+                        </div>
+                        <p></p>
+                        <div class="row text-center">
+                            <a class="btn btn-primary btn-md col-md-3 col-md-offset-1" id="createProxy">Create Proxy Feed</a>
+                            <a class="btn btn-primary btn-md col-md-3 col-md-offset-1" id="createImport">Create Import Feed</a>
                         </div>
 
                     </div>
